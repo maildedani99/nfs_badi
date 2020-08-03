@@ -1,13 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import RoomCard from "./components/roomCard/roomCard.view";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-
-      </header>
+    <div>
+      <RoomCard/>
     </div>
   );
 }
