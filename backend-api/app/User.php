@@ -11,6 +11,14 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Get the boards for the given user.
+     */
+    public function rooms()
+    {
+        return $this->hasMany('App\Room');
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
