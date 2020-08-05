@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import RoomCard from "./components/roomCard/roomCard.view";
 
 function App() {
-    return (
-        <div className="App">
-            <h1>Proyecto Room</h1>
-        </div>
-    );
+  return (
+    <div>
+      <RoomCard/>
+    </div>
+  );
 }
 
 export default App;
