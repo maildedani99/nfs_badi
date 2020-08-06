@@ -1,39 +1,35 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
-
+import React from 'react';
 
 const Navbar = () => {
+  return (
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a className="navbar-brand" href="#">Logo</a>
 
-
-
-
-
-    return (
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">Logo</a>
-      
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-          </li>
-      
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Dropdown link
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-
-    )
-}
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <a className="nav-link" href="#">Room</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Loquesea</a>
+        </li>
+        <li className="nav-item dropdown">
+          <a
+            className="nav-link dropdown-toggle"
+            href="#"
+            id="navbardrop"
+            data-toggle="dropdown"
+          >
+            Dropdown link
+          </a>
+          <div className="dropdown-menu">
+            <a className="dropdown-item" href="#">Cosaschulas</a>
+            <a className="dropdown-item" href="#">Cosasmaschulas</a>
+            <a className="dropdown-item" href="#">cosasmenoschulas</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;
