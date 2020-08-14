@@ -1,10 +1,10 @@
 import React from 'react';
-import RoomCard from "./components/roomCard/roomCard.view";
+import IndexView from './pages/index.view/index.view';
 
 function App() {
   return (
     <div>
-      <RoomCard/>
+      <IndexView/>
     </div>
   );
 }
