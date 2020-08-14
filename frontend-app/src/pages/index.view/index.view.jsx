@@ -1,22 +1,16 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Navbar from '../../components/navbar/navbar';
 import RoomCard from '../../components/roomCard/roomCard.view';
+import RoomsView from '../rooms.view/rooms.view';
 
 const IndexView = () => {
   return (
     <Fragment>
-          <Navbar />
-          <div className="index__main">
-              <div className="col-3">
-          <RoomCard />
-            </div>
-            <div className="col-3">
-          <RoomCard />
-              </div>
-              <div className="col-3">
-          <RoomCard />
-            </div>
-          </div>
+      <Navbar />
+      <div className="jumbotron text-center">
+        <h2>Encuentra tu habitación ideal</h2>
+      </div>
+      <RoomsView />
     </Fragment>
   );
 };
