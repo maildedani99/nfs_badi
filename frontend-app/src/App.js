@@ -14,9 +14,7 @@ function App() {
           <Route exact path="/roomsview">
             <RoomsView />
           </Route>
-          <Route exact path="/home">
-            <IndexView />
-          </Route>
+         
         </Switch>
       </Router>
     </div>

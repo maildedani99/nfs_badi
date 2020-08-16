@@ -9,6 +9,7 @@ const IndexView = () => {
       <Navbar />
       <div className="jumbotron text-center">
         <h2>Encuentra tu habitación ideal</h2>
+        <h3>(PAGINA INDEX DONDE SE RENDERIZAN TODAS PAGES)</h3>
       </div>
       <RoomsView />
     </Fragment>
