@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.__navbar{
+    font-family: 'Poppins', sans-serif;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+}
+.__navbar_img_div{
+    display: flex;
+    align-items: center;
+}
+.__navbar_search_div{
+    display: flex;
+    align-items: center;
+    width: 50vw;
+}
+.__navbar_search{
+    height: 50px;
+    width: 50%;
+    margin-left: 1rem;
+    border: solid 2px #DDDDDD;
+    border-radius: 5px;
+    background-image: url("./search.ico") ;
+    background-color: #EFEFEF;
+      background-repeat: no-repeat;
+      background-size: 25px;
+      background-position: 15px center;
+      padding-left: 50px;
+
+}
+.__navbar_button_div{
+    display: flex;
+    align-items: center;
+    width: 250px;
+    margin-right: 50px;
+}
+.__navbar_button{
+    background: white;
+    font-weight: 600;
+    height: 50px;
+    width: 100%;
+    border: solid 2px #DDDDDD;
+    border-radius: 5px;
+}
+.__navbar_button:hover{
+    border: solid 2px black;
+}
+.__navbar_link_div{
+    display: flex;
+    align-items: center;
+    width: 120px;
+    text-decoration: none;
+
+}
+.__navbar_link{
+    color: black;    
+}
+.__navbar_link:hover{
+    color: black;
+}
+.__navbar_grouplinks_div{
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-end ;
+}
