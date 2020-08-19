@@ -13,7 +13,6 @@ const LandingPage = () => {
                 <span className={styles.__button}>Empieza ahora</span>
             </div>
 
-
         </div>
     )
 }

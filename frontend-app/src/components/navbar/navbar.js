@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -12,18 +11,19 @@ const Navbar = () => {
           <input  type="text" placeholder="Search" />
           <button  type="submit">Search</button>
         </form>
+
         <ul >
-          <li >
-            <Link c  to="/home">Home</Link>
+          <li>
+            <Link to="/">Home</Link>
           </li>
-          <li >
-            <Link   to="/roomsview">Rooms</Link>
+          <li>
+            <Link to="/habitaciones">Rooms</Link>
           </li>
-          <li >
-            <a  href="#">Link</a>
+          <li>
+            <a href="#">Link</a>
           </li>
-          <li >
-            <a  href="#">Disabled</a>
+          <li>
+            <a href="#">Disabled</a>
           </li>
         </ul>
       </nav>
