@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import RoomsView from './pages/rooms.view/rooms.view';
 import LandingPage from "./pages/landing/landing.view";
 import Navbar from "./components/navbar/navbar";
 import ListRoom from "./components/listRoom/listRoom.view";
+
 
 function App() {
     return (
