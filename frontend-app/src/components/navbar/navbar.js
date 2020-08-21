@@ -8,7 +8,9 @@ const Navbar = () => {
     <>
       <nav className={styles.__navbar}>
         <div className={styles.__navbar_img_div}>
+          <Link to="/">
           <img src={logo} alt="logotipo" height="40px" />
+          </Link>
         </div>
         <div className={styles.__navbar_search_div}>
           <input className={styles.__navbar_search} type="text" placeholder="¿Donde quieres vivir?" />
@@ -21,7 +23,7 @@ const Navbar = () => {
             <Link className={styles.__navbar_link} to="/">Registro</Link>
           </div>
           <div className={styles.__navbar_link_div}>
-            <Link className={styles.__navbar_link} to="/roomsview">Iniciar sesión</Link>
+            <Link className={styles.__navbar_link} to="/loginpage">Iniciar sesión</Link>
           </div>
         </div>
       </nav>
