@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
 import styles from './nabvar.module.css';
+
 const Navbar = () => {
   return (
     <>
