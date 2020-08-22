@@ -5,7 +5,7 @@ import styles from './nabvar.module.css';
 
 const Navbar = (props) => {
 
-  const { search, register, login } = props;
+  const { search, register, login, publicRoom } = props;
 
   return (
     <>
@@ -23,7 +23,9 @@ const Navbar = (props) => {
           
         <div className={styles.__navbar_grouplinks_div}>
           <div className={styles.__navbar_button_div}>
-            <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
+            { publicRoom &&
+              <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
+            }
           </div>
           <div className={styles.__navbar_link_div}>
             {register &&

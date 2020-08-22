@@ -6,7 +6,7 @@ const LandingPage = () => {
 
     return (
         <>
-        <Navbar search="present"/>
+        <Navbar search="present" register="present" login="present" publicRoom="present"/>
         <div className={styles.__contenedor}>
             <span className={styles.__titulo}>Reserva tu habitación <br/> con seguridad</span>
             <span className={styles.__subtitulo}>Más de <strong>2 millones</strong> de personas ya confían en Room. ¡Únete!</span>
