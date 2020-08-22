@@ -17,6 +17,7 @@
     border: 3px solid #DDDDDD;
     border-radius: 0.5rem;
     padding: 1.2rem;
+    margin-bottom: 2rem;
 }
 .__login_form_div{
     display: flex;
