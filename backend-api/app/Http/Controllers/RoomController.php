@@ -52,7 +52,9 @@ class RoomController extends Controller
     public function getById($id)
     {
         Log::info('Retrieving room with id: '.$id);
-        return response()->json(Room::findOrFail($id));
+        $data = Room::findOrFail($id);
+        $data['images'] = Image::where('room_id', $id)->get();
+        return response()->json($data);
     }
 
     /**
@@ -64,7 +66,7 @@ class RoomController extends Controller
     public function getByUser($userId)
     {
         Log::info('Retrieving rooms with user id: '.$userId);
-        $rooms = Board::where('user_id', $userId)->get();
+        $rooms = Room::where('user_id', $userId)->get();
         return response()->json($rooms);
     }
 }
