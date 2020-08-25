@@ -5,6 +5,7 @@ import LandingPage from "./pages/landing/landing.view";
 import Navbar from "./components/navbar/navbar";
 import ListRoom from "./components/listRoom/listRoom.view";
 import LoginPage from './pages/login/login.view';
+import RegisterForm from "./pages/register/register.view";
 
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
             <Route exact path="/loginpage">
               <LoginPage />
             </Route>
+            <Route exact path="/registerpage">
+              <RegisterForm />
+            </Route>
+
 
             <Route exact path="/habitaciones">
               <ListRoom />
