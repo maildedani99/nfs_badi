@@ -19,18 +19,37 @@
     margin-top: 25px;
     padding-left: 50px;
 }
-
-.__contenedorPublicarHabitacion {
+__contenedorMain{
+    width: 100%;
+    display: flex;
+    flex-direction: inherit;
+    margin: 30px auto;
+    padding-top: 20px;
+    background-color: #5DDEFA;
+}
+.__contenedorPublicarHabitacion, .__contenedorEncontrarHabitacion {
+    float: left;
     height: 270px;
-    background-color: #b5e8ea;
+    width: 45%;
+    /*height: auto;*/
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    margin: 40px 10px;
     padding-top: 25px;
     padding-left: 20px;
     border-radius: 5px;
+    box-shadow: 0 16px 32px 0 rgba(51, 51, 51, .24);
 }
 
+.__contenedorPublicarHabitacion {
+    background-image: url("assets/intro-lister.jpg");
+    background-size: cover;
+}
+
+.__contenedorEncontrarHabitacion {
+    background-image: url("assets/intro-seeker.jpg");
+    background-size: cover;
+}
 .__tituloPubHab{
     font-size: 25px;
     color: #525252;
@@ -45,12 +64,13 @@
 
 .__button{
     background-color: #00cb7b;
-    height: 30px;
+    height: auto;
     width: 150px;
     text-align: center;
-    padding-top: 10px;
+    padding: 10px 0;
     color: white;
     font-weight: bold;
     border-radius: 3px;
     margin-top: 20px;
+    text-decoration: none;
 }

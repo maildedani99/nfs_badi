@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
+
 import styles from './nabvar.module.css';
 
 const Navbar = (props) => {
@@ -29,7 +30,7 @@ const Navbar = (props) => {
           </div>
           <div className={styles.__navbar_link_div}>
             {register &&
-            <Link className={styles.__navbar_link} to="/">Registro</Link>
+            <Link className={styles.__navbar_link} to="/registerpage">Registro</Link>
             }
           </div>
           <div className={styles.__navbar_link_div}>
