@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
+
 import styles from './nabvar.module.css';
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
             <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
           </div>
           <div className={styles.__navbar_link_div}>
-            <Link className={styles.__navbar_link} to="/">Registro</Link>
+            <Link className={styles.__navbar_link} to="/registerpage">Registro</Link>
           </div>
           <div className={styles.__navbar_link_div}>
             <Link className={styles.__navbar_link} to="/loginpage">Iniciar sesión</Link>
