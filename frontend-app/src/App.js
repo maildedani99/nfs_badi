@@ -7,12 +7,14 @@ import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import Terminos from './pages/terminos/terminos';
 import Politica from './pages/politica/politica';
+import Navbar from "./components/navbar/navbar";
 
 
 function App() {
     return (
       <div>
         <Router>
+          <Navbar search="present" register="present" login="present" publicRoom="present"/>
           <Switch>
             <Route exact path="/">
               <LandingPage />

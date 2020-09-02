@@ -6,7 +6,6 @@ import  { Link } from 'react-router-dom';
 const LoginPage = () => {
     return (
         <>
-            <Navbar register="true" search="false" login="true" publicRoom="present"/>
             <div className={styles.__login_container}>
                 <div className={styles.__login_div}>
                     <h3>Inicia sesión</h3>
