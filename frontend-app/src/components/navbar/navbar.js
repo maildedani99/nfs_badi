@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
-
 import styles from './nabvar.module.css';
+import {LANDING, LOGINPAGE, REGISTERPAGE} from "../../routes/routes";
 
 const Navbar = (props) => {
 
@@ -12,7 +12,7 @@ const Navbar = (props) => {
     <>
       <nav className={styles.__navbar}>
         <div className={styles.__navbar_img_div}>
-          <Link to="/">
+          <Link to={LANDING}>
           <img src={logo} alt="logotipo" height="40px" />
           </Link>
         </div>
@@ -30,12 +30,12 @@ const Navbar = (props) => {
           </div>
           <div className={styles.__navbar_link_div}>
             {register &&
-            <Link className={styles.__navbar_link} to="/registerpage">Registro</Link>
+            <Link className={styles.__navbar_link} to={REGISTERPAGE}>Registro</Link>
             }
           </div>
           <div className={styles.__navbar_link_div}>
             {login && 
-            <Link className={styles.__navbar_link} to="/loginpage">Iniciar sesión</Link>
+            <Link className={styles.__navbar_link} to={LOGINPAGE}>Iniciar sesión</Link>
             }
           </div>
         </div>
