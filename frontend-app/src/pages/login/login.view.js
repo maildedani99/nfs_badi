@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './login.module.css';
+import Navbar from '../../components/navbar/navbar';
+import  { Link } from 'react-router-dom';
 
 const LoginPage = () => {
     return (
@@ -12,12 +14,16 @@ const LoginPage = () => {
                     <div className={styles.__login_form_div}>
                         <input className={styles.__login_input} placeholder="E-mail"></input>
                         <input className={styles.__login_input} placeholder="Contraseña"></input>
-                        <input className={styles.__login_input_button} type="button" value="Inicia sesión"></input>
+                        <input
+                            className={styles.__login_input_button}
+                            type="button"
+                            value="Inicia sesión"
+                        ></input>
                     </div>
 
                     <p>
-                        Al entrar, acepto los <b>Términos y condiciones de uso</b> y la <b>Política de
-                        privacidad</b> de Badi
+                        Al entrar, acepto los <Link to="terminos"><b>Términos y condiciones de uso</b></Link> y la
+                        <Link to="/politica"><b>Política de privacidad</b></Link> de Badi
                     </p>
                 </div>
             </div>
