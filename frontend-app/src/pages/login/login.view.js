@@ -8,8 +8,7 @@ const LoginPage = () => {
                 <div className={styles.__login_div}>
                     <h3>Inicia sesión</h3>
                     <br></br>
-                    <h6>¿Aún no tienes una cuenta? Registrarme
-</h6>
+                    <h6>¿Aún no tienes una cuenta? Registrarme</h6>
                     <div className={styles.__login_form_div}>
                         <input className={styles.__login_input} placeholder="E-mail"></input>
                         <input className={styles.__login_input} placeholder="Contraseña"></input>

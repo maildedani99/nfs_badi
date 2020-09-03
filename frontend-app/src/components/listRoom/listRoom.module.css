@@ -1,5 +1,6 @@
 .__contenedor {
-    width: 65%;
+    width: 800px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
