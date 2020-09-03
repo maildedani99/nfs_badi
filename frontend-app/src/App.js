@@ -6,9 +6,6 @@ import Navbar from "./components/navbar/navbar";
 import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
-import Terminos from './pages/terminos/terminos';
-import Politica from './pages/politica/politica';
-import Navbar from "./components/navbar/navbar";
 
 
 function App() {
@@ -25,12 +22,6 @@ function App() {
             </Route>
             <Route exact path="/registerpage">
               <RegisterForm />
-            </Route>
-            <Route exact path="/terminos">
-              <Terminos />
-            </Route>
-            <Route exact path="/politica">
-              <Politica />
             </Route>
             <Route exact path="/habitaciones">
               <RoomsPage />
