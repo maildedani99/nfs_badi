@@ -8,5 +8,5 @@ CREATE TABLE rooms
     user_id     bigint unsigned     null,
     PRIMARY KEY(id),
     CONSTRAINT rooms_users_id_fk
-        FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );

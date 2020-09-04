@@ -58,7 +58,7 @@ class ImageController extends Controller
      * @param $roomId
      * @return JsonResponse
      */
-    public function GetByRoom($roomId)
+    public function getByRoom($roomId)
     {
         Log::info('Retrieving pins with board id: '.$roomId);
         $images = Image::where('room_id', $roomId)->get();
