@@ -17,7 +17,7 @@ class ImageController extends Controller
      */
     public function all()
     {
-        Log::info('Retrieving all pins');
+        Log::info('Retrieving all images');
         return response()->json(Image::all());
     }
 
@@ -48,7 +48,7 @@ class ImageController extends Controller
      */
     public function getById($id)
     {
-        Log::info('Retrieving pin with id: '.$id);
+        Log::info('Retrieving image with id: '.$id);
         return response()->json(Image::findOrFail($id));
     }
 
@@ -60,7 +60,7 @@ class ImageController extends Controller
      */
     public function getByRoom($roomId)
     {
-        Log::info('Retrieving pins with board id: '.$roomId);
+        Log::info('Retrieving images with room id: '.$roomId);
         $images = Image::where('room_id', $roomId)->get();
         return response()->json($images);
     }
