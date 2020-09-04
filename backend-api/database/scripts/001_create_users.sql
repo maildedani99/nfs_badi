@@ -8,7 +8,7 @@ CREATE TABLE users
     gender            ENUM ('M','F')  NOT NULL,
     bio               varchar(999) null,
     birthday          timestamp    null,
-    role              varchar(999) null,
+    role              varchar(5) null,
     picture           BLOB        DEFAULT NULL,           -- Kept a picture as BLOB (up to 64KB)
     email_verified_at timestamp    null,
     password          varchar(255) not null,
