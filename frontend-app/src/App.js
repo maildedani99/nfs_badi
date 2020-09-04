@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/navbar";
 import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
+import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE} from "./routes/routes";
 
 
 function App() {
@@ -14,16 +15,16 @@ function App() {
         <Router>
           <Navbar search="present" register="present" login="present" publicRoom="present"/>
           <Switch>
-            <Route exact path="/">
+            <Route exact path={LANDING}>
               <LandingPage />
             </Route>
-            <Route exact path="/loginpage">
+            <Route exact path={LOGINPAGE}>
               <LoginPage />
             </Route>
-            <Route exact path="/registerpage">
+            <Route exact path={REGISTERPAGE}>
               <RegisterForm />
             </Route>
-            <Route exact path="/habitaciones">
+            <Route exact path={HABITACIONES}>
               <RoomsPage />
             </Route>
           </Switch>

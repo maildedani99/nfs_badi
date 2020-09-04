@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './landing.module.css';
+import {HABITACIONES, LOGINPAGE} from "../../routes/routes";
+import {Link} from "react-router-dom";
 
 const LandingPage = () => {
 
@@ -15,16 +17,16 @@ const LandingPage = () => {
                 <div className={styles.__contenedorPublicarHabitacion}>
                     <span className={styles.__tituloPubHab}>Publica tu <br/> habitación</span>
                     <span className={styles.__subTituloPubHab}>Encuentra al inquilino ideal al <br/> instante.</span>
-                    <a className={styles.__button} href="http://localhost:3000/loginpage">
-                        {" "}Empieza ahora{" "}
-                    </a>
+                    <Link className={styles.__button} to={LOGINPAGE}>
+                        Empieza ahora
+                    </Link>
                 </div>
                 <div className={styles.__contenedorEncontrarHabitacion}>
                     <span className={styles.__tituloPubHab}>Encuentra una<br/> habitación</span>
                     <span className={styles.__subTituloPubHab}>Escoge una ciudad y reserva <br/> tu habitación de forma segura.</span>
-                    <a className={styles.__button} href="http://localhost:3000/habitaciones">
-                        {" "}Busca ahora{" "}
-                    </a>
+                    <Link className={styles.__button} to={HABITACIONES}>
+                        Busca ahora
+                    </Link>
                 </div>
             </div>
         </div>
