@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './login.module.css';
 import Navbar from '../../components/navbar/navbar';
 import  { Link } from 'react-router-dom';
+import {POLITICA, TERMINOS} from "../../routes/routes";
 
 const LoginPage = () => {
     return (
@@ -22,8 +23,8 @@ const LoginPage = () => {
                     </div>
 
                     <p>
-                        Al entrar, acepto los <Link to="terminos"><b>Términos y condiciones de uso</b></Link> y la
-                        <Link to="/politica"><b>Política de privacidad</b></Link> de Badi
+                        Al entrar, acepto los <Link to={TERMINOS}><b>Términos y condiciones de uso</b></Link> y la
+                        <Link to={POLITICA}><b> Política de privacidad</b></Link> de Room.
                     </p>
                 </div>
             </div>

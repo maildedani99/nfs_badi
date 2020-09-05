@@ -56,6 +56,7 @@ class RoomController extends Controller
         Log::info('Retrieving room with id: '.$id);
         $data = Room::findOrFail($id);
         $data['images'] = Image::where('room_id', $id)->get();
+        $data->features;
         return response()->json($data);
     }
 

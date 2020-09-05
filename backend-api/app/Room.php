@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     /**
+     * The products that belong to the shop.
+     */
+    public function features()
+    {
+        return $this->belongsToMany('App\Feature', 'room_features');
+    }
+
+    /**
      * Get the user that owns the board.
      */
     public function user()

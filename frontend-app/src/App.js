@@ -6,7 +6,9 @@ import Navbar from "./components/navbar/navbar";
 import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
-import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE} from "./routes/routes";
+import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA} from "./routes/routes";
+import Terminos from "./pages/terminos/terminos";
+import Politica from "./pages/politica/politica";
 
 
 function App() {
@@ -27,8 +29,13 @@ function App() {
             <Route exact path={HABITACIONES}>
               <RoomsPage />
             </Route>
+            <Route exact path={TERMINOS}>
+              <Terminos />
+            </Route>
+            <Route exact path={POLITICA}>
+              <Politica />
+            </Route>
           </Switch>
-
         </Router>
       </div>
   );
