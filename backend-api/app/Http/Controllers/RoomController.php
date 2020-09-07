@@ -68,7 +68,7 @@ class RoomController extends Controller
     public function getByUser($userId)
     {
         Log::info('Retrieving rooms with user id: '.$userId);
-        $rooms = Room::where('user_id', $userId)->get();
-        return response()->json($rooms);
+        $room = Room::where('user_id', $userId)->get();
+        return response()->json($room);
     }
 }
