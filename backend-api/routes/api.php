@@ -29,10 +29,10 @@ Route::get('users/username/{username}', 'UserController@getByUsername');
 | Room Routes
 |--------------------------------------------------------------------------
 */
-Route::get('rooms', 'RoomController@all');
-Route::get('rooms/{id}', 'RoomController@getById');
-Route::get('rooms/user/{userId}', 'RoomController@getByUser');
-// Route::post('rooms', 'RoomController@create');
+Route::get('room', 'RoomController@all');
+Route::get('room/{id}', 'RoomController@getById');
+Route::get('room/user/{userId}', 'RoomController@getByUser');
+// Route::post('room', 'RoomController@create');
 
 
 /*
