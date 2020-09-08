@@ -1,14 +1,15 @@
 .__contenedor {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .__contenedorListRoom {
-    width: 810px;
+    width: 807px;
     height: 550px;
     overflow: auto;
 }
 
 .__mapa {
-    padding: 5px;
+
 }
