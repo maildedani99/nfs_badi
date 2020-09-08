@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     /**
-     * The products that belong to the shop.
+     * Get the features for the given room.
      */
     public function features()
     {
