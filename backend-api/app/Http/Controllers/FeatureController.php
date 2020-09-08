@@ -57,7 +57,7 @@ class FeatureController extends Controller
     public function getByRoom($roomId)
     {
 
-        $Features= DB::table('room_features')
+        $Features= DB::table('features_room')
             ->where('room_id', $roomId)
             ->get();
 
@@ -68,7 +68,7 @@ class FeatureController extends Controller
 
     public function addFeatureToRoom(Request $request)
     {
-        $FeatureRoomRelation = DB::table('room_features')->insert(
+        $FeatureRoomRelation = DB::table('features_room')->insert(
             ['features_id' => $request -> features_id,
              'room_id' => $request -> room_id]
 

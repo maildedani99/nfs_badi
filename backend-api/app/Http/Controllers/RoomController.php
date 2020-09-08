@@ -19,8 +19,7 @@ class RoomController extends Controller
     {
         Log::info('Retrieving all rooms');
         //return response()->json(Room::all());
-        $data=Room::with('images','features','user')->get();
-        return response()->json($data);
+        return response()->json(Room::with('images')->get());
 
     }
 
@@ -58,7 +57,6 @@ class RoomController extends Controller
         $data = Room::findOrFail($id);
         $data['images'] = Image::where('room_id', $id)->get();
         $data->features;
-        $data->user;
         return response()->json($data);
     }
 
