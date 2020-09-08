@@ -21,7 +21,7 @@ class Feature extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'room_id'
+        'name',
     ];
 
     protected $guarded = [
