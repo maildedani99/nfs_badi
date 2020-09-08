@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
@@ -53,5 +55,21 @@ class UserController extends Controller
     {
         Log::info('Retrieving user profile for user: '.$username);
         return response()->json(User::where('username', $username) -> first());
+    }
+
+    public function create(Request $request)
+    {
+
+        $user = User::create([
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'username'=>$request->username,
+            'email'=>$request->email,
+            'password' => bcrypt($request['password']),
+            'role'=>$request->role,
+        ]);
+
+        $user->save();
+        return response()->json('saved', 201);
     }
 }

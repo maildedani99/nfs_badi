@@ -37,6 +37,7 @@ Route::get('users', 'UserController@all');
 Route::get('users/{id}', 'UserController@getById');
 Route::get('users/email/{email}', 'UserController@getByEmail');
 Route::get('users/username/{username}', 'UserController@getByUsername');
+Route::post('users','UserController@create');
 
 /*
 |--------------------------------------------------------------------------
