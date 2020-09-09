@@ -37,6 +37,10 @@ class RoomController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'user_id' => $request->user_id,
+            'companions' => $request->companions,
+            'price' => $request->price,
+            'longitude' => $request->longitude,
+            'latitude' => $request->latitude,
         ]);
 
         $room->save();

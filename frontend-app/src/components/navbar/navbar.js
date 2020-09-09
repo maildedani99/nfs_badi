@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
 import styles from './nabvar.module.css';
-import {LANDING, LOGINPAGE, REGISTERPAGE} from "../../routes/routes";
+import {LANDING, LOGINPAGE, REGISTERPAGE, ROOMFORM} from "../../routes/routes";
 
 const Navbar = (props) => {
 
@@ -25,7 +25,9 @@ const Navbar = (props) => {
         <div className={styles.__navbar_grouplinks_div}>
           <div className={styles.__navbar_button_div}>
             { publicRoom &&
+            <Link to={ROOMFORM}>
               <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
+            </Link>
             }
           </div>
           <div className={styles.__navbar_link_div}>
