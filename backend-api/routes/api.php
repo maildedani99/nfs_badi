@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
+
 /*
 |--------------------------------------------------------------------------
 | User Routes
@@ -23,6 +37,7 @@ Route::get('users', 'UserController@all');
 Route::get('users/{id}', 'UserController@getById');
 Route::get('users/email/{email}', 'UserController@getByEmail');
 Route::get('users/username/{username}', 'UserController@getByUsername');
+Route::post('users','UserController@create');
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +76,5 @@ Route::post('features', 'FeatureController@create');
 
 Route::get('features/room/{roomId}', 'FeatureController@getByRoom');
 Route::post('features/add', 'FeatureController@addFeatureToRoom');
+
+

@@ -2,33 +2,36 @@ import React from 'react';
 import styles from './landing.module.css';
 import {HABITACIONES, LOGINPAGE} from "../../routes/routes";
 import {Link} from "react-router-dom";
+import ListRoom from "../../components/listRoom/listRoom.view";
 
 const LandingPage = () => {
 
-    function handleClick(e) {
-        e.preventDefault();
-        console.log('The link was clicked.');
-    }
     return (
-        <div className={styles.__contenedor}>
-            <span className={styles.__titulo}>Reserva tu habitación <br/> con seguridad</span>
-            <span className={styles.__subtitulo}>Más de <strong>2 millones</strong> de personas ya confían en Room. ¡Únete!</span>
-            <div className={styles.__contenedorMain}>
-                <div className={styles.__contenedorPublicarHabitacion}>
-                    <span className={styles.__tituloPubHab}>Publica tu <br/> habitación</span>
-                    <span className={styles.__subTituloPubHab}>Encuentra al inquilino ideal al <br/> instante.</span>
-                    <Link className={styles.__button} to={LOGINPAGE}>
-                        Empieza ahora
-                    </Link>
-                </div>
-                <div className={styles.__contenedorEncontrarHabitacion}>
-                    <span className={styles.__tituloPubHab}>Encuentra una<br/> habitación</span>
-                    <span className={styles.__subTituloPubHab}>Escoge una ciudad y reserva <br/> tu habitación de forma segura.</span>
-                    <Link className={styles.__button} to={HABITACIONES}>
-                        Busca ahora
-                    </Link>
+        <div>
+            <div className={styles.__contenedor}>
+                <div className={styles.__contenedorMain}>
+                    <div className={styles.__contenedorTitulo}>
+                        <span className={styles.__titulo}>Encuentra tu habitación perfecta</span>
+                        <span className={styles.__subtitulo}>Con Room la habitación de tus sueños esta más <br/>cerca!</span>
+                        <Link className={styles.__button} to={HABITACIONES}>
+                            Ver habitaciones
+                        </Link>
+                    </div>
+                    <div className={styles.__contenedorImagen}>
+                        <img className={styles.__imagen} src={"https://images.cmft.io/1200270192509325312/1229295455456862208/1229295455482028032/Screenshot_2020-06-25_at_14.07.30.png?w=840&h=400&fit=crop"}/>
+                    </div>
                 </div>
             </div>
+
+            <div className={styles.__contenedorRooms}>
+                <span className={styles.__tituloRooms}>Tenemos habitaciones como estas!</span>
+                <span className={styles.__subTituloRooms}>Espacios con encanto preparados para ti</span>
+
+                <div className={styles.__contenedorListRooms}>
+                    <ListRoom/>
+                </div>
+            </div>
+
         </div>
     )
 }
