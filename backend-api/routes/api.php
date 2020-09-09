@@ -32,7 +32,7 @@ Route::get('users/username/{username}', 'UserController@getByUsername');
 Route::get('rooms', 'RoomController@all');
 Route::get('rooms/{id}', 'RoomController@getById');
 Route::get('rooms/user/{userId}', 'RoomController@getByUser');
-// Route::post('rooms', 'RoomController@create');
+Route::post('rooms', 'RoomController@create');
 
 
 /*

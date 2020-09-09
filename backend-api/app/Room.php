@@ -39,6 +39,6 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'user_id',
+        'name', 'description', 'user_id', 'companions', 'price', 'longitude', 'latitude',
     ];
 }

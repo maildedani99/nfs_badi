@@ -1,0 +1,89 @@
+
+
+.__room_container {
+    width: 95vw;
+    display: flex;
+    padding: 1rem 3rem;
+    flex-direction: row;
+    margin: 2rem 2rem;
+    justify-content: space-around;
+}
+.__form_container {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.__form_div {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.__div_img {
+    padding: 3rem;
+}
+.__ubicacion_div {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+.__checkbox {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.__checkbox_group {
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    align-items:  baseline;
+    justify-content: space-around;
+}
+
+.__room_label {
+    margin-left: -4rem;
+    opacity: 70%;
+}
+.__input_habitacion {
+    border: solid 2px #DDDDDD;
+    border-radius: 5px;
+    height: 2.2rem;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.__input_compañeros {
+    border: solid 2px #DDDDDD;
+    border-radius: 5px;
+    height: 2.2rem;
+    margin: 1rem 0;
+    width: 40%;
+}
+.__input_precio {
+    border: solid 2px #DDDDDD;
+    border-radius: 5px;
+    height: 2.2rem;
+    margin: 1rem 0;
+    width: 40%;
+}
+.__input_ubicacion {
+    border: solid 2px #DDDDDD;
+    border-radius: 5px;
+    height: 2.2rem;
+    width: 50%;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+.__from_subtitle {
+    margin-top: 1.5rem;
+    opacity: 70%;
+}
+.__div_button {
+    display: flex;
+    justify-content: center;
+}
+.__button_crear {
+    height: 2.2rem;
+    width: 30%;
+    margin-top: 2rem;
+}

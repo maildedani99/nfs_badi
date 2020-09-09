@@ -6,7 +6,8 @@ import Navbar from "./components/navbar/navbar";
 import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
-import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA} from "./routes/routes";
+import RoomForm from './pages/room_form/room_form.view';
+import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOMFORM} from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
 
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route exact path={POLITICA}>
               <Politica />
+            </Route>
+            <Route exact path={ROOMFORM}>
+              <RoomForm />
             </Route>
           </Switch>
         </Router>
