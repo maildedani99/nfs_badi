@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import logo from './logo.png';
 import styles from './nabvar.module.css';
 import {LANDING, LOGINPAGE, REGISTERPAGE, ROOMFORM} from "../../routes/routes";
@@ -8,7 +8,13 @@ import {AuthContext} from "../../contexts/authentication/authentication.context"
 const Navbar = (props) => {
 
   const { state, logout } = React.useContext(AuthContext);
+  const history = useHistory();
   const { search, register, login, publicRoom } = props;
+
+  const logoutALanding = () => {
+      logout();
+      history.replace(LANDING);
+  }
 
   return (
       <nav className={styles.__navbar}>
@@ -34,7 +40,7 @@ const Navbar = (props) => {
                 </div>
 
                   <div className={styles.__navbar_link_div}>
-                      <Link value="Log out" className={styles.__navbar_link} onClick={logout}>
+                      <Link value="Log out" className={styles.__navbar_link} onClick={logoutALanding}>
                           Logout
                       </Link>
                   </div>
