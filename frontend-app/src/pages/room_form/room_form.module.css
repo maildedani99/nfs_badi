@@ -38,6 +38,8 @@
     width: 50%;
     height: 3rem;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items:  baseline;
     justify-content: space-around;
 }
