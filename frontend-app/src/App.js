@@ -10,6 +10,7 @@ import RoomForm from './pages/room_form/room_form.view';
 import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOMFORM} from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
+import Footer from "./components/footer/footer.view";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <RoomForm />
             </Route>
           </Switch>
+          <Footer/>
         </Router>
       </div>
   );
