@@ -3,24 +3,26 @@
 .__room_container {
     width: 95vw;
     display: flex;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     flex-direction: row;
     margin: 2rem 2rem;
     justify-content: space-around;
 }
 .__form_container {
+    width: 50%;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
 }
 
 .__form_div {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
 .__div_img {
-    padding: 3rem;
+    width: 50%;
+    padding: 1rem;
 }
 .__ubicacion_div {
     display: flex;

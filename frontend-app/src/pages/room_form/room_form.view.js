@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './room_form.module.css';
 import Navbar from '../../components/navbar/navbar';
 import room_img from './room_img.png';
+import CheckBox from '../../components/checkbox/checkbox';
+import CheckboxFeaturesContainer from '../../components/checkbox/checkbox';
 
 
 const RoomForm = () => {
@@ -78,28 +80,11 @@ return (
                 <h4 className={styles.__from_subtitle}>Características</h4>
                 <div className={styles.__checkbox}>
                     <div className={styles.__div_checkbox}>
-                        <div className={styles.__checkbox_group}>
-                            <input type="checkbox" value="opcion1" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 1 &nbsp;</label>
-                            <input type="checkbox" value="opcion2" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 2 &nbsp;</label>
-                        </div>
+                        <CheckboxFeaturesContainer />
                     </div>
 
-                    <div className={styles.__div_checkbox}>
-                        <div className={styles.__checkbox_group}>
-                            <input type="checkbox" value="opcion3" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 3 &nbsp;</label>
-                            <input type="checkbox" value="opcion4" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 4 &nbsp;</label>
-                        </div>
-                        <div className={styles.__checkbox_group}>
-                            <input type="checkbox" value="opcion3" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 5 &nbsp;</label>
-                            <input type="checkbox" value="opcion4" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 6 &nbsp;</label>
-                        </div>
-                    </div>
+                    
+                        
               
             </div>
             <div className={styles.__div_button}>
