@@ -29,25 +29,10 @@
     flex-direction: row;
     width: 50%;
 }
-.__checkbox {
-    width: 100%;
-    margin-top: 1rem;
-}
 
-.__checkbox_group {
-    width: 50%;
-    height: 3rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items:  baseline;
-    justify-content: space-around;
-}
 
-.__room_label {
-    margin-left: -4rem;
-    opacity: 70%;
-}
+
+
 .__input_habitacion {
     border: solid 2px #DDDDDD;
     border-radius: 5px;
