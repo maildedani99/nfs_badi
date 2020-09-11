@@ -7,5 +7,5 @@ CREATE TABLE images
     room_id     bigint unsigned     null,
     PRIMARY KEY(id),
     CONSTRAINT images_rooms_id_fk
-        FOREIGN KEY (room_id) REFERENCES room (id)
+        FOREIGN KEY (room_id) REFERENCES rooms (id)
 );

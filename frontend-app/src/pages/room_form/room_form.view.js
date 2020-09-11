@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './room_form.module.css';
 import Navbar from '../../components/navbar/navbar';
 import room_img from './room_img.png';
+import CheckboxFeaturesContainer from '../../components/checkbox/checkbox';
 
 
 const RoomForm = () => {
@@ -23,8 +24,8 @@ const RoomForm = () => {
             [event.target.name]: event.target.value
         })
     }
-    
-    
+
+
     const SubmitForm = () => {
         const url = 'http://localhost/api/rooms';
         const body = {
@@ -44,23 +45,23 @@ const RoomForm = () => {
             mode: 'cors',
             body: JSON.stringify(body),
         };
-        
+
         fetch(url, options)
-        .then(response => {
-            if (response.status === 200) {
-                console.log(response.status);
-                return response.json();
-            }
-            return Promise.reject(response.status);
-        })
-                                
-        .catch(error => console.log(error));
+            .then(response => {
+                if (response.status === 200) {
+                    console.log(response.status);
+                    return response.json();
+                }
+                return Promise.reject(response.status);
+            })
+
+            .catch(error => console.log(error));
     };
 
 
-return (
-    
-    <div className={styles.__room_container}>
+    return (
+
+        <div className={styles.__room_container}>
             <div className={styles.__form_container}>
                 <h2>Comparte tu habitación en Room</h2>
                 <h4 className={styles.__from_subtitle}>Información básica</h4>
@@ -76,39 +77,14 @@ return (
                 </div>
 
                 <h4 className={styles.__from_subtitle}>Características</h4>
-                <div className={styles.__checkbox}>
-                    <div className={styles.__div_checkbox}>
-                        <div className={styles.__checkbox_group}>
-                            <input type="checkbox" value="opcion1" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 1 &nbsp;</label>
-                            <input type="checkbox" value="opcion2" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 2 &nbsp;</label>
-                        </div>
-                    </div>
-
-                    <div className={styles.__div_checkbox}>
-                        <div className={styles.__checkbox_group}>
-                            <input type="checkbox" value="opcion3" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 3 &nbsp;</label>
-                            <input type="checkbox" value="opcion4" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 4 &nbsp;</label>
-                        </div>
-                        <div className={styles.__checkbox_group}>
-                            <input type="checkbox" value="opcion3" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 5 &nbsp;</label>
-                            <input type="checkbox" value="opcion4" />
-                            <label className={styles.__room_label}> &nbsp; Opcion 6 &nbsp;</label>
-                        </div>
-                    </div>
-              
+                <CheckboxFeaturesContainer />
+                <div className={styles.__div_button}>
+                    <input className={styles.__button_crear} type="submit" onClick={SubmitForm} name="button" value="Crear anuncio" />
+                </div>
             </div>
-            <div className={styles.__div_button}>
-                <input className={styles.__button_crear} type="submit" onClick={SubmitForm} name="button" value="Crear anuncio" />
+            <div className={styles.__div_img}>
+                <img src={room_img} alt="image" />
             </div>
-        </div>
-        <div className={styles.__div_img}>
-            <img src={room_img} alt="image" />
-        </div>
         </div>
 
     )
