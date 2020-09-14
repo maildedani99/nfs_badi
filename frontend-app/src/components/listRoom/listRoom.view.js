@@ -36,6 +36,7 @@ const ListRoom = () => {
                     <RoomCard
                         name ={room.name}
                         description={room.description}
+                        price={room.price}
                         key={room.id}
                     />
                 );
