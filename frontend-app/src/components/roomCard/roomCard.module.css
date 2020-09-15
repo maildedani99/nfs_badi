@@ -13,12 +13,20 @@
 }
 
 .__galeria {
-    width: 380px;
+    width: auto;
     height: 280px;
     border-radius: 3px;
 }
 
 .__nombre {
+    margin-top: 5px;
+    margin-left: 8px;
+    font-size: 12px;
+    color: black;
+}
+
+.__features{
+    float: right;
     margin-top: 5px;
     margin-left: 8px;
     font-size: 12px;
