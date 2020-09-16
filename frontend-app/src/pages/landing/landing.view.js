@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './landing.module.css';
 import {HABITACIONES, LOGINPAGE} from "../../routes/routes";
 import {Link} from "react-router-dom";
-import ListRoom from "../../components/listRoom/listRoom.view";
+import RecommendedRooms from "../../components/recommendedRooms/recommendedRooms.view";
 
 const LandingPage = () => {
 
@@ -28,7 +28,7 @@ const LandingPage = () => {
                 <span className={styles.__subTituloRooms}>Espacios con encanto preparados para ti</span>
 
                 <div className={styles.__contenedorListRooms}>
-                    <ListRoom/>
+                    <RecommendedRooms/>
                 </div>
             </div>
 
