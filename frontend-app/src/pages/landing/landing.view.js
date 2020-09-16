@@ -3,6 +3,8 @@ import styles from './landing.module.css';
 import {HABITACIONES, LOGINPAGE} from "../../routes/routes";
 import {Link} from "react-router-dom";
 import RecommendedRooms from "../../components/recommendedRooms/recommendedRooms.view";
+import imgMainLanding from './assets/imgMainLanding.png';
+import Footer from "../../components/footer/footer.view";
 
 const LandingPage = () => {
 
@@ -18,7 +20,7 @@ const LandingPage = () => {
                         </Link>
                     </div>
                     <div className={styles.__contenedorImagen}>
-                        <img className={styles.__imagen} src={"https://images.cmft.io/1200270192509325312/1229295455456862208/1229295455482028032/Screenshot_2020-06-25_at_14.07.30.png?w=840&h=400&fit=crop"}/>
+                        <img className={styles.__imagen} src={imgMainLanding}/>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,7 @@ const LandingPage = () => {
                     <RecommendedRooms/>
                 </div>
             </div>
-
+            <Footer/>
         </div>
     )
 }
