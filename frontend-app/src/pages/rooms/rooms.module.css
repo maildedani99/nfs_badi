@@ -5,11 +5,16 @@
 }
 
 .__contenedorListRoom {
-    width: 807px;
+    width: 66%;
     height: 550px;
     overflow: auto;
 }
 
+.__contenedorMapContainer {
+    width: 33%;
+    height: 550px;
+    overflow: auto;
+}
 .__mapa {
 
 }

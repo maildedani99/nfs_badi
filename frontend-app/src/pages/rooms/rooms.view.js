@@ -1,15 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './rooms.module.css';
 import ListRoom from "../../components/listRoom/listRoom.view";
+import MapContainer from "../../components/roomsMap/roomsMap.view";
 
 const RoomsPage = () => {
+
+    const [rooms, setRooms] = useState('');
+
+    useEffect(() => {
+        const url = 'http://localhost/api/rooms/';
+        const options = {
+            method: 'GET',
+            headers: new Headers(),
+        };
+
+        fetch(url, options)
+            .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    return Promise.reject(response.status);
+                }
+            )
+            .then(payload => {
+                    console.log("List rooms saved");
+                    setRooms(payload);
+                }
+            )
+            .catch(error => console.log(error));
+    }, []);
 
     return (
         <div className={styles.__contenedor}>
             <div className={styles.__contenedorListRoom}>
-                <ListRoom/>
+                <ListRoom rooms={rooms}/>
             </div>
-            <img className={styles.__mapa} src='https://www.google.com/maps/d/thumbnail?mid=1yWrAUAXe7fMNFYQa8mpJQ4HWlqU&hl=es'/>
+            <div className={styles.__contenedorMapContainer}>
+                <MapContainer rooms={rooms}/>
+            </div>
         </div>
     )
 }
