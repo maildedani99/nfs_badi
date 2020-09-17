@@ -42,7 +42,6 @@ function App() {
                 <RoomForm />
               </Route>
             </Switch>
-            <Footer/>
           </Router>
         </AuthContextProvider>
   );
