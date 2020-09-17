@@ -102,8 +102,8 @@
     margin: 10px auto 20px auto;
     overflow: auto;
     display: flex;
-    flex-wrap: unset;
     flex-direction: row;
     padding-top: 20px;
+    justify-content: center;
 }
 
