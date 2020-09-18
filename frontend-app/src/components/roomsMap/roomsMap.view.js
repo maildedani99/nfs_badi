@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import RoomCard from "../roomCard/roomCard.view";
 import styles from "../roomsMap/roomsMap.module.css";
+import ellipse from './assets/ellipse.png';
 
 export const MapContainer = ({google, rooms}) => {
 
@@ -40,6 +41,7 @@ export const MapContainer = ({google, rooms}) => {
         width: '100%',
         height: '550px'
     }
+
     return (
         <>
             <Map google={google}
@@ -51,7 +53,7 @@ export const MapContainer = ({google, rooms}) => {
                 {rooms && rooms.map(room => {
                         return (
                             <Marker onClick={onMarkerClick}
-                                    name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
+                                    icon={ellipse} name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
                         );
                     }
                 )}
