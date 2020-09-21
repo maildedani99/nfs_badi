@@ -42,10 +42,9 @@ class RoomController extends Controller
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
         ]);
-
         $room->save();
-
-        
+            'feature' => 
+            
 
 
         return response()->json("Created", 201);

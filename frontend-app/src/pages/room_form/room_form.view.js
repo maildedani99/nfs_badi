@@ -40,9 +40,10 @@ const RoomForm = () => {
         }
       setData({
           ...data,
-          checkedFeatures : checkedList,
-
+          features : checkedList,
+        
       })
+        console.log(data)
     }
 
     const [data, setData] = useState({})
@@ -54,11 +55,10 @@ const RoomForm = () => {
         })
     }
 
-    const submitForm = () => {
+    const submitForm = () => {  
 
         checkboxResults();
 
-        console.log(JSON.stringify(data));
         const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
@@ -68,7 +68,7 @@ const RoomForm = () => {
             price: data.price,
             latitude: data.latitude,
             longitude: data.longitude,
-            checkedFeatures : data.checkedFeatures,
+            features: data.features,
         };
 
         const options = {
@@ -79,7 +79,7 @@ const RoomForm = () => {
             mode: 'cors',
             body: JSON.stringify(body),
         };
-        console.log(body.features)
+        console.log(data)
         fetch(url, options)
             .then(response => {
                 if (response.status === 200) {
@@ -116,7 +116,7 @@ const RoomForm = () => {
                 <div className={styles.__div_checkbox}>
                     {features.map((item) =>
                         <div className={styles.__checkbox_group}>
-                            <input id={item.id} type="checkbox" className="check" name={item.name} />
+                            <input id={item.id} type="checkbox" className="check" onChange={event => console.log(event.target.id, event.target.checked) } name={item.name} />
                             <label className={styles.__room_label}> {item.name} </label>
                         </div>
                     )}
