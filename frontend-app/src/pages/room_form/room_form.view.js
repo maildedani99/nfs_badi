@@ -1,22 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import styles from './room_form.module.css';
-import Navbar from '../../components/navbar/navbar';
 import room_img from './room_img.png';
-import CheckboxFeaturesContainer from '../../components/checkbox/checkbox';
 
 
 const RoomForm = () => {
 
+    const [features, setFeatures] = useState([]);
 
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        user_id: '',
-        companions: '',
-        price: '',
-        longitude: '',
-        latitude: ''
-    })
+    const checkboxFetch = () => {
+        const url = 'http://localhost/api/features';
+        const options = {
+            method: 'GET',
+            headers: new Headers(),
+        };
+        fetch(url, options)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                return Promise.reject(response.status);
+            })
+            .then(function (myJson) {
+                setFeatures(myJson);
+                console.log(myJson);
+            })
+            .catch(error => console.log(error));
+    }
+
+
+    var checkedList = [];
+
+    const checkboxResults = () => {
+        var checkboxes = document.getElementsByClassName("check");
+        for (var i = 0; i < features.length; i++) {
+            if (checkboxes[i].checked) {
+                checkedList.push(checkboxes[i].id);
+                console.log(checkboxes[i].id)
+            }
+        }
+      setData({
+          ...data,
+          checkedFeatures : checkedList,
+
+      })
+    }
+
+    const [data, setData] = useState({})
 
     const handleInputChange = (event) => {
         setData({
@@ -25,8 +54,11 @@ const RoomForm = () => {
         })
     }
 
+    const submitForm = () => {
 
-    const SubmitForm = () => {
+        checkboxResults();
+
+        console.log(JSON.stringify(data));
         const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
@@ -36,7 +68,9 @@ const RoomForm = () => {
             price: data.price,
             latitude: data.latitude,
             longitude: data.longitude,
+            checkedFeatures : data.checkedFeatures,
         };
+
         const options = {
             method: 'POST',
             headers: new Headers({
@@ -45,7 +79,7 @@ const RoomForm = () => {
             mode: 'cors',
             body: JSON.stringify(body),
         };
-
+        console.log(body.features)
         fetch(url, options)
             .then(response => {
                 if (response.status === 200) {
@@ -54,10 +88,12 @@ const RoomForm = () => {
                 }
                 return Promise.reject(response.status);
             })
-
             .catch(error => console.log(error));
     };
 
+    useEffect(() => {
+        checkboxFetch()
+    }, [])
 
     return (
 
@@ -77,9 +113,16 @@ const RoomForm = () => {
                 </div>
 
                 <h4 className={styles.__from_subtitle}>Características</h4>
-                <CheckboxFeaturesContainer />
+                <div className={styles.__div_checkbox}>
+                    {features.map((item) =>
+                        <div className={styles.__checkbox_group}>
+                            <input id={item.id} type="checkbox" className="check" name={item.name} />
+                            <label className={styles.__room_label}> {item.name} </label>
+                        </div>
+                    )}
+                </div>
                 <div className={styles.__div_button}>
-                    <input className={styles.__button_crear} type="submit" onClick={SubmitForm} name="button" value="Crear anuncio" />
+                    <input className={styles.__button_crear} type="submit" onClick={submitForm} name="button" value="Crear anuncio" />
                 </div>
             </div>
             <div className={styles.__div_img}>

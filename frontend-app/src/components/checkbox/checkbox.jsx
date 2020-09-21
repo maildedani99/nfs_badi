@@ -5,7 +5,10 @@ const CheckboxFeaturesContainer = () => {
 
     const [features, setFeatures] = useState([]);
 
-    const checkboxFetch = () => {
+    
+
+
+    const checkboxFetch = (props) => {
 
 
         const url = 'http://localhost/api/features';
@@ -36,7 +39,7 @@ const CheckboxFeaturesContainer = () => {
         <div className={styles.__div_checkbox}>
         {features.map((item) =>
                 <div className={styles.__checkbox_group}>
-                    <input type="checkbox" value={item.name} />
+                    <input type="checkbox" name={item.name}   />
                     <label className={styles.__room_label}> {item.name} </label>
                 </div>
         )}
