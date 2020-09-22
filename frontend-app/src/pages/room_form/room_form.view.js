@@ -27,37 +27,41 @@ const RoomForm = () => {
             .catch(error => console.log(error));
     }
 
-
-    var checkedList = [];
-
-    const checkboxResults = () => {
-        var checkboxes = document.getElementsByClassName("check");
-        for (var i = 0; i < features.length; i++) {
-            if (checkboxes[i].checked) {
-                checkedList.push(checkboxes[i].id);
-                console.log(checkboxes[i].id)
-            }
-        }
-      setData({
-          ...data,
-          features : checkedList,
-        
-      })
-        console.log(data)
-    }
-
     const [data, setData] = useState({})
-
+    
     const handleInputChange = (event) => {
         setData({
             ...data,
             [event.target.name]: event.target.value
         })
+        console.log(data);
+    }
+
+    const [checkedList, setCheckList] = useState({});
+    var checkedListArray = []
+
+    const handleCheckBoxChange = (event) => {
+        setCheckList({
+            ...checkedList,
+            [event.target.id]: event.target.checked,
+        })
+    }
+    const selectTrue = () => {
+
+        for (const property in checkedList) {
+            if (checkedList[property] == true) {
+                checkedListArray.push([property])
+            }
+          }
+          setData({
+              ...data,
+              features:checkedListArray,
+          })
+       
     }
 
     const submitForm = () => {  
-
-        checkboxResults();
+            selectTrue();
 
         const url = 'http://localhost/api/rooms';
         const body = {
@@ -70,6 +74,7 @@ const RoomForm = () => {
             longitude: data.longitude,
             features: data.features,
         };
+        console.log(body);
 
         const options = {
             method: 'POST',
@@ -79,8 +84,7 @@ const RoomForm = () => {
             mode: 'cors',
             body: JSON.stringify(body),
         };
-        console.log(data)
-        fetch(url, options)
+        fetch (url, options)
             .then(response => {
                 if (response.status === 200) {
                     console.log(response.status);
@@ -89,6 +93,7 @@ const RoomForm = () => {
                 return Promise.reject(response.status);
             })
             .catch(error => console.log(error));
+
     };
 
     useEffect(() => {
@@ -116,7 +121,7 @@ const RoomForm = () => {
                 <div className={styles.__div_checkbox}>
                     {features.map((item) =>
                         <div className={styles.__checkbox_group}>
-                            <input id={item.id} type="checkbox" className="check" onChange={event => console.log(event.target.id, event.target.checked) } name={item.name} />
+                            <input id={item.id} type="checkbox" className="check" onChange={handleCheckBoxChange} name={item.name}  />
                             <label className={styles.__room_label}> {item.name} </label>
                         </div>
                     )}
