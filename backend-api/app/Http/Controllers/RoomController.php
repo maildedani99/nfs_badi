@@ -31,7 +31,6 @@ class RoomController extends Controller
      */
     public function create(Request $request)
     {
-        // Validate the request...
 
         $room = Room::create([
             'name' => $request->name,
@@ -43,7 +42,9 @@ class RoomController extends Controller
             'latitude' => $request->latitude,
         ]);
         $room->save();
-            'feature' => 
+        /* $feature = Feature::find([1,2,3]);
+        $feature->features()->attach($feature); */
+           
             
 
 

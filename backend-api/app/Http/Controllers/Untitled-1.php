@@ -12,8 +12,8 @@ class ProductController extends Controller
         $product->name = 'God of War';
         $product->price = 40;
         $product->save();
-        for
-        $feature = Feature::find([3, 4]);
-        $product->categories()->attach($feature);
+        $category = Category::find([3, 4]);
+        $product->categories()->attach($category);
+        return 'Success';
     }
 }
