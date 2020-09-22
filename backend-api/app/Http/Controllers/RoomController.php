@@ -43,8 +43,9 @@ class RoomController extends Controller
             'latitude' => $request->latitude,
         ]);
         $room->save();
-            'feature' => 
-            
+
+        $feature = Feature::find([3, 4]);
+        $feature->features()->attach($feature);
 
 
         return response()->json("Created", 201);
