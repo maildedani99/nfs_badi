@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import styles from './rooms.module.css';
-import ListRoom from "../../components/listRoom/listRoom.view";
-import MapContainer from "../../components/roomsMap/roomsMap.view";
+import styles from './recommendedRooms.module.css';
+import RoomCard from "../roomCard/roomCard.view";
 
-const RoomsPage = () => {
+const RecommendedRooms = () => {
 
     const [rooms, setRooms] = useState('');
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/';
+        const url = 'http://localhost/api/rooms/recommended';
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -23,23 +22,29 @@ const RoomsPage = () => {
                 }
             )
             .then(payload => {
-                    console.log("List rooms saved");
+                    console.log("Recommended list rooms saved");
                     setRooms(payload);
                 }
             )
             .catch(error => console.log(error));
     }, []);
 
+
     return (
         <div className={styles.__contenedor}>
-            <div className={styles.__contenedorListRoom}>
-                <ListRoom rooms={rooms}/>
-            </div>
-            <div className={styles.__contenedorMapContainer}>
-                <MapContainer rooms={rooms}/>
-            </div>
+            {rooms && rooms.map(room => {
+                    return (
+                        <RoomCard
+                            name ={room.name}
+                            description={room.description}
+                            price={room.price}
+                            key={room.id}
+                        />
+                    );
+                }
+            )}
         </div>
     )
 }
 
-export default RoomsPage;
+export default RecommendedRooms;

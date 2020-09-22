@@ -19,8 +19,15 @@ class RoomController extends Controller
     {
         Log::info('Retrieving all rooms');
         //return response()->json(Room::all());
-        return response()->json(Room::with('images')->get());
+        return response()->json(Room::with('images','features','user')->get());
 
+    }
+
+    public function allRecommended()
+    {
+        Log::info('Retrieving all recommended rooms');
+        $data = Room::where('recommend', 1) ->get();
+        return response()->json($data);
     }
 
     /**
@@ -63,6 +70,7 @@ class RoomController extends Controller
         $data = Room::findOrFail($id);
         $data['images'] = Image::where('room_id', $id)->get();
         $data->features;
+        $data->user;
         return response()->json($data);
     }
 

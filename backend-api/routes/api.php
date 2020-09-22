@@ -45,6 +45,7 @@ Route::post('users','UserController@create');
 |--------------------------------------------------------------------------
 */
 Route::get('rooms', 'RoomController@all');
+Route::get('rooms/recommended', 'RoomController@allRecommended');
 Route::get('rooms/{id}', 'RoomController@getById');
 Route::get('rooms/user/{userId}', 'RoomController@getByUser');
 Route::post('rooms', 'RoomController@create');

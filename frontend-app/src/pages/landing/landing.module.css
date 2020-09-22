@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Mulish:wght@300&display=swap');
+
 .__contenedor {
     width: 85%;
     display: flex;
@@ -21,14 +23,19 @@
 
 .__titulo {
     color: #19191B;
+    font-family: DM Sans;
+    font-style: normal;
     font-weight: bold;
     font-size: 80px;
     line-height: 77px;
-    letter-spacing: -1.50105px;
+    letter-spacing: -2.50105px;
 }
 
 .__subtitulo{
-    margin-top: 10px;
+    margin-top: 27px;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: normal;
     font-size: 20px;
     line-height: 30px;
     letter-spacing: -0.625263px;
@@ -37,7 +44,7 @@
 
 .__button{
     background: #A37AFC;
-    border-radius: 3px;
+    border-radius: 10px;
     font-size: 12px;
     padding: 13px;
     line-height: 22px;
@@ -47,8 +54,13 @@
     height: auto;
     width: 150px;
     color: white;
-    margin-top: 20px;
+    margin-top: 33px;
     text-decoration: none;
+}
+
+.__button:hover {
+    text-decoration: none;
+    color: #e7e7e7;
 }
 
 .__contenedorImagen {
@@ -87,12 +99,11 @@
 
 .__contenedorListRooms {
     width: 1208px;
-    height: 430px;
     margin: 10px auto 20px auto;
     overflow: auto;
     display: flex;
-    flex-wrap: unset;
     flex-direction: row;
     padding-top: 20px;
+    justify-content: center;
 }
 
