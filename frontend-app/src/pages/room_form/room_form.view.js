@@ -4,7 +4,8 @@ import room_img from './room_img.png';
 
 
 const RoomForm = () => {
-
+    
+    const user = JSON.parse(localStorage.getItem('user'));
     const [features, setFeatures] = useState([]);
 
     const checkboxFetch = () => {
@@ -28,7 +29,7 @@ const RoomForm = () => {
     }
 
     const [data, setData] = useState({})
-    
+
     const handleInputChange = (event) => {
         setData({
             ...data,
@@ -46,36 +47,37 @@ const RoomForm = () => {
             [event.target.id]: event.target.checked,
         })
     }
-    const selectTrue = () => {
 
+    const selectTrue = () => {
         for (const property in checkedList) {
             if (checkedList[property] == true) {
-                checkedListArray.push([property])
+                checkedListArray.push(property)
             }
           }
+          //checkedListArray = JSON.stringify(checkedListArray)
           setData({
               ...data,
               features:checkedListArray,
           })
-       
+          console.log("prueba array" + checkedListArray)
+          
     }
 
     const submitForm = () => {  
             selectTrue();
-
         const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
-            email: data.email,
-            user_id: data.user_id,
+            email: user.email,
+            user_id: user.id,
             companions: data.companions,
             price: data.price,
             latitude: data.latitude,
             longitude: data.longitude,
-            features: data.features,
+            features: checkedListArray,
         };
         console.log(body);
-
+        
         const options = {
             method: 'POST',
             headers: new Headers({
