@@ -11,6 +11,8 @@ const ListRoom = ({rooms}) => {
                 return (
                     <RoomCard
                         name ={room.name}
+                        user ={room.user}
+                        features ={room.features}
                         description={room.description}
                         price={room.price}
                         key={room.id}
