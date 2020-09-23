@@ -23,6 +23,13 @@ class RoomController extends Controller
 
     }
 
+    public function allRecommended()
+    {
+        Log::info('Retrieving all recommended rooms');
+        $data = Room::where('recommend', 1) ->get();
+        return response()->json($data);
+    }
+
     /**
      * Create a new room instance.
      *
