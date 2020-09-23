@@ -13,10 +13,9 @@
 }
 
 .__galeria {
-
-    width: auto;
-    height: 280px;
-    border-radius: 3px;
+    width: 328px;
+    height: 183px;
+    border-radius: 2px;
 }
 
 .__nombre {
@@ -24,21 +23,6 @@
     margin-left: 5px;
     font-size: 12px;
     color: black;
-}
-
-.__features{
-    float: right;
-    margin-top: 5px;
-    margin-left: 8px;
-    font-size: 12px;
-    color: black;
-}
-
-.__descripcion {
-    margin-top: 8px;
-    margin-left: 8px;
-    font-size: 13px;
-    color: #adadad;
 }
 
 .__titulo {
