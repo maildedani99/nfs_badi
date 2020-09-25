@@ -1,42 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import styles from './room_form.module.css';
-import Navbar from '../../components/navbar/navbar';
 import room_img from './room_img.png';
-import CheckboxFeaturesContainer from '../../components/checkbox/checkbox';
 
 
 const RoomForm = () => {
 
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [features, setFeatures] = useState([]);
 
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        user_id: '',
-        companions: '',
-        price: '',
-        longitude: '',
-        latitude: ''
-    })
+    const checkboxFetch = () => {
+        const url = 'http://localhost/api/features';
+        const options = {
+            method: 'GET',
+            headers: new Headers(),
+        };
+        fetch(url, options)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                return Promise.reject(response.status);
+            })
+            .then(function (myJson) {
+                setFeatures(myJson);
+            })
+            .catch(error => console.log(error));
+    }
+
+    const [data, setData] = useState({})
 
     const handleInputChange = (event) => {
         setData({
             ...data,
             [event.target.name]: event.target.value
         })
+        console.log(data);
     }
 
+    const [checkedList, setCheckList] = useState({});
+    var checkedListArray = []
 
-    const SubmitForm = () => {
+    const handleCheckBoxChange = (event) => {
+        setCheckList({
+            ...checkedList,
+            [event.target.id]: event.target.checked,
+        })
+    }
+
+    const selectTrue = () => {
+        for (const property in checkedList) {
+            if (checkedList[property] === true) {
+                checkedListArray.push(property)
+            }
+        }
+        setData({
+            ...data,
+            features: checkedListArray,
+        })
+        console.log("prueba array" + checkedListArray)
+    }
+
+    const submitForm = () => {
+        selectTrue();
         const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
-            email: data.email,
-            user_id: data.user_id,
+            email: user.email,
+            user_id: user.id,
             companions: data.companions,
             price: data.price,
             latitude: data.latitude,
             longitude: data.longitude,
+            features: checkedListArray,
         };
+        console.log(body);
+
         const options = {
             method: 'POST',
             headers: new Headers({
@@ -45,19 +83,21 @@ const RoomForm = () => {
             mode: 'cors',
             body: JSON.stringify(body),
         };
-
         fetch(url, options)
             .then(response => {
-                if (response.status === 200) {
+                if (response.status === 201) {
                     console.log(response.status);
+                    alert("Tu habitación: \n"+ body.name +"\nse ha creado correctamente")
                     return response.json();
                 }
                 return Promise.reject(response.status);
             })
-
             .catch(error => console.log(error));
     };
 
+    useEffect(() => {
+        checkboxFetch()
+    }, [])
 
     return (
 
@@ -77,9 +117,16 @@ const RoomForm = () => {
                 </div>
 
                 <h4 className={styles.__from_subtitle}>Características</h4>
-                <CheckboxFeaturesContainer />
+                <div className={styles.__div_checkbox}>
+                    {features.map((item) =>
+                        <div className={styles.__checkbox_group}>
+                            <input id={item.id} type="checkbox" className="check" onChange={handleCheckBoxChange} name={item.name} />
+                            <label className={styles.__room_label}> {item.name} </label>
+                        </div>
+                    )}
+                </div>
                 <div className={styles.__div_button}>
-                    <input className={styles.__button_crear} type="submit" onClick={SubmitForm} name="button" value="Crear anuncio" />
+                    <input className={styles.__button_crear} type="submit" onClick={submitForm} name="button" value="Crear anuncio" />
                 </div>
             </div>
             <div className={styles.__div_img}>

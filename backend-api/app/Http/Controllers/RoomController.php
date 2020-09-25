@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use App\Room;
+use App\Feature;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -38,7 +39,6 @@ class RoomController extends Controller
      */
     public function create(Request $request)
     {
-        // Validate the request...
 
         $room = Room::create([
             'name' => $request->name,
@@ -49,8 +49,11 @@ class RoomController extends Controller
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
         ]);
-
         $room->save();
+        $feature = Feature::find($request->features);
+        $room->features()->attach($feature); 
+           
+            
 
 
         return response()->json("Created", 201);
