@@ -1,0 +1,124 @@
+.__container {
+    margin: 0 auto;
+    width: 85%;
+    height: 100%;
+}
+
+.__galeria {
+    width: 100%;
+    height: 410px;
+    background-color: #636b6f;
+}
+
+.__containerMain {
+    display: flex;
+    flex-direction: row;
+}
+
+.__detalleRoom {
+    width: 70%;
+    height: 510px;
+    display: flex;
+    flex-direction: column;
+}
+
+.__nombre {
+    margin-top: 32px;
+    color: #1F2041;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 24px;
+}
+
+.__companeros {
+    margin-top: 10px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(31, 32, 65, 0.7);
+}
+
+.__titulo {
+    margin-top: 30px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #696871;
+}
+
+.__descripcion {
+    width: 650px;
+    margin-top: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
+}
+
+.__precio {
+    margin-top: 18px;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 24px;
+    color: #1F2041;
+}
+
+.__calendario {
+    margin-top: 43px;
+    width: 338px;
+    height: 268px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(229, 229, 229, 0.05);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.__tituloCalendario {
+    width: 250px;
+    padding-top: 37px;
+    padding-left: 26px;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 24px;
+    color: #1F2041;
+}
+
+.__botonReservar {
+    width: 268px;
+    height: 48px;
+    margin: 0 auto;
+    background: #A37AFC;
+    border-radius: 10px;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.531474px;
+    color: #FFFFFF;
+    padding-top: 13px;
+    cursor: pointer;
+}
+
+.__mapContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #5DDEFA;
+}

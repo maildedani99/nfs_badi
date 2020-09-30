@@ -1,17 +1,17 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {AuthContextProvider} from "./contexts/authentication/authentication.context";
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {AuthContext, AuthContextProvider} from "./contexts/authentication/authentication.context";
 import LandingPage from "./pages/landing/landing.view";
 import Navbar from "./components/navbar/navbar";
 import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
 import RoomForm from './pages/room_form/room_form.view';
-import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOMFORM} from "./routes/routes";
+import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOMFORM, ROOMDETAIL} from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
-import Footer from "./components/footer/footer.view";
+import RoomDetail from "./pages/room_detail/roomDetail.view";
 
 
 function App() {
@@ -38,12 +38,25 @@ function App() {
               <Route exact path={POLITICA}>
                 <Politica />
               </Route>
-              <Route exact path={ROOMFORM}>
+              <PrivateRoute exact path={ROOMFORM}>
                 <RoomForm />
+              </PrivateRoute>
+              <Route exact path={ROOMDETAIL}>
+                <RoomDetail />
               </Route>
             </Switch>
           </Router>
         </AuthContextProvider>
+  );
+}
+
+function PrivateRoute(props) {
+  const {state} = React.useContext(AuthContext);
+  const {children, path} = props;
+  return (
+      <Route path={path}>
+        {state.isAuthenticated ? (children) : <Redirect to={{pathname: LOGINPAGE}}/>}
+      </Route>
   );
 }
 
