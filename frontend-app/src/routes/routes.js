@@ -5,4 +5,5 @@ export const HABITACIONES = '/habitaciones';
 export const TERMINOS = '/terminos';
 export const POLITICA = '/politica';
 export const ROOMFORM = '/roomform';
-export const ROOMDETAIL = '/roomdetail';
+export const ROOMDETAIL = '/roomdetail/:id';
+export const ROOMDET = '/roomdetail/';

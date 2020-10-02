@@ -15,6 +15,7 @@ import RoomDetail from "./pages/room_detail/roomDetail.view";
 
 
 function App() {
+
     return (
         <AuthContextProvider>
           <Router>
@@ -29,9 +30,6 @@ function App() {
               <Route exact path={REGISTERPAGE}>
                 <RegisterForm />
               </Route>
-              <Route exact path={HABITACIONES}>
-                <RoomsPage />
-              </Route>
               <Route exact path={TERMINOS}>
                 <Terminos />
               </Route>
@@ -41,6 +39,9 @@ function App() {
               <PrivateRoute exact path={ROOMFORM}>
                 <RoomForm />
               </PrivateRoute>
+              <Route exact path={HABITACIONES}>
+                <RoomsPage />
+              </Route>
               <Route exact path={ROOMDETAIL}>
                 <RoomDetail />
               </Route>

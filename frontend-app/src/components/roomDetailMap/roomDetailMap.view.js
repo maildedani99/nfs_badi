@@ -1,16 +1,15 @@
 import React,{useState} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import styles from "../roomsMap/roomsMap.module.css";
 import group40 from './group 40.png';
 
-export const MapContainerDetalle = ({google}) => {
+export const MapContainerDetalle = ({google, data}) => {
 
     const room = {
-        name: 'TEST',
-        id: '1',
-        price: '500',
-        latitude: '41.4069553',
-        longitude: '2.1734121'
+        name: data.name,
+        id: data.id,
+        price: data.price,
+        latitude: 41.41076280,
+        longitude: 2.17450040
     }
 
     const [state, setState] = useState({
@@ -20,7 +19,6 @@ export const MapContainerDetalle = ({google}) => {
     });
 
     const onClick = () => {
-        console.log("click");
         if(state.showingInfoWindow){
             setState({
                 activeMarker: null,
@@ -30,12 +28,10 @@ export const MapContainerDetalle = ({google}) => {
     };
 
     const onInfoWindowClose = () => {
-        console.log("click onInfoWindowClose");
+
     };
 
     const onMarkerClick = (props, marker) =>{
-        console.log(props);
-        console.log(marker);
         setState({
             activeMarker: marker,
             selectedPlace: props,
@@ -53,8 +49,8 @@ export const MapContainerDetalle = ({google}) => {
         <>
             <Map google={google}
                  onClick={onClick}
-                 containerStyle={styles.__containerStyle2}
-                 zoom={16} containerStyle={containerStyle}
+                 containerStyle={containerStyle}
+                 zoom={16}
                  initialCenter={{lat:room.latitude,lng:room.longitude}}>
 
                 <Marker onClick={onMarkerClick} icon={group40} name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
