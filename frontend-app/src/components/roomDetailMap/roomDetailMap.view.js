@@ -4,19 +4,28 @@ import group40 from './group 40.png';
 
 export const MapContainerDetalle = ({google, data}) => {
 
-    const room = {
-        name: data.name,
-        id: data.id,
-        price: data.price,
-        latitude: 41.41076280,
-        longitude: 2.17450040
-    }
-
     const [state, setState] = useState({
         activeMarker:{},
         selectedPlace: {},
         showingInfoWindow: false,
     });
+
+    if (!data) {
+        return(<div>
+
+        </div>);
+    }
+
+    const room = {
+        name: data.name,
+        id: data.id,
+        price: data.price,
+        latitude: data.latitude,
+        longitude: data.longitude
+    }
+
+    console.log(data.latitude);
+    console.log(data.longitude);
 
     const onClick = () => {
         if(state.showingInfoWindow){
