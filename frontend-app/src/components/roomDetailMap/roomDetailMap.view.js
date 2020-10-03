@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import group40 from './group 40.png';
+import iconoMapa from './iconoMapaDetalle.png';
 
 export const MapContainerDetalle = ({google, data}) => {
 
@@ -23,9 +23,6 @@ export const MapContainerDetalle = ({google, data}) => {
         latitude: data.latitude,
         longitude: data.longitude
     }
-
-    console.log(data.latitude);
-    console.log(data.longitude);
 
     const onClick = () => {
         if(state.showingInfoWindow){
@@ -62,7 +59,7 @@ export const MapContainerDetalle = ({google, data}) => {
                  zoom={16}
                  initialCenter={{lat:room.latitude,lng:room.longitude}}>
 
-                <Marker onClick={onMarkerClick} icon={group40} name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
+                <Marker onClick={onMarkerClick} icon={iconoMapa} name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
 
                 <InfoWindow marker={state.activeMarker} visible={state.showingInfoWindow} onClose={onInfoWindowClose}>
                     <div>
