@@ -59,8 +59,8 @@ const RoomDetail = () => {
                     <div className={styles.__calendario}>
                         <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
                         <div className={styles.__fechasContenedor}>
-                            <Space direction="vertical" size={8}>
-                                <RangePicker />
+                            <Space direction="vertical" size={5}>
+                                <RangePicker placeholder={['Llegada', 'Salida']}/>
                             </Space>
                         </div>
                         <div className={styles.__botonReservar}>Reservar</div>
