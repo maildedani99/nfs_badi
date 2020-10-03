@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
 import styles from './roomDetail.module.css';
+import 'antd/dist/antd.css';
+import { DatePicker, Space } from 'antd';
 import Footer from "../../components/footer/footer.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
@@ -9,6 +11,8 @@ const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState('');
+
+    const { RangePicker } = DatePicker;
 
     useEffect(() => {
         const url = 'http://localhost/api/rooms/'+ id;
@@ -54,7 +58,11 @@ const RoomDetail = () => {
 
                     <div className={styles.__calendario}>
                         <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
-                        <span>FECHAS</span>
+                        <div className={styles.__fechasContenedor}>
+                            <Space direction="vertical" size={8}>
+                                <RangePicker />
+                            </Space>
+                        </div>
                         <div className={styles.__botonReservar}>Reservar</div>
                     </div>
                 </div>

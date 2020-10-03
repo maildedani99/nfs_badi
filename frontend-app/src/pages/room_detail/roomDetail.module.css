@@ -99,6 +99,11 @@
     color: #1F2041;
 }
 
+.__fechasContenedor {
+    width: 286px;
+    margin: 26px auto 36px auto;
+}
+
 .__botonReservar {
     width: 268px;
     height: 48px;
