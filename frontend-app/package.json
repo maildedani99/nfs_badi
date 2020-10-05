@@ -2,6 +2,7 @@
   "name": "frontend-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "room/",
   "dependencies": {
     "bootstrap": "^4.5.2",
     "google-map-react": "^2.1.4",
