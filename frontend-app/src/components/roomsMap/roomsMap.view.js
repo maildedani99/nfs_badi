@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import RoomCard from "../roomCard/roomCard.view";
 import styles from "../roomsMap/roomsMap.module.css";
 import ellipse from './assets/ellipse.png';
 

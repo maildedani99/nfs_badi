@@ -38,6 +38,7 @@ const RecommendedRooms = () => {
                             name ={room.name}
                             description={room.description}
                             price={room.price}
+                            id={room.id}
                             key={room.id}
                         />
                     );
