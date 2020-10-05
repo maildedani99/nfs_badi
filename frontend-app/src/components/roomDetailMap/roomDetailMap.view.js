@@ -1,9 +1,8 @@
 import React,{useState} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import styles from "../roomsMap/roomsMap.module.css";
-import ellipse from './assets/ellipse.png';
+import iconoMapa from './iconoMapaDetalle.png';
 
-export const MapContainer = ({google, rooms}) => {
+export const MapContainerDetalle = ({google, data}) => {
 
     const [state, setState] = useState({
         activeMarker:{},
@@ -11,8 +10,21 @@ export const MapContainer = ({google, rooms}) => {
         showingInfoWindow: false,
     });
 
+    if (!data) {
+        return(<div>
+
+        </div>);
+    }
+
+    const room = {
+        name: data.name,
+        id: data.id,
+        price: data.price,
+        latitude: data.latitude,
+        longitude: data.longitude
+    }
+
     const onClick = () => {
-        console.log("click");
         if(state.showingInfoWindow){
             setState({
                 activeMarker: null,
@@ -22,12 +34,10 @@ export const MapContainer = ({google, rooms}) => {
     };
 
     const onInfoWindowClose = () => {
-        console.log("click onInfoWindowClose");
+
     };
 
     const onMarkerClick = (props, marker) =>{
-        console.log(props);
-        console.log(marker);
         setState({
             activeMarker: marker,
             selectedPlace: props,
@@ -38,24 +48,18 @@ export const MapContainer = ({google, rooms}) => {
     const containerStyle = {
         position: 'relative',
         width: '100%',
-        height: '550px'
+        height: '390px'
     }
 
     return (
         <>
             <Map google={google}
                  onClick={onClick}
-                 containerStyle={styles.__containerStyle2}
-                 zoom={12} containerStyle={containerStyle}
-                 initialCenter={{lat:41.410154,lng:2.171251}}>
+                 containerStyle={containerStyle}
+                 zoom={16}
+                 initialCenter={{lat:room.latitude,lng:room.longitude}}>
 
-                {rooms && rooms.map(room => {
-                        return (
-                            <Marker onClick={onMarkerClick}
-                                    icon={ellipse} name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
-                        );
-                    }
-                )}
+                <Marker onClick={onMarkerClick} icon={iconoMapa} name={room.name} id={room.id} price={room.price} position={{lat:room.latitude,lng:room.longitude}} />
 
                 <InfoWindow marker={state.activeMarker} visible={state.showingInfoWindow} onClose={onInfoWindowClose}>
                     <div>
@@ -70,5 +74,5 @@ export const MapContainer = ({google, rooms}) => {
 };
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyDGxtek3ucjCikFPL6t4JLMSLJAk4kicFk'
-})(MapContainer);
+    apiKey: 'API KEY'
+})(MapContainerDetalle);
