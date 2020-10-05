@@ -14,7 +14,6 @@ const Navbar = (props) => {
 
   const logoutALanding = () => {
       logout();
-      history.replace(LANDING);
   }
 
   return (
@@ -41,7 +40,7 @@ const Navbar = (props) => {
                 </div>
 
                   <div className={styles.__navbar_link_div}>
-                      <Link value="Log out" className={styles.__navbar_link} onClick={logoutALanding}>
+                      <Link value="Log out" className={styles.__navbar_link} onClick={logoutALanding} to={LANDING}>
                           Logout
                       </Link>
                   </div>
