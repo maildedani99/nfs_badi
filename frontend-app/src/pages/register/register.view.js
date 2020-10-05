@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import styles from './register.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import {LOGINPAGE} from "../../routes/routes";
+import swal from "sweetalert";
 
 
 const RegisterForm = () => {
 
+
+    const history = useHistory();
     const [data, setData] = useState({
         first_name: '',
         last_name: '',
@@ -12,9 +16,8 @@ const RegisterForm = () => {
         email: '',
         password: '',
         role: 'HOST',
+    });
 
-
-    })
 
 
     const handleInputChange = (event) => {
@@ -22,7 +25,17 @@ const RegisterForm = () => {
             ...data,
             [event.target.name]: event.target.value
         })
-    }
+    };
+
+    const confirmRegister = () =>  {
+        swal({
+                 title:'Registro Correcto',
+                 text: 'Gracias',
+                 icon: 'success',
+                 button: 'Close'
+             });
+    };
+
 
     const SubmitForm = () => {
         const url = 'http://localhost/api/users';
@@ -33,9 +46,8 @@ const RegisterForm = () => {
             username: data.username,
             password: data.password,
             role: data.role,
-
-
         };
+
         const options = {
             method: 'POST',
             headers: new Headers({
@@ -47,17 +59,21 @@ const RegisterForm = () => {
 
         fetch(url, options)
             .then(response => {
-                if (response.status === 200) {
-                    console.log(response.status);
+                if (response.status === 201) {
+                    confirmRegister();
                     return response.json();
                 }
                 return Promise.reject(response.status);
             })
+            .then(payload => {
+                history.push(LOGINPAGE);
 
+
+            })
             .catch(error => console.log(error));
     };
 
-    console.log(data);
+            console.log(data);
     return (
        <>
            <div className={styles.__login_container}>
@@ -66,6 +82,7 @@ const RegisterForm = () => {
                    <br></br>
                    <h6>¿Aún no tienes una cuenta? Registrate</h6>
                    <div className={styles.__login_form_div}>
+
                        <input className={styles.__login_input} name="first_name" type={'text'} placeholder="Nombre " onChange={handleInputChange}></input>
                        <input className={styles.__login_input} name="last_name" type={'text'}placeholder="Apellido "onChange={handleInputChange}></input>
                        <input className={styles.__login_input} name="username" type={'text'}placeholder="Username "onChange={handleInputChange}></input>
@@ -90,8 +107,6 @@ const RegisterForm = () => {
                    </p>
                </div>
            </div>
-
-
        </>
     ) ;
 }
