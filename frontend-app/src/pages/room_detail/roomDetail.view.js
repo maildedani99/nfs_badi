@@ -11,6 +11,7 @@ const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState('');
+    const [images, setImages] = useState('');
 
     const { RangePicker } = DatePicker;
 
@@ -31,6 +32,7 @@ const RoomDetail = () => {
             )
             .then(payload => {
                     setRoom(payload);
+                    setImages(room.images);
                 }
             )
             .catch(error => console.log(error));
@@ -42,7 +44,7 @@ const RoomDetail = () => {
         <div>
             <div className={styles.__container}>
                 <div className={styles.__galeria}>
-
+                    <img className={styles.__foto} src={'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6'} alt="Room's images"/>
                 </div>
 
                 <div className={styles.__containerMain}>
