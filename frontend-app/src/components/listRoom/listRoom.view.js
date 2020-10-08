@@ -12,6 +12,9 @@ const ListRoom = ({rooms}) => {
                         name ={room.name}
                         price={room.price}
                         id={room.id}
+                        companions={room.companions}
+                        images={room.images}
+                        user={room.user}
                         key={room.id}
                     />
                 );
