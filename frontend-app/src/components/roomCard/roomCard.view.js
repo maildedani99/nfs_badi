@@ -16,7 +16,7 @@ const RoomCard = ({name, price, id, user, companions, images}) => {
               {images && images.map((image,i) => {
                       if(i==0){
                           return (
-                              <img className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>
+                              <img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>
                           );
                       }
                   }
