@@ -27,7 +27,7 @@ class RoomController extends Controller
     public function allRecommended()
     {
         Log::info('Retrieving all recommended rooms');
-        $data = Room::where('recommend', 1) ->get();
+        $data = Room::where('recommend', 1)->with('images','features','user')->get();
         return response()->json($data);
     }
 
@@ -51,9 +51,9 @@ class RoomController extends Controller
         ]);
         $room->save();
         $feature = Feature::find($request->features);
-        $room->features()->attach($feature); 
-           
-            
+        $room->features()->attach($feature);
+
+
 
 
         return response()->json("Created", 201);

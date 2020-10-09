@@ -22,7 +22,7 @@ const RoomCard = ({name, price, id, user, companions, images}) => {
                   }
               )}
 
-              {images.length <=0 &&
+              {images === undefined || images.length ===0 &&
               <img className={styles.__galeria} src='https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6' alt='Room in Barcelona'/>
               }
 
