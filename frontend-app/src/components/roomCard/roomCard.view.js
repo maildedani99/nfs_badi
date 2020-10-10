@@ -6,13 +6,9 @@ import companionsImg from './assets/companionsImg.png';
 
 const RoomCard = ({name, price, id, user, companions, images}) => {
 
-    function handleClick() {
-        console.log(id);
-    }
-
     return (
         <Link to={ROOMDETAILBYID+id}>
-          <div className={styles.__contenedorRoomCard} onClick={handleClick}>
+          <div className={styles.__contenedorRoomCard}>
               {images && images.map((image,i) => {
                       if(i==0){
                           return (
@@ -27,7 +23,7 @@ const RoomCard = ({name, price, id, user, companions, images}) => {
               }
 
               <div>
-                  <span className={styles.__nombre}>{user.username}, 27</span>
+                  <span className={styles.__nombre}>{user && user.username}</span>
                   <span className={styles.__companions}><img src={companionsImg}/> {companions}</span>
 
               </div>
