@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom';
 import logo from './logo.png';
 import avatar_navbar from './avatar_navbar.png';
 import styles from './nabvar.module.css';
-import {LANDING, LOGINPAGE, REGISTERPAGE, ROOMFORM} from "../../routes/routes";
+import {LANDING, LOGINPAGE, REGISTERPAGE, RESERVAS, ROOMFORM} from "../../routes/routes";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
 
 const Navbar = (props) => {
@@ -33,9 +33,14 @@ const Navbar = (props) => {
               <div className={styles.__navbar_grouplinks_div}>
                 <div className={styles.__navbar_button_div}>
                   { publicRoom &&
-                  <Link to={ROOMFORM}>
-                    <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
-                  </Link>
+                      <>
+                          <Link to={RESERVAS}>
+                              <input className={styles.__navbar_button} type="button" value="Reservas" />
+                          </Link>
+                          <Link to={ROOMFORM}>
+                              <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
+                          </Link>
+                      </>
                   }
                 </div>
 

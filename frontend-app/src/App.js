@@ -8,10 +8,21 @@ import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
 import RoomForm from './pages/room_form/room_form.view';
-import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOMFORM, ROOMDETAIL} from "./routes/routes";
+import {
+  HABITACIONES,
+  LANDING,
+  LOGINPAGE,
+  REGISTERPAGE,
+  TERMINOS,
+  POLITICA,
+  ROOMFORM,
+  ROOMDETAIL,
+  RESERVAS
+} from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
 import RoomDetail from "./pages/room_detail/roomDetail.view";
+import Reservas from "./pages/reservas/reservas.view";
 
 
 function App() {
@@ -38,6 +49,9 @@ function App() {
               </Route>
               <PrivateRoute exact path={ROOMFORM}>
                 <RoomForm />
+              </PrivateRoute>
+              <PrivateRoute exact path={RESERVAS}>
+                <Reservas />
               </PrivateRoute>
               <Route exact path={HABITACIONES}>
                 <RoomsPage />
