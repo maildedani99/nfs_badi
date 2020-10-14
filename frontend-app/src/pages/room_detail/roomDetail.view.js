@@ -10,8 +10,7 @@ import companionsImg from './assets/companionsImg.png';
 const RoomDetail = () => {
 
     const {id} = useParams();
-    const [room, setRoom] = useState('');
-    const [images, setImages] = useState('');
+    const [room, setRoom] = useState(null);
 
     const { RangePicker } = DatePicker;
 
@@ -32,7 +31,6 @@ const RoomDetail = () => {
             )
             .then(payload => {
                     setRoom(payload);
-                    setImages(room.images);
                 }
             )
             .catch(error => console.log(error));
@@ -47,6 +45,8 @@ const RoomDetail = () => {
                     <img className={styles.__foto} src={'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6'} alt="Room's images"/>
                 </div>
 
+                {room &&
+
                 <div className={styles.__containerMain}>
                     <div className={styles.__detalleRoom}>
                         <span className={styles.__nombre}>{room.name}</span>
@@ -56,6 +56,7 @@ const RoomDetail = () => {
                         <span className={styles.__titulo}>Precio y condiciones</span>
                         <span className={styles.__precio}>{room.price} €/mes</span>
                         <span className={styles.__titulo}>Servicios</span>
+                        <span>{room.features[0].name}</span>
                     </div>
 
                     <div className={styles.__calendario}>
@@ -68,6 +69,7 @@ const RoomDetail = () => {
                         <div className={styles.__botonReservar}>Reservar</div>
                     </div>
                 </div>
+                }
 
                 <div className={styles.__mapContainer}>
                     <MapContainerDetalle data={room}/>

@@ -7,3 +7,5 @@ export const POLITICA = '/politica';
 export const ROOMFORM = '/roomform';
 export const ROOMDETAIL = '/roomdetail/:id';
 export const ROOMDETAILBYID = '/roomdetail/';
+export const RESERVAS = '/reservas';
+export const PERFIL = '/perfil/';
