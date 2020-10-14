@@ -56,7 +56,7 @@ const RoomDetail = () => {
                         <span className={styles.__titulo}>Precio y condiciones</span>
                         <span className={styles.__precio}>{room.price} €/mes</span>
                         <span className={styles.__titulo}>Servicios</span>
-                        <span>{room.features[0].name}</span>
+                        {/*<span>{room.features[0].name}</span>*/}
                     </div>
 
                     <div className={styles.__calendario}>
