@@ -10,7 +10,7 @@ const RoomForm = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const [features, setFeatures] = useState([]);
     const [next, setNext] = useState(true);
-    let uploadPhotoArray = useContext(UploadPhotoContext);
+    const { uploadPhotoArray } = useContext(UploadPhotoContext);
 
     const nextClick = () => {
         setNext(!next)
@@ -159,15 +159,12 @@ const RoomForm = () => {
                         </div>
                         <h4 className={styles.__from_subtitle}>Fotografías</h4>
                         <div className={styles.__div_inputs_foto}>
-                            <UploadPhotoProvider>
                                 <UploadPhoto name="image1" />
                                 <UploadPhoto name="image2" />
                                 <UploadPhoto name="image3" />
                                 <UploadPhoto name="image4" />
                                 <UploadPhoto name="image5" />
                                 <UploadPhoto name="image6"/>
-                            </UploadPhotoProvider>
-                      
                         </div>
 
 

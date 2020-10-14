@@ -12,6 +12,7 @@ import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOM
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
 import RoomDetail from "./pages/room_detail/roomDetail.view";
+import {UploadPhotoProvider} from "./contexts/uploadphoto_context";
 
 
 function App() {
@@ -36,9 +37,11 @@ function App() {
               <Route exact path={POLITICA}>
                 <Politica />
               </Route>
-              <PrivateRoute exact path={ROOMFORM}>
-                <RoomForm />
-              </PrivateRoute>
+              <UploadPhotoProvider>
+                <PrivateRoute exact path={ROOMFORM}>
+                  <RoomForm />
+                </PrivateRoute>
+              </UploadPhotoProvider>
               <Route exact path={HABITACIONES}>
                 <RoomsPage />
               </Route>

@@ -10,15 +10,14 @@ import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
 const UploadPhoto = (props) => {
 
     //const [titleEl, setTitleEl] = useState('');
-    const [photoId, setPhotoId] = useState(0);
+    const [photoUrl, setPhotoUrl] = useState(null);
     const fileInputEl = useRef(null);
-    const [photoIds, setPhotoIds] = useState([]);
     let { uploadPhotoArray, setUploadPhotoArray } = useContext(UploadPhotoContext)
    
     const onPhotoUploaded = (photoIdIn, fileName, response) => {
         console.log(photoIdIn, fileName, response);
-        setPhotoIds([...photoIds, response.body.public_id]);
-        setUploadPhotoArray([...uploadPhotoArray, response.body.public_id] )
+        setPhotoUrl(response.body.secure_url);
+        setUploadPhotoArray([...uploadPhotoArray, response.body.secure_url] )
         console.log(uploadPhotoArray)
     };
 
@@ -27,7 +26,7 @@ const UploadPhoto = (props) => {
         //const title = titleEl;
         // eslint-disable-next-line no-restricted-syntax
         for (const file of files) {
-            setPhotoId(photoId + 1);
+            setPhotoUrl(photoUrl + 1);
             const fileName = file.name;
 
             request
@@ -37,58 +36,45 @@ const UploadPhoto = (props) => {
                 .field('multiple', false)
                 //.field('tags', title ? `myphotoalbum,${title}` : 'myphotoalbum')
                 //.field('context', title ? `photo=${title}` : '')
-                .on('progress', (progress) => console.debug(photoId, file.name, progress))
+                .on('progress', (progress) => console.debug(photoUrl, file.name, progress))
                 .end((error, response) => {
-                    onPhotoUploaded(photoId, fileName, response);
+                    onPhotoUploaded(photoUrl, fileName, response);
+                    console.log(response);
                 });
         }
     };
 
     return (
-        <div>
             <div id="direct_upload">
-                <form>
-                    <div className={styles.__div_inputs_foto}>
-
-                        <div className={styles.__div_foto}>
-                            <label className={styles.__label_foto} >
-                                <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                {photoIds != 0 ?
-                                    <p>{photoIds}</p> : <p>upload</p>}
-                                <input
-                                    className={styles.__input}
-                                    name={props.name}
-                                    type="file"
-                                    accept="image/*"
-                                    ref={fileInputEl}
-                                    onChange={() => onPhotoSelected(fileInputEl.current.files)}
-                                />
-                            </label>
-                        </div>
-
-                        
-
-
-
-
-
-
+                {photoUrl ?
+                    <div className={styles.__div_foto}>
+                        <img src={photoUrl} />
                     </div>
-                </form>
+
+                    :
+
+                    <form>
+                        <div className={styles.__div_inputs_foto}>
+
+                            <div className={styles.__div_foto}>
+                                <label className={styles.__label_foto} >
+                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
+                                    <p>upload</p>
+                                    <input
+                                        className={styles.__input}
+                                        name={props.name}
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputEl}
+                                        onChange={() => onPhotoSelected(fileInputEl.current.files)}
+                                    />
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                }
+
             </div>
-            {/* {photoIds.map((publicId) => (
-                <Image
-                publicId={publicId}
-                className="thumbnail inline"
-                width="400"
-                height="400"
-                crop="fit"
-                quality="180"
-                >
-                <Transformation quality="auto" fetchFormat="auto" />
-                </Image>
-            ))} */}
-        </div>
     );
 };
 

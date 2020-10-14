@@ -1,9 +1,9 @@
 .__div_inputs_foto {
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}   
+}
+
 .__div_foto {
     margin: 1rem;
     width: 10rem;
@@ -11,6 +11,11 @@
     color:#fff;
     border:1px  dotted  #7C7C7C;
 }
+
+.__div_foto > img {
+    height: 100%;
+}
+
 .__label_foto {
     margin-top: 2rem;
     text-align: center;
