@@ -21,6 +21,7 @@
     flex-direction: column;
 }
 .__div_img {
+    justify-content: center;
     width: 50%;
     padding: 1rem;
 }
@@ -93,3 +94,22 @@
     margin-left: 0.5rem;
     opacity: 70%;
 }
+
+.__textarea {
+    width: 60%;
+    height: 5rem;
+}
+.__div_inputs_foto {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} 
+
+
+
+
+
+
+
+
