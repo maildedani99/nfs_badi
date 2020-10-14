@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './room_form.module.css';
 import room_img from './room_img.png';
-import fileicon from './fileicon.png';
+import UploadPhoto from '../../components/uploadphoto/uploadphotos';
+import { UploadPhotoContext, uploadPhotoArray } from '../../contexts/uploadphoto_context';
 
 
 const RoomForm = () => {
@@ -164,77 +165,9 @@ const RoomForm = () => {
                         <h4 className={styles.__from_subtitle}>Fotografías</h4>
                         <div className={styles.__div_inputs_foto}>
 
-                            <div className={styles.__div_foto}>
-                                <label for="file-upload" className={styles.__label_foto}>
-                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                    <p>Upload</p>
-                                </label>
-                                <input id="file-upload" name="file1"  onInput={handleFileChange} type="file" style={{ display: "none" }} />
-                                <div id="info"> <p>Upload</p> </div>
-                            </div>
-
-
-                            <div className={styles.__div_foto}>
-                                <label for="file-upload" className={styles.__label_foto}>
-                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                    <p>Upload</p>
-                                </label>
-                                <input id="file-upload" name="file2"  onInput={handleFileChange} type="file" style={{ display: "none" }} />
-                                <div id="info"> <p>Upload</p> </div>
-                            </div>
-
-                            <div className={styles.__div_foto}>
-                                <label for="file-upload" className={styles.__label_foto}>
-                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                    <p>Upload</p>
-                                </label>
-                                <input id="file-upload" name="file3"  onInput={handleFileChange} type="file" style={{ display: "none" }} />
-                                <div id="info"> <p>Upload</p> </div>
-                            </div>
-
-
+                        <UploadPhoto />
+                      
                         </div>
-
-                        <div className={styles.__div_inputs_foto}>
-
-                        <div className={styles.__div_foto}>
-                                <label for="file-upload" className={styles.__label_foto}>
-                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                    <p>Upload</p>
-                                </label>
-                                <input id="file-upload" name="file4" onInput={handleFileChange} type="file" style={{ display: "none" }} />
-                                <div id="info"> <p>Upload</p> </div>
-                            </div>
-
-
-                            <div className={styles.__div_foto}>
-                                <label for="file-upload" className={styles.__label_foto}>
-                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                    <p>Upload</p>
-                                </label>
-                                <input id="file-upload" name="file5" onInput={handleFileChange} type="file" style={{ display: "none" }} />
-                                <div id="info"> <p>Upload</p> </div>
-                            </div>
-
-
-                            <div className={styles.__div_foto}>
-                                <label for="file-upload" className={styles.__label_foto}>
-                                    <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                    <p>Upload</p>
-                                </label>
-                                <input id="file-upload" name="file6" onInput={handleFileChange} type="file" style={{ display: "none" }} />
-                                <div id="info"> <p>Upload</p> </div>
-                            </div>
-
-
-
-
-                        </div>
-
-
-
-
-
 
 
                     </div>

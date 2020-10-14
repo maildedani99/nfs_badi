@@ -104,26 +104,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}   
-.__div_foto {
-    margin: 1rem;
-    width: 10rem;
-    height: 10rem;
-    color:#fff;
-    border:1px  dotted  #7C7C7C;
-}
-.__label_foto {
-    margin-top: 2rem;
-    text-align: center;
-    vertical-align: middle;
-    width: 10rem;
-    height: 10rem;
-    color: #7C7C7C;
-}
-
-.__fileicon {
-    width: 4rem;
-}
+} 
 
 
 

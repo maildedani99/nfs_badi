@@ -36,9 +36,11 @@ const RecommendedRooms = () => {
                     return (
                         <RoomCard
                             name ={room.name}
-                            description={room.description}
                             price={room.price}
                             id={room.id}
+                            companions={room.companions}
+                            images={room.images}
+                            user={room.user}
                             key={room.id}
                         />
                     );
