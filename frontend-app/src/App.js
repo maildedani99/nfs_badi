@@ -17,12 +17,14 @@ import {
   POLITICA,
   ROOMFORM,
   ROOMDETAIL,
-  RESERVAS
+  RESERVAS,
+  PERFIL
 } from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
 import RoomDetail from "./pages/room_detail/roomDetail.view";
 import Reservas from "./pages/reservas/reservas.view";
+import PerfilUser from "./pages/perfilUser/perfilUser.view";
 
 
 function App() {
@@ -58,6 +60,9 @@ function App() {
               </Route>
               <Route exact path={ROOMDETAIL}>
                 <RoomDetail />
+              </Route>
+              <Route exact path={PERFIL}>
+                <PerfilUser />
               </Route>
             </Switch>
           </Router>

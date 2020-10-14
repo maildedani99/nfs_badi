@@ -33,6 +33,11 @@ class Room extends Model
         return $this->hasMany('App\Image');
     }
 
+    public function reserves()
+    {
+        return $this->hasMany('App\Reserve');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
