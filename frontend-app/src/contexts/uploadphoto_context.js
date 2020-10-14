@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-const UploadPhotoContext = React.createContext()
-const { Provider, Consumer } = UploadPhotoContext
+let UploadPhotoContext = React.createContext()
+let { Provider, Consumer } = UploadPhotoContext
 
 function UploadPhotoProvider({ children }) {
 
-    const [uploadPhotoArray, setUploadPhotoArray] = useState([])
+    let [uploadPhotoArray, setUploadPhotoArray] = useState([])
 
     
     return (
-        <Provider value={{ uploadPhotoArray }}>
+        <Provider value={{ uploadPhotoArray, setUploadPhotoArray }}>
             {children}
         </Provider>
     )

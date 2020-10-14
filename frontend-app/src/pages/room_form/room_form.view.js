@@ -2,14 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import styles from './room_form.module.css';
 import room_img from './room_img.png';
 import UploadPhoto from '../../components/uploadphoto/uploadphotos';
-import { UploadPhotoContext, uploadPhotoArray } from '../../contexts/uploadphoto_context';
+import { UploadPhotoContext, UploadPhotoProvider } from '../../contexts/uploadphoto_context';
 
 
 const RoomForm = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const [features, setFeatures] = useState([]);
-    const [next, setNext] = useState(true)
+    const [next, setNext] = useState(true);
+    let uploadPhotoArray = useContext(UploadPhotoContext);
 
     const nextClick = () => {
         setNext(!next)
@@ -46,7 +47,6 @@ const RoomForm = () => {
 
     const [checkedList, setCheckList] = useState({});
     var checkedListArray = []
-    var [filesArray, setFilesArray] = useState([]);
 
     const handleCheckBoxChange = (event) => {
         setCheckList({
@@ -54,13 +54,7 @@ const RoomForm = () => {
             [event.target.id]: event.target.checked,
         })
     }
-    const handleFileChange = (event) => {
-        setFilesArray([
-            ...filesArray,
-            [event.target.name] =  event.target.files[0].name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-        ])
-        console.log(filesArray);
-    }
+    
 
     const selectTrue = () => {
         for (const property in checkedList) {
@@ -78,6 +72,7 @@ const RoomForm = () => {
     const submitForm = () => {
         setNext(false);
         selectTrue();
+        console.log(uploadPhotoArray)
         const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
@@ -89,7 +84,7 @@ const RoomForm = () => {
             longitude: data.longitude,
             features: checkedListArray,
             description: data.description,
-            images: filesArray
+            images: uploadPhotoArray,
         };
         console.log(body);
 
@@ -164,8 +159,14 @@ const RoomForm = () => {
                         </div>
                         <h4 className={styles.__from_subtitle}>Fotografías</h4>
                         <div className={styles.__div_inputs_foto}>
-
-                        <UploadPhoto />
+                            <UploadPhotoProvider>
+                                <UploadPhoto name="image1" />
+                                <UploadPhoto name="image2" />
+                                <UploadPhoto name="image3" />
+                                <UploadPhoto name="image4" />
+                                <UploadPhoto name="image5" />
+                                <UploadPhoto name="image6"/>
+                            </UploadPhotoProvider>
                       
                         </div>
 

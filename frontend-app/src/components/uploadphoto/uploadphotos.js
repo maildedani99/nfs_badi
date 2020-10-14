@@ -5,20 +5,21 @@ import Transformation from 'cloudinary-react/lib/components/Transformation';
 import { cloudName, uploadPreset } from './cloudinary';
 import styles from './uploadphoto.module.css';
 import fileicon from './fileicon.png';
-import { UploadPhotoContext, UploadPhotoProvider } from '../../contexts/uploadphoto_context';
+import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
 
-const UploadPhoto = () => {
+const UploadPhoto = (props) => {
 
     //const [titleEl, setTitleEl] = useState('');
     const [photoId, setPhotoId] = useState(0);
     const fileInputEl = useRef(null);
     const [photoIds, setPhotoIds] = useState([]);
-
+    let { uploadPhotoArray, setUploadPhotoArray } = useContext(UploadPhotoContext)
+   
     const onPhotoUploaded = (photoIdIn, fileName, response) => {
         console.log(photoIdIn, fileName, response);
         setPhotoIds([...photoIds, response.body.public_id]);
-        console.log(response.body.public_id);
-        console.log(photoIds)
+        setUploadPhotoArray([...uploadPhotoArray, response.body.public_id] )
+        console.log(uploadPhotoArray)
     };
 
     const onPhotoSelected = (files) => {
@@ -48,15 +49,15 @@ const UploadPhoto = () => {
             <div id="direct_upload">
                 <form>
                     <div className={styles.__div_inputs_foto}>
+
                         <div className={styles.__div_foto}>
                             <label className={styles.__label_foto} >
                                 <img className={styles.__fileicon} src={fileicon} alt="icono" />
                                 {photoIds != 0 ?
                                     <p>{photoIds}</p> : <p>upload</p>}
-
                                 <input
                                     className={styles.__input}
-
+                                    name={props.name}
                                     type="file"
                                     accept="image/*"
                                     ref={fileInputEl}
@@ -65,23 +66,7 @@ const UploadPhoto = () => {
                             </label>
                         </div>
 
-
-                        <div className={styles.__div_foto}>
-                            <label className={styles.__label_foto} >
-                                <img className={styles.__fileicon} src={fileicon} alt="icono" />
-                                {photoIds != 0 ?
-                                    <p>{photoIds}</p> : <p>upload</p>}
-
-                                <input
-                                    className={styles.__input}
-
-                                    type="file"
-                                    accept="image/*"
-                                    ref={fileInputEl}
-                                    onChange={() => onPhotoSelected(fileInputEl.current.files)}
-                                />
-                            </label>
-                        </div>
+                        
 
 
 
