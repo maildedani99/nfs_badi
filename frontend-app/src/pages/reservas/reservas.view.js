@@ -15,7 +15,6 @@ const Reservas = () => {
                 <span className={styles.__titulo}> Mis reservas</span>
                 <ListReservas />
             </div>
-
         </div>
     );
 };

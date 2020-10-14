@@ -2,15 +2,32 @@
 
 .__contenedor {
     width: 1085px;
-    height: 82px;
+    height: 100px;
     background: #FFFFFF;
     border: 1px solid #E5E5E5;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(229, 229, 229, 0.05);
     border-radius: 12px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     margin-top: 20px;
+}
+
+.__habitacion {
+    margin: 4px 0 0 10px;
+    color: #A37AFC;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+.__infoCard {
+    width: 1085px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .__img {

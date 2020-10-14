@@ -78,4 +78,11 @@ Route::post('features', 'FeatureController@create');
 Route::get('features/room/{roomId}', 'FeatureController@getByRoom');
 Route::post('features/add', 'FeatureController@addFeatureToRoom');
 
+/*
+|--------------------------------------------------------------------------
+| Reserves Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('reserves', 'ReserveController@all');
+Route::post('reserves', 'ReserveController@create');
 
