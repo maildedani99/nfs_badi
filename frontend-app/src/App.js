@@ -17,17 +17,7 @@ import {
   POLITICA,
   ROOMFORM,
   ROOMDETAIL,
-  RESERVAS
-} from "./routes/routes";
-import {
-  HABITACIONES,
-  LANDING,
-  LOGINPAGE,
-  REGISTERPAGE,
-  TERMINOS,
-  POLITICA,
-  ROOMFORM,
-  ROOMDETAIL,
+  RESERVAS,
   PERFIL
 } from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
