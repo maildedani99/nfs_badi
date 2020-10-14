@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom';
 import logo from './logo.png';
 import avatar_navbar from './avatar_navbar.png';
 import styles from './nabvar.module.css';
-import {LANDING, LOGINPAGE, REGISTERPAGE, ROOMFORM} from "../../routes/routes";
+import {LANDING, LOGINPAGE, PERFIL, REGISTERPAGE, ROOMFORM} from "../../routes/routes";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
 
 const Navbar = (props) => {
@@ -44,8 +44,9 @@ const Navbar = (props) => {
                           Logout
                       </Link>
                   </div>
-
-                  <img src={avatar_navbar} className={styles.__avatar}/>
+                    <Link to={PERFIL}>
+                        <img src={avatar_navbar} className={styles.__avatar}/>
+                    </Link>
               </div>
             :
               <div className={styles.__navbar_grouplinks_div}>
