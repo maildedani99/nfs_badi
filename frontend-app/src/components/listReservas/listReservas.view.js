@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import styles from './recommendedRooms.module.css';
+import styles from './listReservas.module.css';
+import ReservasCard from "../reservasCard/reservasCard.view";
 import RoomCard from "../roomCard/roomCard.view";
 
-const RecommendedRooms = () => {
+const ListReservas = () => {
 
-    const [rooms, setRooms] = useState('');
+    const [reserves, setReserves] = useState('');
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/recommended';
+        const url = 'http://localhost/api/reserves/';
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -22,8 +23,7 @@ const RecommendedRooms = () => {
                 }
             )
             .then(payload => {
-                    console.log("Recommended list rooms saved");
-                    setRooms(payload);
+                    setReserves(payload);
                 }
             )
             .catch(error => console.log(error));
@@ -32,22 +32,21 @@ const RecommendedRooms = () => {
 
     return (
         <div className={styles.__contenedor}>
-            {rooms && rooms.map(room => {
+            {reserves && reserves.map(reserve => {
                     return (
-                        <RoomCard
-                            name ={room.name}
-                            price={room.price}
-                            id={room.id}
-                            companions={room.companions}
-                            images={room.images}
-                            user={room.user}
-                            key={room.id}
+                        <ReservasCard
+                            room={reserve.room.name}
+                            guest ='Marcos'
+                            fechaLlegada={reserve.arrival}
+                            fechaSalida={reserve.departure}
+                            precio={reserve.price}
+                            key={reserve.id}
                         />
                     );
                 }
             )}
         </div>
-    )
-}
+    );
+};
 
-export default RecommendedRooms;
+export default ListReservas;

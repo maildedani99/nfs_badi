@@ -8,13 +8,27 @@ import LoginPage from './pages/login/login.view';
 import RegisterForm from "./pages/register/register.view";
 import RoomsPage from "./pages/rooms/rooms.view";
 import RoomForm from './pages/room_form/room_form.view';
-import {HABITACIONES, LANDING, LOGINPAGE, REGISTERPAGE, TERMINOS, POLITICA, ROOMFORM, ROOMDETAIL} from "./routes/routes";
+import {
+  HABITACIONES,
+  LANDING,
+  LOGINPAGE,
+  REGISTERPAGE,
+  TERMINOS,
+  POLITICA,
+  ROOMFORM,
+  ROOMDETAIL,
+  RESERVAS,
+  PERFIL
+} from "./routes/routes";
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
 import RoomDetail from "./pages/room_detail/roomDetail.view";
+import Reservas from "./pages/reservas/reservas.view";
+import PerfilUser from "./pages/perfilUser/perfilUser.view";
 
 
 function App() {
+
     return (
         <AuthContextProvider>
           <Router>
@@ -29,9 +43,6 @@ function App() {
               <Route exact path={REGISTERPAGE}>
                 <RegisterForm />
               </Route>
-              <Route exact path={HABITACIONES}>
-                <RoomsPage />
-              </Route>
               <Route exact path={TERMINOS}>
                 <Terminos />
               </Route>
@@ -41,8 +52,17 @@ function App() {
               <PrivateRoute exact path={ROOMFORM}>
                 <RoomForm />
               </PrivateRoute>
+              <PrivateRoute exact path={RESERVAS}>
+                <Reservas />
+              </PrivateRoute>
+              <Route exact path={HABITACIONES}>
+                <RoomsPage />
+              </Route>
               <Route exact path={ROOMDETAIL}>
                 <RoomDetail />
+              </Route>
+              <Route exact path={PERFIL}>
+                <PerfilUser />
               </Route>
             </Switch>
           </Router>
