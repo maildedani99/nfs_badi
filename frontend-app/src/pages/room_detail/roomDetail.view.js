@@ -6,6 +6,7 @@ import { DatePicker, Space } from 'antd';
 import Footer from "../../components/footer/footer.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
+import { AiOutlineCheck } from "react-icons/ai";
 
 const RoomDetail = () => {
 
@@ -55,8 +56,26 @@ const RoomDetail = () => {
                         <p className={styles.__descripcion}>{room.description}</p>
                         <span className={styles.__titulo}>Precio y condiciones</span>
                         <span className={styles.__precio}>{room.price} €/mes</span>
-                        <span className={styles.__titulo}>Servicios</span>
-                        {/*<span>{room.features[0].name}</span>*/}
+
+
+                        {room.features.length === 0 ?
+                            <></>
+                            :
+                            <>
+                                <span className={styles.__titulo}>Servicios</span>
+                                <div className={styles.__contenedorMap}>
+                                    {room.features && room.features.map(feature => {
+                                        return(
+                                            <div>
+                                                <AiOutlineCheck fill="purple" />
+                                                <span> {feature.name}</span>
+                                            </div>
+                                        );
+                                        }
+                                    )}
+                                </div>
+                            </>
+                            }
                     </div>
 
                     <div className={styles.__calendario}>
