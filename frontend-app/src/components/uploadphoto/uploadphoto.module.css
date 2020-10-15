@@ -1,0 +1,36 @@
+.__div_inputs_foto {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.__div_foto {
+    margin: 1rem;
+    width: 10rem;
+    height: 10rem;
+    color:#fff;
+    border:1px  dotted  #7C7C7C;
+}
+
+.__div_foto > img {
+    height: 100%;
+}
+
+.__label_foto {
+    margin-top: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    width: 10rem;
+    height: 10rem;
+    color: #7C7C7C;
+    word-wrap: break-word;
+}
+
+.__fileicon {
+    width: 4rem;
+    opacity: 70%;
+}
+
+.__input {
+    display: none;
+}
