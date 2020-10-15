@@ -1,0 +1,50 @@
+.__seccionComentarios {
+    width: 856px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.__subTitulo {
+    font-family: Roboto;
+    margin-top: 15px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.__comentarios {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+}
+
+.__imgComentario {
+    margin: auto;
+}
+
+.__infoComentarios {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+}
+
+.__nombreComentario {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.__parrafoComentario {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.85);
+}

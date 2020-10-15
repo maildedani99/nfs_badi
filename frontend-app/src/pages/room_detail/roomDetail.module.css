@@ -1,7 +1,8 @@
 .__container {
     margin: 0 auto;
     width: 85%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .__galeria {
@@ -18,13 +19,20 @@
 .__containerMain {
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
 .__detalleRoom {
     width: 70%;
-    height: 510px;
     display: flex;
     flex-direction: column;
+}
+
+.__divSeparador {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    height: 100%;
 }
 
 .__nombre {
@@ -48,7 +56,6 @@
 }
 
 .__titulo {
-    margin-top: 30px;
     font-family: DM Sans;
     font-style: normal;
     font-weight: 500;
@@ -60,7 +67,7 @@
 
 .__descripcion {
     width: 650px;
-    margin-top: 30px;
+    margin-top: 18px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
@@ -131,9 +138,4 @@
     color: #FFFFFF;
     padding-top: 13px;
     cursor: pointer;
-}
-
-.__mapContainer {
-    width: 100%;
-    height: 100%;
 }

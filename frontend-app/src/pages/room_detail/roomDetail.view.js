@@ -6,7 +6,9 @@ import { DatePicker, Space } from 'antd';
 import Footer from "../../components/footer/footer.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
+import comentariosImg from '../../components/comentarios/assets/comentariosImg.png'
 import { AiOutlineCheck } from "react-icons/ai";
+import Comentarios from "../../components/comentarios/comentarios.view";
 
 const RoomDetail = () => {
 
@@ -50,13 +52,18 @@ const RoomDetail = () => {
 
                 <div className={styles.__containerMain}>
                     <div className={styles.__detalleRoom}>
-                        <span className={styles.__nombre}>{room.name}</span>
-                        <span className={styles.__companeros}><img src={companionsImg}/> {room.companions} compañeros</span>
-                        <span className={styles.__titulo}>Información básica</span>
-                        <p className={styles.__descripcion}>{room.description}</p>
-                        <span className={styles.__titulo}>Precio y condiciones</span>
-                        <span className={styles.__precio}>{room.price} €/mes</span>
-
+                        <div className={styles.__divSeparador}>
+                            <span className={styles.__nombre}>{room.name}</span>
+                            <span className={styles.__companeros}><img src={companionsImg}/> {room.companions} compañeros</span>
+                        </div>
+                        <div className={styles.__divSeparador}>
+                            <span className={styles.__titulo}>Información básica</span>
+                            <p className={styles.__descripcion}>{room.description}</p>
+                        </div>
+                        <div className={styles.__divSeparador}>
+                            <span className={styles.__titulo}>Precio y condiciones</span>
+                            <span className={styles.__precio}>{room.price} €/mes</span>
+                        </div>
 
                         {room.features.length === 0 ?
                             <></>
@@ -76,6 +83,12 @@ const RoomDetail = () => {
                                 </div>
                             </>
                             }
+
+                        <div className={styles.__divSeparador}>
+                            <span className={styles.__titulo}>Otros huespedes ya han estado aquí</span>
+                            <Comentarios />
+                        </div>
+
                     </div>
 
                     <div className={styles.__calendario}>
@@ -90,7 +103,7 @@ const RoomDetail = () => {
                 </div>
                 }
 
-                <div className={styles.__mapContainer}>
+                <div>
                     <MapContainerDetalle data={room}/>
                 </div>
             </div>
