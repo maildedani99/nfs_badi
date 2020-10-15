@@ -56,7 +56,7 @@ const UploadPhoto = (props) => {
 
                         <div className={styles.__div_foto}>
                             <label className={styles.__label_foto} >
-                                <img className={styles.__fileicon} src={fileicon} alt="icono" />
+                                <img className={styles.__fileicon} src={'fileicon'} alt="icono" />
                                 <p>upload</p>
                                 <input
                                     className={styles.__input}
