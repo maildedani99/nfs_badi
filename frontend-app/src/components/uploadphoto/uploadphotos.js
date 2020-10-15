@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext } from 'react';
 import * as request from 'superagent';
 import { cloudName, uploadPreset } from './cloudinary';
 import styles from './uploadphoto.module.css';
-import fileicon from './fileicon.png';
+// import fileicon from './fileicon.png';
 import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
 
 const UploadPhoto = (props) => {
@@ -10,7 +10,7 @@ const UploadPhoto = (props) => {
     //const [titleEl, setTitleEl] = useState('');
     const [photoUrl, setPhotoUrl] = useState(null);
     const fileInputEl = useRef(null);
-    let { uploadPhotoArray, setUploadPhotoArray } = useContext(UploadPhotoContext)
+    const { uploadPhotoArray, setUploadPhotoArray } = useContext(UploadPhotoContext)
 
     const onPhotoUploaded = (photoIdIn, fileName, response) => {
         console.log(photoIdIn, fileName, response);
