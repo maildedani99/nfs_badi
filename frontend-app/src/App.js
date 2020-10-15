@@ -49,11 +49,11 @@ function App() {
               <Route exact path={POLITICA}>
                 <Politica />
               </Route>
-                <PrivateRoute exact path={ROOMFORM}>
-                  <UploadPhotoProvider>
-                    <RoomForm />
-                  </UploadPhotoProvider>
-                </PrivateRoute>
+              <PrivateRoute exact path={ROOMFORM}>
+                <UploadPhotoProvider>
+                  <RoomForm />
+                </UploadPhotoProvider>
+              </PrivateRoute>
               <PrivateRoute exact path={RESERVAS}>
                 <Reservas />
               </PrivateRoute>

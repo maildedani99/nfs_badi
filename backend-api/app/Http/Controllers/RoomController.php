@@ -49,15 +49,6 @@ class RoomController extends Controller
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
         ]);
-
-        foreach ($request->images as $image) {
-            $image = Image::create([
-                'image_url' => $image,
-            ]);
-            $room->images()->save($image);
-        }
-
-
         $room->save();
         $feature = Feature::find($request->features);
         $room->features()->attach($feature);

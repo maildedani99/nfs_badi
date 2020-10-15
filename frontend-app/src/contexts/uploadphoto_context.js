@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-let UploadPhotoContext = React.createContext()
-let { Provider, Consumer } = UploadPhotoContext
+const UploadPhotoContext = React.createContext()
+const { Provider, Consumer } = UploadPhotoContext
 
 function UploadPhotoProvider({ children }) {
 
