@@ -166,8 +166,6 @@ const RoomForm = () => {
                             <UploadPhoto name="image5" />
                             <UploadPhoto name="image6"/>
                         </div>
-
-
                     </div>
 
                     <div className={styles.__div_button}>
