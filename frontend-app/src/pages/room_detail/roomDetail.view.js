@@ -65,24 +65,26 @@ const RoomDetail = () => {
                             <span className={styles.__precio}>{room.price} €/mes</span>
                         </div>
 
-                        {room.features.length === 0 ?
-                            <></>
-                            :
-                            <>
-                                <span className={styles.__titulo}>Servicios</span>
-                                <div className={styles.__contenedorMap}>
-                                    {room.features && room.features.map(feature => {
-                                        return(
-                                            <div>
-                                                <AiOutlineCheck fill="purple" />
-                                                <span> {feature.name}</span>
-                                            </div>
-                                        );
-                                        }
-                                    )}
-                                </div>
-                            </>
+                        <div className={styles.__divSeparador}>
+                            {room.features.length === 0 ?
+                                <></>
+                                :
+                                <>
+                                    <span className={styles.__titulo}>Servicios</span>
+                                    <div className={styles.__contenedorMap}>
+                                        {room.features && room.features.map(feature => {
+                                            return(
+                                                <div>
+                                                    <AiOutlineCheck fill="purple" />
+                                                    <span className={styles.__features}> {feature.name}</span>
+                                                </div>
+                                            );
+                                            }
+                                        )}
+                                    </div>
+                                </>
                             }
+                        </div>
 
                         <div className={styles.__divSeparador}>
                             <span className={styles.__titulo}>Otros huespedes ya han estado aquí</span>
