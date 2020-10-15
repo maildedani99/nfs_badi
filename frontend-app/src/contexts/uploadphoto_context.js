@@ -5,7 +5,7 @@ let { Provider, Consumer } = UploadPhotoContext
 
 function UploadPhotoProvider({ children }) {
 
-    let [uploadPhotoArray, setUploadPhotoArray] = useState([])
+    const [uploadPhotoArray, setUploadPhotoArray] = useState([])
 
     
     return (

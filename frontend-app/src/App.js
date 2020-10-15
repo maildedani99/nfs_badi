@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import {AuthContext, AuthContextProvider} from "./contexts/authentication/authentication.context";
+import { AuthContext, AuthContextProvider } from "./contexts/authentication/authentication.context";
+import { UploadPhotoProvider } from "./contexts/uploadphoto_context";
 import LandingPage from "./pages/landing/landing.view";
 import Navbar from "./components/navbar/navbar";
 import LoginPage from './pages/login/login.view';
@@ -25,8 +26,6 @@ import Politica from "./pages/politica/politica";
 import RoomDetail from "./pages/room_detail/roomDetail.view";
 import Reservas from "./pages/reservas/reservas.view";
 import PerfilUser from "./pages/perfilUser/perfilUser.view";
-import {UploadPhotoProvider} from "./contexts/uploadphoto_context";
-
 
 function App() {
 
@@ -50,14 +49,15 @@ function App() {
               <Route exact path={POLITICA}>
                 <Politica />
               </Route>
-              <UploadPhotoProvider>
+
+
                 <PrivateRoute exact path={ROOMFORM}>
-                  <RoomForm />
+                  <UploadPhotoProvider>
+                    <RoomForm />
+                  </UploadPhotoProvider>
                 </PrivateRoute>
-              </UploadPhotoProvider>
-              <PrivateRoute exact path={ROOMFORM}>
-                <RoomForm />
-              </PrivateRoute>
+
+
               <PrivateRoute exact path={RESERVAS}>
                 <Reservas />
               </PrivateRoute>
