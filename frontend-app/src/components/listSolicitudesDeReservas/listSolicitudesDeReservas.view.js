@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import styles from './listReservas.module.css';
+import styles from './listSolicitudesDeReservas.module.css';
 import ReservasCard from "../reservasCard/reservasCard.view";
-import RoomCard from "../roomCard/roomCard.view";
+import {AuthContext} from "../../contexts/authentication/authentication.context";
 
-const ListReservas = () => {
+const ListSolicitudesDeReservas = () => {
 
     const [reserves, setReserves] = useState('');
+    const { state } = React.useContext(AuthContext);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/';
+        const url = 'http://localhost/api/reserves/solicitudes/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -32,7 +33,15 @@ const ListReservas = () => {
 
     return (
         <div className={styles.__contenedor}>
-            {reserves && reserves.map(reserve => {
+            <div className={styles.__div__titulo}>
+                <span className={styles.__titulo}>Mis solicitudes de reservas</span>
+            </div>
+
+            {reserves.length === 0 ?
+                <span>No tienes ninguna solicitud de reserva por el momento</span>
+                :
+                <div>
+                {reserves && reserves.map(reserve => {
                     return (
                         <ReservasCard
                             room={reserve.room.name}
@@ -44,9 +53,12 @@ const ListReservas = () => {
                         />
                     );
                 }
-            )}
+                )}
+                </div>
+            }
+
         </div>
     );
 };
 
-export default ListReservas;
+export default ListSolicitudesDeReservas;

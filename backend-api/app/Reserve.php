@@ -16,7 +16,7 @@ class Reserve extends Model
 
     public function room()
     {
-        return $this->belongsTo('App\Room');
+        return $this->belongsTo('App\Room', 'room_id');
     }
 
     protected $fillable = [
