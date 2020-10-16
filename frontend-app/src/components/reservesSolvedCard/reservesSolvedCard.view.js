@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './reservasCard.module.css';
-import avatar from './assets/avatar.png'
+import styles from './reservesSolvedCard.module.css';
+import avatar from "./assets/avatar.png";
+import aceptadaImg from './assets/aceptada.png';
+import rechazadaImg from './assets/rechazada.png'
 
-const ReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio}) => {
+const ReservesSolved = ({room, guest, fechaLlegada, fechaSalida, precio, status}) => {
 
 
     return (
@@ -19,11 +21,12 @@ const ReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio}) => {
                 </div>
 
                 <span className={styles.__fecha}>€ {precio}</span>
-                <span className={styles.__botonAceptar}>Aceptar</span>
-                <span className={styles.__botonRechazar}>Rechazar</span>
+                <span className={styles.__status}>
+                    {status === 'aceptada' ? <img src={aceptadaImg}/> : <img src={rechazadaImg}/>}
+                </span>
             </div>
         </div>
     );
 };
 
-export default ReservasCard;
+export default ReservesSolved;
