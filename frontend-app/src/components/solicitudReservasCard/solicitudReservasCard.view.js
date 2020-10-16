@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './reservasCard.module.css';
+import styles from './solicitudReservasCard.module.css';
 import avatar from './assets/avatar.png'
 
-const ReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio}) => {
+const SolicitudReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio}) => {
 
 
     return (
@@ -26,4 +26,4 @@ const ReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio}) => {
     );
 };
 
-export default ReservasCard;
+export default SolicitudReservasCard;

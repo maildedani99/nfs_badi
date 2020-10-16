@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './listSolicitudesDeReservas.module.css';
-import ReservasCard from "../reservasCard/reservasCard.view";
+import SolicitudReservasCard from "../solicitudReservasCard/solicitudReservasCard.view";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
 
 const ListSolicitudesDeReservas = () => {
@@ -43,7 +43,7 @@ const ListSolicitudesDeReservas = () => {
                 <div>
                 {reserves && reserves.map(reserve => {
                     return (
-                        <ReservasCard
+                        <SolicitudReservasCard
                             room={reserve.room.name}
                             guest ='Marcos'
                             fechaLlegada={reserve.arrival}
