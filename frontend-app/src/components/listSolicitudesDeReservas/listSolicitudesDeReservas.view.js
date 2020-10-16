@@ -18,14 +18,13 @@ const ListSolicitudesDeReservas = ({reserves}) => {
                             fechaLlegada={reserve.arrival}
                             fechaSalida={reserve.departure}
                             precio={reserve.price}
+                            id={reserve.id}
                             key={reserve.id}
                         />
                     );
-                }
-                )}
+                })}
                 </div>
             }
-
         </div>
     );
 };
