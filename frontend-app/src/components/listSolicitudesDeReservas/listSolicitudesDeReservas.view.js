@@ -1,44 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from './listSolicitudesDeReservas.module.css';
 import SolicitudReservasCard from "../solicitudReservasCard/solicitudReservasCard.view";
-import {AuthContext} from "../../contexts/authentication/authentication.context";
 
-const ListSolicitudesDeReservas = () => {
-
-    const [reserves, setReserves] = useState('');
-    const { state } = React.useContext(AuthContext);
-
-    useEffect(() => {
-        const url = 'http://localhost/api/reserves/solicitudes/' + state.user.id;
-        const options = {
-            method: 'GET',
-            headers: new Headers(),
-        };
-
-        fetch(url, options)
-            .then(response => {
-                    if (response.status === 200) {
-                        return response.json();
-                    }
-                    return Promise.reject(response.status);
-                }
-            )
-            .then(payload => {
-                    setReserves(payload);
-                }
-            )
-            .catch(error => console.log(error));
-    }, []);
-
+const ListSolicitudesDeReservas = ({reserves}) => {
 
     return (
         <div className={styles.__contenedor}>
-            <div className={styles.__div__titulo}>
-                <span className={styles.__titulo}>Mis solicitudes de reservas</span>
-            </div>
-
             {reserves.length === 0 ?
-                <span>No tienes ninguna solicitud de reserva por el momento</span>
+                <span>No tienes ninguna solicitud de reserva por el momento.</span>
                 :
                 <div>
                 {reserves && reserves.map(reserve => {

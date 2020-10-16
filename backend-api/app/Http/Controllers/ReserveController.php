@@ -39,4 +39,11 @@ class ReserveController extends Controller
         return response()->json(Reserve::where('host_id', $host_id)->where('status', 'en curso')->with('room')->get());
     }
 
+    public function getReservesClosedByHostId($host_id)
+    {
+        Log::info('Retrieving reserve with id: '.$host_id);
+        return response()->json(Reserve::where('host_id', $host_id)->where('status', '!=' ,'en curso')->with('room')->get());
+    }
+
+
 }
