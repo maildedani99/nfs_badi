@@ -33,10 +33,10 @@ class ReserveController extends Controller
         return response()->json("Created", 201);
     }
 
-    public function getByHostId($host_id)
+    public function getSolicitudesByHostId($host_id)
     {
         Log::info('Retrieving reserve with id: '.$host_id);
-        return response()->json(Reserve::where('host_id', $host_id)->with('room')->get());
+        return response()->json(Reserve::where('host_id', $host_id)->where('status', 'en curso')->with('room')->get());
     }
 
 }

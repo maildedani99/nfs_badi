@@ -84,6 +84,6 @@ Route::post('features/add', 'FeatureController@addFeatureToRoom');
 |--------------------------------------------------------------------------
 */
 Route::get('reserves', 'ReserveController@all');
-Route::get('reserves/solicitudes/{id}', 'ReserveController@getByHostId');
+Route::get('reserves/solicitudes/{id}', 'ReserveController@getSolicitudesByHostId');
 Route::post('reserves', 'ReserveController@create');
 
