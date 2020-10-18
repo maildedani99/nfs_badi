@@ -45,5 +45,10 @@ class ReserveController extends Controller
         return response()->json(Reserve::where('host_id', $host_id)->where('status', '!=' ,'en curso')->with('room')->get());
     }
 
+    public function changeStatus (Request $request, $id)
+    {
+       Reserve::where('id', $id)->update(['status'=> $request->status]);
+       return response()->json('status cambiada');
+    }
 
 }
