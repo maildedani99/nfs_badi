@@ -107,7 +107,11 @@ const RoomDetail = () => {
         <div>
             <div className={styles.__container}>
                 <div className={styles.__galeria}>
-                    <img className={styles.__foto} src={'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6'} alt="Room's images"/>
+                    {room === null ?
+                        <img className={styles.__foto} src={'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6'} alt="Room's images"/>
+                    :
+                        <img className={styles.__foto} src={room.images[0].image_url} alt="Room's images"/>
+                    }
                 </div>
 
                 {room &&
