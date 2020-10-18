@@ -74,8 +74,10 @@ const SolicitudReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio, 
                 </div>
 
                 <span className={styles.__fecha}>€ {precio}</span>
-                <span className={styles.__botonAceptar} onClick={Aceptar}>Aceptar</span>
-                <span className={styles.__botonRechazar} onClick={Rechazar}>Rechazar</span>
+                <div className={styles.__div_botones}>
+                    <span className={styles.__botonAceptar} onClick={Aceptar}>Aceptar</span>
+                    <span className={styles.__botonRechazar} onClick={Rechazar}>Rechazar</span>
+                </div>
             </div>
         </div>
     );
