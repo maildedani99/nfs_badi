@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useParams } from 'react-router';
+import {useHistory, useParams} from 'react-router';
 import styles from './roomDetail.module.css';
 import 'antd/dist/antd.css';
 import { DatePicker, Space } from 'antd';
@@ -9,13 +9,27 @@ import companionsImg from './assets/companionsImg.png';
 import comentariosImg from '../../components/comentarios/assets/comentariosImg.png'
 import { AiOutlineCheck } from "react-icons/ai";
 import Comentarios from "../../components/comentarios/comentarios.view";
+import {HABITACIONES, LANDING, LOGINPAGE} from "../../routes/routes";
+import {AuthContext} from "../../contexts/authentication/authentication.context";
+import swal from "sweetalert";
 
 const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState(null);
-
+    const { state } = React.useContext(AuthContext);
+    const history =useHistory();
     const { RangePicker } = DatePicker;
+    const [arrival, setArrival] = useState('');
+    const [departure, setDeparture] = useState('');
+
+
+    const handleInputChange = (value, dateString) => {
+        setArrival(dateString[0])
+        setDeparture(dateString[1])
+        console.log(dateString);
+    }
+
 
     useEffect(() => {
         const url = 'http://localhost/api/rooms/'+ id;
@@ -38,6 +52,56 @@ const RoomDetail = () => {
             )
             .catch(error => console.log(error));
     }, []);
+
+
+    const reservaPendiente = () =>  {
+        swal({
+            title:'Reserva efectuada correctamente',
+            text: 'Pendiente Respuesta del Host',
+            icon: 'success',
+            button: 'Close'
+        });
+    };
+
+    const confirmarReserva = () => {
+
+        const url = 'http://localhost/api/reserves/';
+        const body = {
+            room_id: room.id,
+            host_id: room.user.id,
+            guest_id: state.user.id,
+            arrival: arrival,
+            departure: departure,
+            price:room.price
+        };
+
+        const options = {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                    }),
+                mode: 'cors',
+                body: JSON.stringify(body),
+                };
+
+            fetch(url,options)
+                .then(response => {
+                    if (response.status === 201) {
+                        reservaPendiente();
+                        return response.json();
+                        }
+                        return Promise.reject(response.status);
+                    })
+                .then(payload => {
+                    history.push(HABITACIONES);
+
+                })
+                .catch(error => console.log(error));
+                }
+
+
+
+
 
     return (
         <div>
@@ -99,10 +163,13 @@ const RoomDetail = () => {
                         <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
                         <div className={styles.__fechasContenedor}>
                             <Space direction="vertical" size={5}>
-                                <RangePicker placeholder={['Llegada', 'Salida']}/>
+                                <RangePicker placeholder={['Llegada', 'Salida']}
+                                             onChange={handleInputChange}
+
+                                />
                             </Space>
                         </div>
-                        <div className={styles.__botonReservar}>Reservar</div>
+                        <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
                     </div>
                 </div>
                 }
