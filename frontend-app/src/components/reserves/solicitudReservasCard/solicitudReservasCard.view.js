@@ -2,16 +2,16 @@ import React from 'react';
 import styles from './solicitudReservasCard.module.css';
 import avatar from './assets/avatar.png'
 import {useHistory} from "react-router-dom";
-import {RESERVAS} from "../../routes/routes";
+import {RESERVAS} from "../../../routes/routes";
 
-const SolicitudReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio, id}) => {
+const SolicitudReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio, id, refreshList}) => {
 
     const history = useHistory();
+    const respuesta = (accion) => () => {
 
-    const Aceptar = () => {
         const url = 'http://localhost/api/reserves/' + id;
         const body = {
-            status: 'aceptada',
+            status: accion,
         };
 
         const options = {
@@ -25,38 +25,12 @@ const SolicitudReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio, 
 
         fetch(url, options)
             .then(response => {
+                refreshList()
                 if (response.status === 201) {
                     return response.json();
                 }
                 return Promise.reject(response.status);
             })
-            .then()
-            .catch(error => console.log(error));
-    }
-
-    const Rechazar = () => {
-        const url = 'http://localhost/api/reserves/' + id;
-        const body = {
-            status: 'rechazada',
-        };
-
-        const options = {
-            method: 'PUT',
-            headers: new Headers({
-                'Content-type': 'application/json',
-            }),
-            mode: 'cors',
-            body: JSON.stringify(body),
-        };
-
-        fetch(url, options)
-            .then(response => {
-                if (response.status === 201) {
-                    return response.json();
-                }
-                return Promise.reject(response.status);
-            })
-            .then()
             .catch(error => console.log(error));
     }
 
@@ -75,8 +49,8 @@ const SolicitudReservasCard = ({room, guest, fechaLlegada, fechaSalida, precio, 
 
                 <span className={styles.__fecha}>€ {precio}</span>
                 <div className={styles.__div_botones}>
-                    <span className={styles.__botonAceptar} onClick={Aceptar}>Aceptar</span>
-                    <span className={styles.__botonRechazar} onClick={Rechazar}>Rechazar</span>
+                    <span className={styles.__botonAceptar} onClick={respuesta('aceptada')}>Aceptar</span>
+                    <span className={styles.__botonRechazar} onClick={respuesta('rechazar')}>Rechazar</span>
                 </div>
             </div>
         </div>

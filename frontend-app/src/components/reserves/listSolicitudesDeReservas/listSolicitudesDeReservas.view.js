@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './listSolicitudesDeReservas.module.css';
 import SolicitudReservasCard from "../solicitudReservasCard/solicitudReservasCard.view";
 
-const ListSolicitudesDeReservas = ({reserves}) => {
+const ListSolicitudesDeReservas = ({reserves, refreshList}) => {
 
     return (
         <div className={styles.__contenedor}>
@@ -20,6 +20,7 @@ const ListSolicitudesDeReservas = ({reserves}) => {
                             precio={reserve.price}
                             id={reserve.id}
                             key={reserve.id}
+                            refreshList={refreshList}
                         />
                     );
                 })}

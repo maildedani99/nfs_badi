@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './listReservesSolved.module.css';
 import ReservesSolved from "../reservesSolvedCard/reservesSolvedCard.view";
 
-const ListReservesSolved = ({reservesSolved}) => {
+const ListReservesSolved = ({reservesSolved, refreshList}) => {
 
     return(
         <div className={styles.__contenedor}>
@@ -20,6 +20,7 @@ const ListReservesSolved = ({reservesSolved}) => {
                                     precio={reserve.price}
                                     status={reserve.status}
                                     key={reserve.id}
+                                    refreshList={refreshList}
                                 />
                             );
                         }
