@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './room_form.module.css';
 import room_img from './assets/room_img.png';
 import UploadPhoto from '../../components/uploadphoto/uploadphotos';
 import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
+import {AuthContext} from "../../contexts/authentication/authentication.context";
+import {LANDING} from "../../routes/routes";
 
 const RoomForm = () => {
 
+    const { state } = React.useContext(AuthContext);
+    const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user'));
     const [features, setFeatures] = useState([]);
     const [next, setNext] = useState(true);
@@ -13,6 +18,10 @@ const RoomForm = () => {
 
     const nextClick = () => {
         setNext(!next)
+    }
+
+    if(state.user.role === 'GUEST') {
+        history.replace(LANDING);
     }
 
     const checkboxFetch = () => {

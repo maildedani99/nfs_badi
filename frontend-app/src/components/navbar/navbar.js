@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import logo from './logo.png';
-import avatar_navbar from './avatar_navbar.png';
+import logo from './assets/logo.png';
+import avatar_navbar from './assets/avatar_navbar.png';
 import styles from './nabvar.module.css';
 import {LANDING, LOGINPAGE, REGISTERPAGE, RESERVAS, PERFIL, ROOMFORM, HABITACIONES} from "../../routes/routes";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
@@ -39,9 +39,13 @@ const Navbar = (props) => {
                           <Link to={RESERVAS}>
                               <input className={styles.__navbar_button} type="button" value="Reservas" />
                           </Link>
-                          <Link to={ROOMFORM}>
-                              <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
-                          </Link>
+                          {state.user.role === 'HOST' ?
+                              <Link to={ROOMFORM}>
+                                  <input className={styles.__navbar_button} type="button" value="Publica tu habitación" />
+                              </Link>
+                              :
+                              <div></div>
+                          }
                       </>
                   }
                 </div>
