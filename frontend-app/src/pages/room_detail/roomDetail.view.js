@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import {AuthContext} from "../../contexts/authentication/authentication.context";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/authentication/authentication.context";
 import styles from './roomDetail.module.css';
 import 'antd/dist/antd.css';
 import { DatePicker, Space } from 'antd';
+import { AiOutlineCheck } from "react-icons/ai";
+import swal from "sweetalert";
+import { REGISTERPAGE } from "../../routes/routes";
 import Footer from "../../components/footer/footer.view";
+import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
-import { AiOutlineCheck } from "react-icons/ai";
-import Comentarios from "../../components/comentarios/comentarios.view";
-import swal from "sweetalert";
 
 const RoomDetail = () => {
 
@@ -149,21 +151,28 @@ const RoomDetail = () => {
 
                     </div>
 
-                    {state.user.role === 'GUEST' ?
+                    {state.isAuthenticated && state.user.role === 'HOST' ?
+                        <div></div>
+                        :
                         <div className={styles.__calendario}>
                             <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
                             <div className={styles.__fechasContenedor}>
-                                <Space direction="vertical" size={5}>
-                                    <RangePicker placeholder={['Llegada', 'Salida']}
-                                                 onChange={handleInputChange}
+                            <Space direction="vertical" size={5}>
+                            <RangePicker placeholder={['Llegada', 'Salida']}
+                            onChange={handleInputChange}
 
-                                    />
-                                </Space>
+                            />
+                            </Space>
                             </div>
-                            <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
+                            {state.isAuthenticated ?
+                                <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
+                            :
+                                <Link to={REGISTERPAGE}>
+                                    <div className={styles.__botonReservar}>Reservar</div>
+                                </Link>
+                            }
+
                         </div>
-                        :
-                        <div></div>
                     }
 
                 </div>
