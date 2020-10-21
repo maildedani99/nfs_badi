@@ -10,6 +10,9 @@ import comentariosImg from '../../components/comentarios/assets/comentariosImg.p
 import { AiOutlineCheck } from "react-icons/ai";
 import Comentarios from "../../components/comentarios/comentarios.view";
 
+import ReactFancyBox from 'react-fancybox'
+import 'react-fancybox/lib/fancybox.css'
+
 const RoomDetail = () => {
 
     const {id} = useParams();
@@ -45,8 +48,49 @@ const RoomDetail = () => {
         <div>
             <div className={styles.__container}>
                 <div className={styles.__galeria}>
-                    <img className={styles.__foto} src={'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6'} alt="Room's images"/>
+                    <Rd frt 
+                        thumbnail="https://loremflickr.com/320/240"
+                        image="https://www.w3schools.com/howto/img_forest.jpg"/>
+                    <ReactFancyBox
+                        thumbnail="https://loremflickr.com/320/240"
+                        image="https://www.w3schools.com/howto/img_forest.jpg"/>
                 </div>
+
+                {room &&
+                <div className={styles.__galeria}>
+
+                    <div className={styles.__imageGallery}>
+                        <div className={styles.__leftPanel}>
+                            {room.images && room.images.map((image,i) => {
+                                    if(i==0){
+                                        return (
+                                            <a id="single_image" href={image.image_url}><img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/></a>
+                                            /*<img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>*/
+                                        );
+                                    }
+                                }
+                            )}
+                        </div>
+                        <div className={styles.__rightPanel}>
+
+                            <div className={styles.__container23}>
+                                {room.images && room.images.map((image,i) => {
+                                        if(i>=0){
+                                            return (
+                                                <div className={styles.__child_item}>
+                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url} alt='Room in Barcelona'/>
+                                                </div>
+                                            );
+                                        }
+                                    }
+                                )}
+                            </div>
+                        </div>
+                        <div className={styles.__overlay}>Ver todas las fotos</div>
+                    </div>
+                </div>
+
+                }
 
                 {room &&
 
