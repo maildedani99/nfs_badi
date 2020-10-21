@@ -48,7 +48,7 @@ const RoomDetail = () => {
         <div>
             <div className={styles.__container}>
                 <div className={styles.__galeria}>
-                    <Rd frt 
+                    <ReactFancyBox
                         thumbnail="https://loremflickr.com/320/240"
                         image="https://www.w3schools.com/howto/img_forest.jpg"/>
                     <ReactFancyBox
@@ -64,8 +64,7 @@ const RoomDetail = () => {
                             {room.images && room.images.map((image,i) => {
                                     if(i==0){
                                         return (
-                                            <a id="single_image" href={image.image_url}><img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/></a>
-                                            /*<img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>*/
+                                            <img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>
                                         );
                                     }
                                 }
