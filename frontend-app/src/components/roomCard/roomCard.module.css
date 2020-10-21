@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap');
+
+.__contenedorRoomCard {
+    width: 328px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.__contenedorRoomCard:hover{
+    cursor: pointer;
+}
+
+.__galeria {
+    width: 328px;
+    height: 183px;
+    border-radius: 2px;
+}
+
+.__nombre {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 12px;
+    color: black;
+}
+.__companions {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 12px;
+    float:right;
+    color: gray;
+}
+.__titulo {
+    margin-top: 6px;
+    margin-left: 4px;
+    font-weight: bold;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 24px;
+    color: #1F2041;
+}
+
+.__precio {
+    margin-top: 6px;
+    margin-left: 5px;
+    font-size: 14px;
+    color: black;
+}

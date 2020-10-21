@@ -1,0 +1,77 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.__login_container{
+    display: flex;
+    flex-direction: row;
+    width:  100vw;
+    justify-content: center;
+}
+.__login_div{
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 3rem;
+    width: 35%;
+    border: 3px solid #DDDDDD;
+    border-radius: 0.5rem;
+    padding: 1.2rem;
+
+}
+.__login_form_div{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+.__login_input{
+    padding-left: 1rem;
+    color: #757575;
+    border: 3px solid #DDDDDD;
+    border-radius: 0.3rem;
+    line-height: 3rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    height: 60px;
+}
+.__login_input:focus{
+    outline-color: #5DDEFA;
+    border-color: #5DDEFA;
+}
+.__login_input_button{
+    color: #757575;
+    border: 3px solid #DDDDDD;
+    border-radius: 0.3rem;
+    line-height: 3rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    height: 60px;
+}
+
+.__check_input{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 5px;
+    font-size:20px ;
+
+}
+
+
+.__check_input_option{
+    width: 100%;
+    text-align: center;
+    padding-left: 1rem;
+    color: #757575;
+    border: 3px solid #DDDDDD;
+    border-radius: 0.3rem;
+    line-height: 3rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    height: 60px;
+
+
+
+}
