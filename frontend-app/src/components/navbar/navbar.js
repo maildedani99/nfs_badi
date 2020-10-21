@@ -3,8 +3,9 @@ import {Link, useHistory} from 'react-router-dom';
 import logo from './logo.png';
 import avatar_navbar from './avatar_navbar.png';
 import styles from './nabvar.module.css';
-import {LANDING, LOGINPAGE, REGISTERPAGE, RESERVAS, PERFIL, ROOMFORM} from "../../routes/routes";
+import {LANDING, LOGINPAGE, REGISTERPAGE, RESERVAS, PERFIL, ROOMFORM, HABITACIONES} from "../../routes/routes";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
+import RoomsPage from "../../pages/rooms/rooms.view";
 
 const Navbar = (props) => {
 
@@ -15,6 +16,7 @@ const Navbar = (props) => {
   const logoutALanding = () => {
       logout();
   }
+
 
   return (
       <nav className={styles.__navbar}>
