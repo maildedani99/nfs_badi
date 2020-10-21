@@ -80,7 +80,7 @@ const RegisterForm = () => {
                <div className={styles.__login_div}>
                    <h3>Registrate</h3>
                    <br></br>
-                   <h6>¿Aún no tienes una cuenta? Registrate</h6>
+                   <h6>Comienza a ser parte de Roomi ahora!</h6>
                    <div className={styles.__login_form_div}>
 
                        <input className={styles.__login_input} name="first_name" type={'text'} placeholder="Nombre " onChange={handleInputChange}></input>

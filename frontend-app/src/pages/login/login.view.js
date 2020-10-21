@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import  { Link, useHistory } from 'react-router-dom';
 import styles from './login.module.css';
-import {LANDING, POLITICA, TERMINOS} from "../../routes/routes";
+import {LANDING, POLITICA, REGISTERPAGE, TERMINOS} from "../../routes/routes";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
 
 const LoginPage = () => {
@@ -44,7 +44,6 @@ const LoginPage = () => {
             })
             .then(payload => {
                     login(payload);
-                    console.log("login ok");
                     history.replace(LANDING);
                 }
             )
@@ -57,7 +56,8 @@ const LoginPage = () => {
                 <div className={styles.__login_div}>
                     <h3>Inicia sesión</h3>
                     <br/>
-                    <h6>¿Aún no tienes una cuenta? Registrarme</h6>
+                    <h6>¿Aún no tienes una cuenta?</h6>
+                    <Link to={REGISTERPAGE}>Registrate aquí.</Link>
                     <div className={styles.__login_form_div}>
                         <input className={styles.__login_input} name="email" type="text" placeholder="E-mail" onChange={handleInputChange}/>
                         <input className={styles.__login_input} name="password" type="password" placeholder="Contraseña" onChange={handleInputChange}/>
