@@ -19,10 +19,18 @@ class RoomController extends Controller
     public function all()
     {
         Log::info('Retrieving all rooms');
-        //return response()->json(Room::all());
         return response()->json(Room::with('images','features','user')->get());
 
     }
+
+    public function search($params)
+    {
+        Log::info('Retrieving all rooms');
+        return response()->json(Room::with('images','features','user')
+            ->where('description', 'LIKE', $params)
+            ->get());
+    }
+
 
     public function allRecommended()
     {

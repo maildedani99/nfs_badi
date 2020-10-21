@@ -2,27 +2,23 @@ import React, { useRef, useState, useContext } from 'react';
 import * as request from 'superagent';
 import { cloudName, uploadPreset } from './cloudinary';
 import styles from './uploadphoto.module.css';
-// import fileicon from './fileicon.png';
+import { AiOutlinePlus } from "react-icons/ai";
 import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
 
 const UploadPhoto = (props) => {
 
-    //const [titleEl, setTitleEl] = useState('');
     const [photoUrl, setPhotoUrl] = useState(null);
     const fileInputEl = useRef(null);
     const { uploadPhotoArray, setUploadPhotoArray } = useContext(UploadPhotoContext)
 
     const onPhotoUploaded = (photoIdIn, fileName, response) => {
-        console.log(photoIdIn, fileName, response);
         setPhotoUrl(response.body.secure_url);
         setUploadPhotoArray([...uploadPhotoArray, response.body.secure_url] )
-        console.log(uploadPhotoArray)
     };
 
     const onPhotoSelected = (files) => {
         const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-        //const title = titleEl;
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const file of files) {
             setPhotoUrl(photoUrl + 1);
             const fileName = file.name;
@@ -32,12 +28,9 @@ const UploadPhoto = (props) => {
                 .field('upload_preset', uploadPreset)
                 .field('file', file)
                 .field('multiple', false)
-                //.field('tags', title ? `myphotoalbum,${title}` : 'myphotoalbum')
-                //.field('context', title ? `photo=${title}` : '')
                 .on('progress', (progress) => console.debug(photoUrl, file.name, progress))
                 .end((error, response) => {
                     onPhotoUploaded(photoUrl, fileName, response);
-                    console.log(response);
                 });
         }
     };
@@ -56,8 +49,10 @@ const UploadPhoto = (props) => {
 
                         <div className={styles.__div_foto}>
                             <label className={styles.__label_foto} >
-                                <img className={styles.__fileicon} src={'fileicon'} alt="icono" />
-                                <p>upload</p>
+                                <div className={styles.__contenedorAiPlus}>
+                                    <AiOutlinePlus fill={'grey'} size={22}/>
+                                </div>
+                                <p className={styles.__upload}>Upload</p>
                                 <input
                                     className={styles.__input}
                                     name={props.name}

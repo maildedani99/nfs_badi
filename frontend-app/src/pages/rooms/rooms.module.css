@@ -11,6 +11,11 @@
     padding-top: 5px;
 }
 
+.__spinner {
+    width: 50px;
+    margin: 250px auto;
+}
+
 .__contenedorMapContainer {
     width: 46%;
     height: 560px;

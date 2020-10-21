@@ -26,6 +26,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command('startreserve:cron')->dailyAt('00:00');
+        $schedule->command('finishreserve:cron')->dailyAt('00:00');
+
     }
 
     /**

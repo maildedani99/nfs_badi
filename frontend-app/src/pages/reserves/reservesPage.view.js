@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import styles from './reservasHost.module.css';
-import ListSolicitudesDeReservas from "../../components/listSolicitudesDeReservas/listSolicitudesDeReservas.view";
+import styles from './reservesPage.module.css';
 import {AuthContext} from "../../contexts/authentication/authentication.context";
-import ListReservesSolved from "../../components/listReservesSolved/listReservesSolved.view";
+import { Spin } from 'antd';
+import ListSolicitudesDeReservas from "../../components/reserves/listSolicitudesDeReservas/listSolicitudesDeReservas.view";
+import ListReservesSolved from "../../components/reserves/listReservesSolved/listReservesSolved.view";
 
-const ReservasHost = () => {
+const ReservesPage = () => {
 
     const { state } = React.useContext(AuthContext);
-    const [solicitudes, setSolicitudes] = useState('');
-    const [concretadas, setConcretadas] = useState('');
+    const [solicitudes, setSolicitudes] = useState(null);
+    const [concretadas, setConcretadas] = useState(null);
+
+    const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
         const url = 'http://localhost/api/reserves/solicitudes/' + state.user.id;
@@ -30,7 +33,7 @@ const ReservasHost = () => {
                 }
             )
             .catch(error => console.log(error));
-    }, []);
+    }, [refresh]);
 
     useEffect(() => {
         const url = 'http://localhost/api/reserves/closed/' + state.user.id;
@@ -52,25 +55,39 @@ const ReservasHost = () => {
                 }
             )
             .catch(error => console.log(error));
-    }, []);
+    }, [refresh]);
 
     return (
         <div className={styles.__contenedor}>
+
             <div>
                 <div className={styles.__div__titulo}>
                     <span className={styles.__titulo}>Mis solicitudes de reservas</span>
                 </div>
-                <ListSolicitudesDeReservas reserves={solicitudes}/>
+                {solicitudes === null ?
+                    <div className={styles.__spinner}>
+                        <Spin />
+                    </div>
+                    :
+                    <ListSolicitudesDeReservas reserves={solicitudes} refreshList={() => {setRefresh(!refresh)}}/>
+                }
             </div>
 
             <div className={styles.__reservasSolved}>
                 <div className={styles.__div__titulo}>
                     <span className={styles.__titulo}> Mis reservas</span>
                 </div>
-                <ListReservesSolved reservesSolved={concretadas}/>
+                {concretadas === null ?
+                    <div className={styles.__spinner}>
+                        <Spin />
+                    </div>
+                    :
+                    <ListReservesSolved reservesSolved={concretadas} refreshList={() => {setRefresh(!refresh)}}/>
+                }
             </div>
+
         </div>
     );
 };
 
-export default ReservasHost;
+export default ReservesPage;

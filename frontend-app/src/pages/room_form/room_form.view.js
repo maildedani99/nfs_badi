@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './room_form.module.css';
-import room_img from './room_img.png';
+import room_img from './assets/room_img.png';
 import UploadPhoto from '../../components/uploadphoto/uploadphotos';
-import { UploadPhotoContext, UploadPhotoProvider } from '../../contexts/uploadphoto_context';
-
+import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
+import {AuthContext} from "../../contexts/authentication/authentication.context";
+import {LANDING} from "../../routes/routes";
 
 const RoomForm = () => {
 
+    const { state } = React.useContext(AuthContext);
+    const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user'));
     const [features, setFeatures] = useState([]);
     const [next, setNext] = useState(true);
@@ -14,6 +18,10 @@ const RoomForm = () => {
 
     const nextClick = () => {
         setNext(!next)
+    }
+
+    if(state.user.role === 'GUEST') {
+        history.replace(LANDING);
     }
 
     const checkboxFetch = () => {
@@ -42,7 +50,6 @@ const RoomForm = () => {
             ...data,
             [event.target.name]: event.target.value
         })
-        console.log(data);
     }
 
     const [checkedList, setCheckList] = useState({});
@@ -55,7 +62,6 @@ const RoomForm = () => {
         })
     }
 
-
     const selectTrue = () => {
         for (const property in checkedList) {
             if (checkedList[property] === true) {
@@ -66,13 +72,12 @@ const RoomForm = () => {
             ...data,
             features: checkedListArray,
         })
-        console.log("prueba array" + checkedListArray)
     }
 
     const submitForm = () => {
         setNext(false);
         selectTrue();
-        console.log(uploadPhotoArray)
+
         const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
@@ -154,7 +159,7 @@ const RoomForm = () => {
                     <h4 className={styles.__from_subtitle}>Descripción</h4>
                     <div>
                         <div className={styles.__form_div}>
-                            <textarea className={styles.__textarea} name="description" onInput={handleInputChange} />
+                            <textarea className={styles.__textarea} name="description" placeholder="Describe tu habitación con mucho detalle!"  onInput={handleInputChange} />
 
                         </div>
                         <h4 className={styles.__from_subtitle}>Fotografías</h4>
@@ -169,6 +174,7 @@ const RoomForm = () => {
                     </div>
 
                     <div className={styles.__div_button}>
+                        <input className={styles.__button_crear} type="button" onClick={nextClick} name="button" value="<<" />
                         <input className={styles.__button_crear} type="submit" onClick={submitForm} name="button" value="Crear anuncio" />
                     </div>
                 </div>
@@ -176,14 +182,11 @@ const RoomForm = () => {
             }
 
             <div className={styles.__div_img}>
-                <img src={room_img} alt="image" />
+                <img className={styles.__img} src={room_img} alt="image" />
             </div>
 
         </div>
     )
-
-
-    /* <input className={styles.__button_crear} type="submit" onClick={submitForm} name="button" value="Crear anuncio" /> */
-
 }
+
 export default RoomForm;

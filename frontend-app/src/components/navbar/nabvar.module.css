@@ -20,7 +20,7 @@
 .__navbar_search_div{
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 600px;
 }
 
 .__navbar_search{
@@ -44,9 +44,9 @@
 
 .__navbar_button_div{
     text-align: center;
-    margin: auto;
+    margin: auto 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
 }
 
 .__navbar_link_div{
@@ -115,10 +115,11 @@
 }
 
 .__navbar_grouplinks_div{
-    float: right;
+    width: 100%;
     display: flex;
-    position: relative;
     flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 25px;
 }
 
 .__avatar {

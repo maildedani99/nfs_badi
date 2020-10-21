@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import styles from './rooms.module.css';
 import ListRoom from "../../components/listRoom/listRoom.view";
 import MapContainer from "../../components/roomsMap/roomsMap.view";
+import {Spin} from "antd";
 
 const RoomsPage = () => {
 
-    const [rooms, setRooms] = useState('');
+    const [rooms, setRooms] = useState(null);
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/';
+        const url = 'http://localhost/api/rooms';
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -33,7 +34,12 @@ const RoomsPage = () => {
     return (
         <div className={styles.__contenedor}>
             <div className={styles.__contenedorListRoom}>
-                <ListRoom rooms={rooms}/>
+                {rooms === null ?
+                    <div className={styles.__spinner}>
+                        <Spin size={'large'}/>
+                    </div>
+                    :
+                    <ListRoom rooms={rooms}/> }
             </div>
             <div className={styles.__contenedorMapContainer}>
                 <MapContainer rooms={rooms}/>

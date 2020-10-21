@@ -26,6 +26,8 @@ const PerfilUser = () => {
                 <span className={styles.__contenido}>{state.user.email}</span>
                 <span className={styles.__titulo}>Bio</span>
                 <span className={styles.__contenido}>{state.user.bio || 'hola que tal'}</span>
+                <span className={styles.__titulo}>Role</span>
+                <span className={styles.__contenido}>{state.user.role}</span>
             </div>
         </div>
     );

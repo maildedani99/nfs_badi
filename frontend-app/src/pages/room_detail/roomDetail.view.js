@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/authentication/authentication.context";
 import styles from './roomDetail.module.css';
 import 'antd/dist/antd.css';
 import { DatePicker, Space } from 'antd';
+import { AiOutlineCheck } from "react-icons/ai";
+import swal from "sweetalert";
+import { REGISTERPAGE } from "../../routes/routes";
 import Footer from "../../components/footer/footer.view";
+import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
-import comentariosImg from '../../components/comentarios/assets/comentariosImg.png'
-import { AiOutlineCheck } from "react-icons/ai";
-import Comentarios from "../../components/comentarios/comentarios.view";
 
 import ReactFancyBox from 'react-fancybox'
 import 'react-fancybox/lib/fancybox.css'
@@ -17,8 +20,17 @@ const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState(null);
-
+    const { state } = React.useContext(AuthContext);
     const { RangePicker } = DatePicker;
+    const [arrival, setArrival] = useState('');
+    const [departure, setDeparture] = useState('');
+
+    const handleInputChange = (value, dateString) => {
+        setArrival(dateString[0])
+        setDeparture(dateString[1])
+        console.log(dateString);
+    }
+
 
     useEffect(() => {
         const url = 'http://localhost/api/rooms/'+ id;
@@ -42,6 +54,48 @@ const RoomDetail = () => {
             .catch(error => console.log(error));
     }, []);
 
+
+    const reservaPendiente = () =>  {
+        swal({
+            title:'Reserva efectuada correctamente',
+            text: 'Pendiente Respuesta del Host',
+            icon: 'success',
+            button: 'Close'
+        });
+    };
+
+    const confirmarReserva = () => {
+
+        const url = 'http://localhost/api/reserves/';
+        const body = {
+            room_id: room.id,
+            host_id: room.user.id,
+            guest_id: state.user.id,
+            arrival: arrival,
+            departure: departure,
+            price:room.price
+        };
+
+        const options = {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                    }),
+                mode: 'cors',
+                body: JSON.stringify(body),
+                };
+
+            fetch(url,options)
+                .then(response => {
+                    if (response.status === 201) {
+                        reservaPendiente();
+                        return response.json();
+                        }
+                        return Promise.reject(response.status);
+                    })
+                .then()
+                .catch(error => console.log(error));
+                }
 
 
     return (
@@ -136,15 +190,30 @@ const RoomDetail = () => {
 
                     </div>
 
-                    <div className={styles.__calendario}>
-                        <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
-                        <div className={styles.__fechasContenedor}>
+                    {state.isAuthenticated && state.user.role === 'HOST' ?
+                        <div></div>
+                        :
+                        <div className={styles.__calendario}>
+                            <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
+                            <div className={styles.__fechasContenedor}>
                             <Space direction="vertical" size={5}>
-                                <RangePicker placeholder={['Llegada', 'Salida']}/>
+                            <RangePicker placeholder={['Llegada', 'Salida']}
+                            onChange={handleInputChange}
+
+                            />
                             </Space>
+                            </div>
+                            {state.isAuthenticated ?
+                                <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
+                            :
+                                <Link to={REGISTERPAGE}>
+                                    <div className={styles.__botonReservar}>Reservar</div>
+                                </Link>
+                            }
+
                         </div>
-                        <div className={styles.__botonReservar}>Reservar</div>
-                    </div>
+                    }
+
                 </div>
                 }
 

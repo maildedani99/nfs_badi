@@ -19,6 +19,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Room');
     }
 
+    public function reserves()
+    {
+        return $this->hasMany('App\Reserve');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

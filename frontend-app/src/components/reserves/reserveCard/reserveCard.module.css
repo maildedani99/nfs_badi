@@ -81,11 +81,26 @@
     color: #696871;
 }
 
-.__botonAceptar {
+.__status {
+    width: 280px;
     margin: auto 0;
+    text-align: right;
+}
+
+.__div_botones {
+    width: 280px;
+    height: 50px;
+    margin: auto 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.__botonAceptar {
+    margin: auto;
     justify-content: center;
     width: 134px;
     height: 48px;
+    padding-top: 12px;
     background: #A37AFC;
     border-radius: 10px;
     cursor: pointer;
@@ -101,9 +116,10 @@
 }
 
 .__botonRechazar {
-    margin: auto 0;
+    margin: auto;
     width: 134px;
     height: 48px;
+    padding-top: 12px;
     background: #FFFFFF;
     border-radius: 10px;
     cursor: pointer;

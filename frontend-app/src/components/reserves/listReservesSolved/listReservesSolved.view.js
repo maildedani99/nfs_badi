@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './listReservesSolved.module.css';
-import ReservesSolved from "../reservesSolvedCard/reservesSolvedCard.view";
+import ReserveCard from "../reserveCard/reserveCard.view";
 
-const ListReservesSolved = ({reservesSolved}) => {
+const ListReservesSolved = ({reservesSolved, refreshList}) => {
 
     return(
         <div className={styles.__contenedor}>
@@ -12,14 +12,15 @@ const ListReservesSolved = ({reservesSolved}) => {
                 <div>
                     {reservesSolved && reservesSolved.map(reserve => {
                             return (
-                                <ReservesSolved
+                                <ReserveCard
                                     room={reserve.room.name}
-                                    guest ='Marcos'
+                                    guest ={reserve.guest.first_name}
                                     fechaLlegada={reserve.arrival}
                                     fechaSalida={reserve.departure}
                                     precio={reserve.price}
                                     status={reserve.status}
                                     key={reserve.id}
+                                    refreshList={refreshList}
                                 />
                             );
                         }
