@@ -26,23 +26,47 @@ class ReserveController extends Controller
             'arrival' => $request->arrival,
             'departure' => $request->departure,
             'price' => $request->price,
-            'status' => 'en curso',
+            'status' => 'PENDIENTE',
         ]);
 
         $reserve->save();
         return response()->json("Created", 201);
     }
 
-    public function getSolicitudesByHostId($host_id)
+    public function getSolicitudesId($id)
     {
-        Log::info('Retrieving reserve with id: '.$host_id);
-        return response()->json(Reserve::where('host_id', $host_id)->where('status', 'en curso')->with('room')->get());
+        Log::info('Retrieving reserve with id: '.$id);
+        return response()->json(Reserve::where('host_id', $id)
+            ->where('status', 'PENDIENTE')
+            ->with('room', 'guest', 'host')
+            ->get());
     }
 
-    public function getReservesClosedByHostId($host_id)
+    public function getReservesClosedById($id)
     {
-        Log::info('Retrieving reserve with id: '.$host_id);
-        return response()->json(Reserve::where('host_id', $host_id)->where('status', '!=' ,'en curso')->with('room')->get());
+        Log::info('Retrieving reserve with id: '.$id);
+        return response()->json(Reserve::where('host_id', $id)
+            ->where('status', '!=' ,'PENDIENTE')
+            ->with('room', 'guest', 'host')
+            ->get());
+    }
+
+    public function getSolicitudesByGuestId($guest_id)
+    {
+        Log::info('Retrieving reserve with id: '.$guest_id);
+        return response()->json(Reserve::where('guest_id', $guest_id)
+            ->where('status', 'PENDIENTE')
+            ->with('room', 'host', 'guest')
+            ->get());
+    }
+
+    public function getReservesClosedByGuestId($guest_id)
+    {
+        Log::info('Retrieving reserve with id: '.$guest_id);
+        return response()->json(Reserve::where('guest_id', $guest_id)
+            ->where('status', '!=' ,'PENDIENTE')
+            ->with('room', 'host', 'guest')
+            ->get());
     }
 
     public function changeStatus (Request $request, $id)

@@ -6,31 +6,37 @@
 
 .__div_foto {
     margin: 1rem;
-    width: 10rem;
-    height: 10rem;
+    width: 128px;
+    height: 128px;
     color:#fff;
     border:1px  dotted  #7C7C7C;
 }
 
 .__div_foto > img {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .__label_foto {
-    margin-top: 2rem;
+    width: 128px;
+    height: 128px;
+    max-width: 128px;
     text-align: center;
-    vertical-align: middle;
-    width: 10rem;
-    height: 10rem;
     color: #7C7C7C;
     word-wrap: break-word;
+    cursor: pointer;
 }
 
-.__fileicon {
-    width: 4rem;
-    opacity: 70%;
+.__contenedorAiPlus {
+    margin: 40px auto auto 0;
+}
+
+.__upload {
+    margin-top: 7px;
 }
 
 .__input {
+    max-width: 128px;
     display: none;
 }

@@ -30,7 +30,7 @@ class UserController extends Controller
     public function getById($id)
     {
         Log::info('Retrieving user profile for user: '.$id);
-        return response()->json(User::findOrFail($id));
+        return response()->json(User::where('id', $id)->with('rooms')->get());
     }
 
     /**
