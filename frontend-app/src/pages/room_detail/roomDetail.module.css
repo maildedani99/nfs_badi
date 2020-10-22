@@ -10,6 +10,11 @@
     flex-direction: column;
 }
 
+.__spinner {
+    width: 50px;
+    margin: 250px auto;
+}
+
 .__galeria {
     height: 410px;
     text-align: center;

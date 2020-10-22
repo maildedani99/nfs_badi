@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication/authentication.context";
 import styles from './roomDetail.module.css';
 import 'antd/dist/antd.css';
-import { DatePicker, Space } from 'antd';
+import {DatePicker, Space, Spin} from 'antd';
 import { AiOutlineCheck } from "react-icons/ai";
 import swal from "sweetalert";
 import { REGISTERPAGE } from "../../routes/routes";
@@ -114,6 +114,14 @@ const RoomDetail = () => {
     return (
         <div>
             <div className={styles.__container}>
+
+                {room === null ?
+                    <div className={styles.__spinner}>
+                        <Spin size={'large'}/>
+                    </div>
+                    :
+                    <div></div>
+                }
 
                 {room && <SRLWrapper options={optionsSRLWrapper}>
 
