@@ -45,10 +45,12 @@ Route::post('users','UserController@create');
 |--------------------------------------------------------------------------
 */
 Route::get('rooms', 'RoomController@all');
+Route::get('rooms/search/{params}', 'RoomController@search');
 Route::get('rooms/recommended', 'RoomController@allRecommended');
 Route::get('rooms/{id}', 'RoomController@getById');
 Route::get('rooms/user/{userId}', 'RoomController@getByUser');
 Route::post('rooms', 'RoomController@create');
+
 
 
 /*
@@ -84,5 +86,10 @@ Route::post('features/add', 'FeatureController@addFeatureToRoom');
 |--------------------------------------------------------------------------
 */
 Route::get('reserves', 'ReserveController@all');
+Route::get('reserves/solicitudes/{id}', 'ReserveController@getSolicitudesId');
+Route::get('reserves/closed/{id}', 'ReserveController@getReservesClosedById');
 Route::post('reserves', 'ReserveController@create');
+Route::put('reserves/{id}', 'ReserveController@changeStatus');
+
+
 

@@ -26,11 +26,53 @@ class ReserveController extends Controller
             'arrival' => $request->arrival,
             'departure' => $request->departure,
             'price' => $request->price,
-            'status' => 'en curso',
+            'status' => 'PENDIENTE',
         ]);
 
         $reserve->save();
         return response()->json("Created", 201);
+    }
+
+    public function getSolicitudesId($id)
+    {
+        Log::info('Retrieving reserve with id: '.$id);
+        return response()->json(Reserve::where('host_id', $id)
+            ->where('status', 'PENDIENTE')
+            ->with('room', 'guest', 'host')
+            ->get());
+    }
+
+    public function getReservesClosedById($id)
+    {
+        Log::info('Retrieving reserve with id: '.$id);
+        return response()->json(Reserve::where('host_id', $id)
+            ->where('status', '!=' ,'PENDIENTE')
+            ->with('room', 'guest', 'host')
+            ->get());
+    }
+
+    public function getSolicitudesByGuestId($guest_id)
+    {
+        Log::info('Retrieving reserve with id: '.$guest_id);
+        return response()->json(Reserve::where('guest_id', $guest_id)
+            ->where('status', 'PENDIENTE')
+            ->with('room', 'host', 'guest')
+            ->get());
+    }
+
+    public function getReservesClosedByGuestId($guest_id)
+    {
+        Log::info('Retrieving reserve with id: '.$guest_id);
+        return response()->json(Reserve::where('guest_id', $guest_id)
+            ->where('status', '!=' ,'PENDIENTE')
+            ->with('room', 'host', 'guest')
+            ->get());
+    }
+
+    public function changeStatus (Request $request, $id)
+    {
+       Reserve::where('id', $id)->update(['status'=> $request->status]);
+       return response()->json('status cambiada');
     }
 
 }

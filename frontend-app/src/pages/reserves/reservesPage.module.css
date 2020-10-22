@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap');
+
+.__contenedor {
+    display: flex;
+    flex-direction: column;
+    padding-left: 75px;
+}
+
+.__div__titulo {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.__titulo {
+    margin-bottom: 33px;
+    font-family: Mulish, serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    color: #1F2041;
+}
+
+.__reservasSolved {
+    margin-bottom: 40px;
+}
+
+.__spinner {
+    margin: 40px 0 0 70px;
+}

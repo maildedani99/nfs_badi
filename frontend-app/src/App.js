@@ -24,7 +24,7 @@ import {
 import Terminos from "./pages/terminos/terminos";
 import Politica from "./pages/politica/politica";
 import RoomDetail from "./pages/room_detail/roomDetail.view";
-import Reservas from "./pages/reservas/reservas.view";
+import ReservesPage from "./pages/reserves/reservesPage.view";
 import PerfilUser from "./pages/perfilUser/perfilUser.view";
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
                 </UploadPhotoProvider>
               </PrivateRoute>
               <PrivateRoute exact path={RESERVAS}>
-                <Reservas />
+                <ReservesPage />
               </PrivateRoute>
               <Route exact path={HABITACIONES}>
                 <RoomsPage />

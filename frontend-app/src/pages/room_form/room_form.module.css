@@ -1,16 +1,13 @@
 
-
 .__room_container {
-    width: 95vw;
     display: flex;
-    padding: 1rem 2rem;
     flex-direction: row;
     margin: 2rem 2rem;
     justify-content: space-around;
 }
 .__form_container {
-    width: 50%;
     margin-top: 2rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -20,10 +17,21 @@
     display: flex;
     flex-direction: column;
 }
+
+.__textarea {
+    min-height: 98px;
+    padding: 5px;
+}
+
 .__div_img {
     width: 50%;
     padding: 1rem;
 }
+
+.__img {
+    width: 100%;
+}
+
 .__ubicacion_div {
     display: flex;
     flex-direction: row;
@@ -64,14 +72,23 @@
     margin-top: 1.5rem;
     opacity: 70%;
 }
+
+.__div_inputs_foto {
+    max-width: 580px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .__div_button {
+    width: 500px;
     display: flex;
     justify-content: center;
 }
 .__button_crear {
     height: 2.2rem;
     width: 30%;
-    margin-top: 2rem;
+    margin: 1rem;
 }
 
 
