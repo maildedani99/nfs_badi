@@ -27,9 +27,13 @@ import RoomDetail from "./pages/room_detail/roomDetail.view";
 import ReservasHost from "./pages/reservasHost/reservasHost.view";
 import PerfilUser from "./pages/perfilUser/perfilUser.view";
 
+// Import Simple React Lightbox
+import SimpleReactLightbox from "simple-react-lightbox";
+
 function App() {
 
     return (
+        <SimpleReactLightbox>
         <AuthContextProvider>
           <Router>
             <Navbar search="present" register="present" login="present" publicRoom="present"/>
@@ -69,6 +73,8 @@ function App() {
             </Switch>
           </Router>
         </AuthContextProvider>
+
+        </SimpleReactLightbox>
   );
 }
 

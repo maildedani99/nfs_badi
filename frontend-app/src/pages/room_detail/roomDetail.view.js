@@ -1,24 +1,41 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/authentication/authentication.context";
 import styles from './roomDetail.module.css';
 import 'antd/dist/antd.css';
 import { DatePicker, Space } from 'antd';
+import { AiOutlineCheck } from "react-icons/ai";
+import swal from "sweetalert";
+import { REGISTERPAGE } from "../../routes/routes";
 import Footer from "../../components/footer/footer.view";
+import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
-import comentariosImg from '../../components/comentarios/assets/comentariosImg.png'
-import { AiOutlineCheck } from "react-icons/ai";
-import Comentarios from "../../components/comentarios/comentarios.view";
 
 import ReactFancyBox from 'react-fancybox'
 import 'react-fancybox/lib/fancybox.css'
+import Lightbox from 'react-images'
+
+// Import SRLWrapper
+import { SRLWrapper } from "simple-react-lightbox";
+import { useLightbox } from 'simple-react-lightbox'
 
 const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState(null);
-
+    const { state } = React.useContext(AuthContext);
     const { RangePicker } = DatePicker;
+    const [arrival, setArrival] = useState('');
+    const [departure, setDeparture] = useState('');
+
+    const handleInputChange = (value, dateString) => {
+        setArrival(dateString[0])
+        setDeparture(dateString[1])
+        console.log(dateString);
+    }
+
 
     useEffect(() => {
         const url = 'http://localhost/api/rooms/'+ id;
@@ -43,29 +60,66 @@ const RoomDetail = () => {
     }, []);
 
 
+    const reservaPendiente = () =>  {
+        swal({
+            title:'Reserva efectuada correctamente',
+            text: 'Pendiente Respuesta del Host',
+            icon: 'success',
+            button: 'Close'
+        });
+    };
+
+    const confirmarReserva = () => {
+
+        const url = 'http://localhost/api/reserves/';
+        const body = {
+            room_id: room.id,
+            host_id: room.user.id,
+            guest_id: state.user.id,
+            arrival: arrival,
+            departure: departure,
+            price:room.price
+        };
+
+        const options = {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                    }),
+                mode: 'cors',
+                body: JSON.stringify(body),
+                };
+
+            fetch(url,options)
+                .then(response => {
+                    if (response.status === 201) {
+                        reservaPendiente();
+                        return response.json();
+                        }
+                        return Promise.reject(response.status);
+                    })
+                .then()
+                .catch(error => console.log(error));
+                }
+/*********************************************************************/
+    const { openLightbox } = useLightbox()
+
+/**********************************************************************/
 
     return (
         <div>
             <div className={styles.__container}>
-                <div className={styles.__galeria}>
-                    <Rd frt 
-                        thumbnail="https://loremflickr.com/320/240"
-                        image="https://www.w3schools.com/howto/img_forest.jpg"/>
-                    <ReactFancyBox
-                        thumbnail="https://loremflickr.com/320/240"
-                        image="https://www.w3schools.com/howto/img_forest.jpg"/>
-                </div>
 
                 {room &&
-                <div className={styles.__galeria}>
+                <SRLWrapper>
 
+                <div className={styles.__galeria}>
                     <div className={styles.__imageGallery}>
                         <div className={styles.__leftPanel}>
                             {room.images && room.images.map((image,i) => {
                                     if(i==0){
                                         return (
-                                            <a id="single_image" href={image.image_url}><img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/></a>
-                                            /*<img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>*/
+                                            <img key={image.id} className={styles.__galeria} src={image.image_url}/>
                                         );
                                     }
                                 }
@@ -73,23 +127,26 @@ const RoomDetail = () => {
                         </div>
                         <div className={styles.__rightPanel}>
 
-                            <div className={styles.__container23}>
+                            <div className={styles.__containerImages}>
                                 {room.images && room.images.map((image,i) => {
-                                        if(i>=0){
-                                            return (
-                                                <div className={styles.__child_item}>
-                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url} alt='Room in Barcelona'/>
-                                                </div>
-                                            );
-                                        }
+                                        return (
+                                            <a className={((i<=3) ? styles.__child_item : styles.__child_hidden)} href={image.image_url} data-attribute="SRL">
+                                                <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
+                                            </a>
+                                        );
                                     }
                                 )}
                             </div>
                         </div>
-                        <div className={styles.__overlay}>Ver todas las fotos</div>
+                        <div className={styles.__overlay}>
+                            <a onClick={() => openLightbox()}>
+                                Ver todas las fotos
+                            </a>
+                        </div>
                     </div>
                 </div>
 
+                </SRLWrapper>
                 }
 
                 {room &&
@@ -137,15 +194,30 @@ const RoomDetail = () => {
 
                     </div>
 
-                    <div className={styles.__calendario}>
-                        <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
-                        <div className={styles.__fechasContenedor}>
+                    {state.isAuthenticated && state.user.role === 'HOST' ?
+                        <div></div>
+                        :
+                        <div className={styles.__calendario}>
+                            <span className={styles.__tituloCalendario}>Añade las fechas para reservar la habitación</span>
+                            <div className={styles.__fechasContenedor}>
                             <Space direction="vertical" size={5}>
-                                <RangePicker placeholder={['Llegada', 'Salida']}/>
+                            <RangePicker placeholder={['Llegada', 'Salida']}
+                            onChange={handleInputChange}
+
+                            />
                             </Space>
+                            </div>
+                            {state.isAuthenticated ?
+                                <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
+                            :
+                                <Link to={REGISTERPAGE}>
+                                    <div className={styles.__botonReservar}>Reservar</div>
+                                </Link>
+                            }
+
                         </div>
-                        <div className={styles.__botonReservar}>Reservar</div>
-                    </div>
+                    }
+
                 </div>
                 }
 
