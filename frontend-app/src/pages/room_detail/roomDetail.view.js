@@ -15,6 +15,11 @@ import companionsImg from './assets/companionsImg.png';
 
 import ReactFancyBox from 'react-fancybox'
 import 'react-fancybox/lib/fancybox.css'
+import Lightbox from 'react-images'
+
+// Import SRLWrapper
+import { SRLWrapper } from "simple-react-lightbox";
+import { useLightbox } from 'simple-react-lightbox'
 
 const RoomDetail = () => {
 
@@ -96,29 +101,25 @@ const RoomDetail = () => {
                 .then()
                 .catch(error => console.log(error));
                 }
+/*********************************************************************/
+    const { openLightbox } = useLightbox()
 
+/**********************************************************************/
 
     return (
         <div>
             <div className={styles.__container}>
-                <div className={styles.__galeria}>
-                    <ReactFancyBox
-                        thumbnail="https://loremflickr.com/320/240"
-                        image="https://www.w3schools.com/howto/img_forest.jpg"/>
-                    <ReactFancyBox
-                        thumbnail="https://loremflickr.com/320/240"
-                        image="https://www.w3schools.com/howto/img_forest.jpg"/>
-                </div>
 
                 {room &&
-                <div className={styles.__galeria}>
+                <SRLWrapper>
 
+                <div className={styles.__galeria}>
                     <div className={styles.__imageGallery}>
                         <div className={styles.__leftPanel}>
                             {room.images && room.images.map((image,i) => {
                                     if(i==0){
                                         return (
-                                            <img key={image.id} className={styles.__galeria} src={image.image_url} alt='Room in Barcelona'/>
+                                            <img key={image.id} className={styles.__galeria} src={image.image_url}/>
                                         );
                                     }
                                 }
@@ -126,23 +127,26 @@ const RoomDetail = () => {
                         </div>
                         <div className={styles.__rightPanel}>
 
-                            <div className={styles.__container23}>
+                            <div className={styles.__containerImages}>
                                 {room.images && room.images.map((image,i) => {
-                                        if(i>=0){
-                                            return (
-                                                <div className={styles.__child_item}>
-                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url} alt='Room in Barcelona'/>
-                                                </div>
-                                            );
-                                        }
+                                        return (
+                                            <a className={((i<=3) ? styles.__child_item : styles.__child_hidden)} href={image.image_url} data-attribute="SRL">
+                                                <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
+                                            </a>
+                                        );
                                     }
                                 )}
                             </div>
                         </div>
-                        <div className={styles.__overlay}>Ver todas las fotos</div>
+                        <div className={styles.__overlay}>
+                            <a onClick={() => openLightbox()}>
+                                Ver todas las fotos
+                            </a>
+                        </div>
                     </div>
                 </div>
 
+                </SRLWrapper>
                 }
 
                 {room &&
