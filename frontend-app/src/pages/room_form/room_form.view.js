@@ -5,7 +5,9 @@ import room_img from './assets/room_img.png';
 import UploadPhoto from '../../components/uploadphoto/uploadphotos';
 import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
 import {AuthContext} from "../../contexts/authentication/authentication.context";
-import {LANDING} from "../../routes/routes";
+import { LANDING } from "../../routes/routes";
+import swal from 'sweetalert';
+
 
 const RoomForm = () => {
 
@@ -105,12 +107,14 @@ const RoomForm = () => {
             .then(response => {
                 if (response.status === 201) {
                     console.log(response.status);
-                    alert("Tu habitación: \n" + body.name + "\nse ha creado correctamente")
+                    swal(body.name, "Tu habitación ha sido creada con éxito", "success");
                     return response.json();
+                } else {
+                    swal("Error al crear habitación","Revisa tu formulario", "error");
+                    return Promise.reject(response.status);
                 }
-                return Promise.reject(response.status);
             })
-            .catch(error => console.log(error));
+            .catch(error =>console.log(error));
     };
 
     useEffect(() => {
