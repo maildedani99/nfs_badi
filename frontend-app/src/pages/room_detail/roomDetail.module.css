@@ -11,7 +11,6 @@
 }
 
 .__galeria {
-    width: 100%;
     height: 410px;
     text-align: center;
 }
@@ -160,11 +159,16 @@
     height: 410px;
     position: relative;
     margin-top: 50px;
+    cursor: pointer;
 }
 
-.__leftPanel{margin-right: 5px}
+.__leftPanel{
+    margin-right: 5px;
+}
 
-.__rightPanel{margin-left: 5px}
+.__rightPanel{
+    margin-left: 5px;
+}
 
 .__leftPanel, .__rightPanel {
     width: 50%;
@@ -172,7 +176,7 @@
 }
 
 .__child_hidden {
-display: none;
+    display: none;
 }
 .__child_item {
     width: 49%;
@@ -190,12 +194,15 @@ display: none;
 }
 .__containerImages {
     display: flex;
-    /*flex-direction: column;*/
     justify-content: space-between;
     flex-wrap:wrap;
 }
 
-.__fotoCover{flex:1;height:100%}
+.__fotoCover{
+    flex:1;
+    height:100%;
+    cursor: pointer;
+}
 
 .__overlay{
     position:absolute;

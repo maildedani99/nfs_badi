@@ -12,21 +12,17 @@ import Footer from "../../components/footer/footer.view";
 import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
-
-import ReactFancyBox from 'react-fancybox'
-import 'react-fancybox/lib/fancybox.css'
-import Lightbox from 'react-images'
-
-// Import SRLWrapper
-import { SRLWrapper } from "simple-react-lightbox";
-import { useLightbox } from 'simple-react-lightbox'
+import { SRLWrapper, useLightbox } from "simple-react-lightbox";
 
 const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState(null);
     const { state } = React.useContext(AuthContext);
+
     const { RangePicker } = DatePicker;
+    const { openLightbox } = useLightbox();
+
     const [arrival, setArrival] = useState('');
     const [departure, setDeparture] = useState('');
 
@@ -101,56 +97,60 @@ const RoomDetail = () => {
                 .then()
                 .catch(error => console.log(error));
                 }
-/*********************************************************************/
-    const { openLightbox } = useLightbox()
 
-/**********************************************************************/
+        const optionsSRLWrapper = {
+            buttons: {
+                showAutoplayButton: false,
+                showDownloadButton: false,
+                iconPadding: '5px'
+            },
+            translations: {
+                closeText: 'Cerrar',
+                nextText: 'Siguiente',
+                previousText: 'Anterior',
+            }
+        }
 
     return (
         <div>
             <div className={styles.__container}>
 
-                {room &&
-                <SRLWrapper>
+                {room && <SRLWrapper options={optionsSRLWrapper}>
 
-                <div className={styles.__galeria}>
-                    <div className={styles.__imageGallery}>
-                        <div className={styles.__leftPanel}>
-                            {room.images && room.images.map((image,i) => {
-                                    if(i==0){
-                                        return (
-                                            <img key={image.id} className={styles.__galeria} src={image.image_url}/>
-                                        );
-                                    }
-                                }
-                            )}
-                        </div>
-                        <div className={styles.__rightPanel}>
-
-                            <div className={styles.__containerImages}>
+                    <div className={styles.__galeria}>
+                        <div className={styles.__imageGallery}>
+                            <div className={styles.__leftPanel}>
                                 {room.images && room.images.map((image,i) => {
-                                        if(i!=0){
+                                        if(i==0){
                                             return (
-                                                /*<a className={((i<=3) ? styles.__child_item : styles.__child_hidden)} href={image.image_url} data-attribute="SRL">
-                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
-                                                </a>*/
-                                                <div className={((i<=3) ? styles.__child_item : styles.__child_hidden)}>
-                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
-                                                </div>
+                                                <img key={image.id} className={styles.__galeria} src={image.image_url}/>
                                             );
                                         }
                                     }
                                 )}
                             </div>
-                        </div>
-                        <div className={((room.images.length)!=0 ? styles.__overlay : styles.__child_hidden)}>
-                            <a onClick={() => openLightbox()}>
-                                Ver todas las fotos
-                            </a>
+                            <div className={styles.__rightPanel}>
+
+                                <div className={styles.__containerImages}>
+                                    {room.images && room.images.map((image,i) => {
+                                            if(i!=0){
+                                                return (
+                                                    <div className={((i<=4) ? styles.__child_item : styles.__child_hidden)}>
+                                                        <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
+                                                    </div>
+                                                );
+                                            }
+                                        }
+                                    )}
+                                </div>
+                            </div>
+                            <div className={((room.images.length) !== 0 ? styles.__overlay : styles.__child_hidden)}>
+                                <a onClick={() => openLightbox()}>
+                                    Ver todas las fotos
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
                 </SRLWrapper>
                 }
 
@@ -222,13 +222,13 @@ const RoomDetail = () => {
 
                         </div>
                     }
-
                 </div>
                 }
 
                 <div>
                     <MapContainerDetalle data={room}/>
                 </div>
+
             </div>
             <Footer/>
         </div>
