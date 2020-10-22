@@ -129,16 +129,21 @@ const RoomDetail = () => {
 
                             <div className={styles.__containerImages}>
                                 {room.images && room.images.map((image,i) => {
-                                        return (
-                                            <a className={((i<=3) ? styles.__child_item : styles.__child_hidden)} href={image.image_url} data-attribute="SRL">
-                                                <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
-                                            </a>
-                                        );
+                                        if(i!=0){
+                                            return (
+                                                /*<a className={((i<=3) ? styles.__child_item : styles.__child_hidden)} href={image.image_url} data-attribute="SRL">
+                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
+                                                </a>*/
+                                                <div className={((i<=3) ? styles.__child_item : styles.__child_hidden)}>
+                                                    <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
+                                                </div>
+                                            );
+                                        }
                                     }
                                 )}
                             </div>
                         </div>
-                        <div className={styles.__overlay}>
+                        <div className={((room.images.length)!=0 ? styles.__overlay : styles.__child_hidden)}>
                             <a onClick={() => openLightbox()}>
                                 Ver todas las fotos
                             </a>
