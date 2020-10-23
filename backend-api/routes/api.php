@@ -86,8 +86,12 @@ Route::post('features/add', 'FeatureController@addFeatureToRoom');
 |--------------------------------------------------------------------------
 */
 Route::get('reserves', 'ReserveController@all');
-Route::get('reserves/solicitudes/{id}', 'ReserveController@getSolicitudesId');
-Route::get('reserves/closed/{id}', 'ReserveController@getReservesClosedById');
+Route::get('reserves/solicitudes/{id}', 'ReserveController@getSolicitudesHostId');
+Route::get('reserves/closed/{id}', 'ReserveController@getReservesClosedHostById');
+
+Route::get('reserves/solicitudes/guest/{id}', 'ReserveController@getSolicitudesByGuestId');
+Route::get('reserves/closed/guest/{id}', 'ReserveController@getReservesClosedByGuestId');
+
 Route::post('reserves', 'ReserveController@create');
 Route::put('reserves/{id}', 'ReserveController@changeStatus');
 

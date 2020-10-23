@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './listSolicitudesDeReservas.module.css';
-import ReserveCard from "../reserveCard/reserveCard.view";
+import ReserveCard from "../../reserveCard/reserveCard.view";
 
 const ListSolicitudesDeReservas = ({reserves, refreshList}) => {
 
