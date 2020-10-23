@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 import {DatePicker, Space, Spin} from 'antd';
 import { AiOutlineCheck } from "react-icons/ai";
 import swal from "sweetalert";
-import { REGISTERPAGE } from "../../routes/routes";
+import {LOGINPAGE} from "../../routes/routes";
 import Footer from "../../components/footer/footer.view";
 import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
@@ -223,7 +223,7 @@ const RoomDetail = () => {
                             {state.isAuthenticated ?
                                 <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
                             :
-                                <Link to={REGISTERPAGE}>
+                                <Link to={LOGINPAGE}>
                                     <div className={styles.__botonReservar}>Reservar</div>
                                 </Link>
                             }
