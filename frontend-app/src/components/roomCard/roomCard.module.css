@@ -16,6 +16,7 @@
     width: 328px;
     height: 183px;
     border-radius: 2px;
+    object-fit: cover;
 }
 
 .__nombre {

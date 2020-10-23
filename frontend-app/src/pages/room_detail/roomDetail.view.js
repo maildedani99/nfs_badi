@@ -102,12 +102,16 @@ const RoomDetail = () => {
             buttons: {
                 showAutoplayButton: false,
                 showDownloadButton: false,
+                showThumbnailsButton: false,
                 iconPadding: '5px'
             },
             translations: {
                 closeText: 'Cerrar',
                 nextText: 'Siguiente',
                 previousText: 'Anterior',
+            },
+            thumbnails: {
+                showThumbnails: false
             }
         }
 
@@ -131,7 +135,7 @@ const RoomDetail = () => {
                                 {room.images && room.images.map((image,i) => {
                                         if(i==0){
                                             return (
-                                                <img key={image.id} className={styles.__galeria} src={image.image_url}/>
+                                                <img key={image.id} className={styles.__fotoMain} src={image.image_url}/>
                                             );
                                         }
                                     }
