@@ -18,6 +18,14 @@
 .__galeria {
     height: 410px;
     text-align: center;
+    object-fit: cover;
+}
+
+.__fotoMain {
+    height: 410px;
+    width: 550px;
+    text-align: center;
+    object-fit: cover;
 }
 
 .__foto {
@@ -169,6 +177,7 @@
 
 .__leftPanel{
     margin-right: 5px;
+    width: 410px;
 }
 
 .__rightPanel{
@@ -185,6 +194,7 @@
 }
 .__child_item {
     width: 49%;
+    object-fit: cover;
     text-align: center;
     justify-content:center;
     display:flex;
@@ -206,7 +216,9 @@
 .__fotoCover{
     flex:1;
     height:100%;
+    width: 100%;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .__overlay{
