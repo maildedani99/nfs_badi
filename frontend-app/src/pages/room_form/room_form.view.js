@@ -27,7 +27,7 @@ const RoomForm = () => {
     }
 
     const checkboxFetch = () => {
-        const url = 'https://roomi-nuclio.herokuapp.com/api/features';
+        const url = 'http://localhost/api/features';
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -80,7 +80,7 @@ const RoomForm = () => {
         setNext(false);
         selectTrue();
 
-        const url = 'https://roomi-nuclio.herokuapp.com/api/rooms';
+        const url = 'http://localhost/api/rooms';
         const body = {
             name: data.name,
             email: user.email,
