@@ -1,9 +1,9 @@
 CREATE TABLE reserves (
 
-id                bigint unsigned auto_increment,
-room_id           bigint unsigned not null,
-host_id           bigint unsigned not null,
-guest_id          bigint unsigned not null,
+id                SERIAL,
+room_id           integer not null,
+host_id           integer not null,
+guest_id          integer not null,
 arrival           timestamp    null,
 departure         timestamp    null,
 price             integer not null,
