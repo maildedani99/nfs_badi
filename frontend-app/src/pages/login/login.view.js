@@ -21,7 +21,7 @@ const LoginPage = () => {
     }
 
     const SubmitLogin = () => {
-        const url = 'http://localhost/api/auth/login';
+        const url = 'https://roomi-nuclio.herokuapp.com/api/auth/login';
         const body = {
             email: data.email,
             password: data.password,

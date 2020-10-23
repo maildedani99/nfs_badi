@@ -34,7 +34,7 @@ const RoomDetail = () => {
 
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/'+ id;
+        const url = 'https://roomi-nuclio.herokuapp.com/api/rooms/'+ id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -67,7 +67,7 @@ const RoomDetail = () => {
 
     const confirmarReserva = () => {
 
-        const url = 'http://localhost/api/reserves/';
+        const url = 'https://roomi-nuclio.herokuapp.com/api/reserves/';
         const body = {
             room_id: room.id,
             host_id: room.user.id,

@@ -7,7 +7,7 @@ const RecommendedRooms = () => {
     const [rooms, setRooms] = useState('');
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/recommended';
+        const url = 'https://roomi-nuclio.herokuapp.com/api/rooms/recommended';
         const options = {
             method: 'GET',
             headers: new Headers(),

@@ -18,7 +18,7 @@ const ReserveCard = ({room, guest, fechaLlegada, fechaSalida, precio, id, status
 
     const respuesta = (accion) => () => {
 
-        const url = 'http://localhost/api/reserves/' + id;
+        const url = 'https://roomi-nuclio.herokuapp.com/api/reserves/' + id;
         const body = {
             status: accion,
         };

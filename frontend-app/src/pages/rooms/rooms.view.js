@@ -9,7 +9,7 @@ const RoomsPage = () => {
     const [rooms, setRooms] = useState(null);
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms';
+        const url = 'https://roomi-nuclio.herokuapp.com/api/rooms';
         const options = {
             method: 'GET',
             headers: new Headers(),
