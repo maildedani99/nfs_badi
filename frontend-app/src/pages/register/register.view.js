@@ -36,6 +36,16 @@ const RegisterForm = () => {
              });
     };
 
+    const errorRegister = (error) =>  {
+        console.log(error);
+        swal({
+            title:'Registro Incorrecto',
+            text: 'Revise los campos. Formato del email. La contraseña tiene que tener un mínimo de 6',
+            icon: 'error',
+            button: 'Close'
+        });
+    };
+
 
     const SubmitForm = () => {
         const url = 'http://localhost/api/users';
@@ -70,7 +80,7 @@ const RegisterForm = () => {
 
 
             })
-            .catch(error => console.log(error));
+            .catch(error => errorRegister(error));
     };
 
             console.log(data);

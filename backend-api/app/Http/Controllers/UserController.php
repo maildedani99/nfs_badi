@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
+use Exception;
+use Illuminate\Support\Facades\Validator;
+
+
 class UserController extends Controller
 {
     /**
@@ -59,17 +63,37 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-
-        $user = User::create([
-            'first_name'=>$request->first_name,
-            'last_name'=>$request->last_name,
-            'username'=>$request->username,
-            'email'=>$request->email,
-            'password' => bcrypt($request['password']),
-            'role'=>$request->role,
+        $userValidator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required',
+            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users',
+            'role'=>'required',
         ]);
 
-        $user->save();
-        return response()->json('saved', 201);
+        if($userValidator->fails()) {
+            $errors = $userValidator->errors()->getMessages();
+            $code = Response::HTTP_NOT_ACCEPTABLE; // 406
+            return response()->json(['error' => $errors, 'code' => $code], $code);
+        }
+
+        try {
+            $user = User::create([
+                'first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'username'=>$request->username,
+                'email'=>$request->email,
+                'password' => bcrypt($request['password']),
+                'role'=>$request->role,
+            ]);
+
+            $user->save();
+            return response()->json('saved', 201);
+
+        } catch (Exception $e) {
+            $code = Response::HTTP_NOT_ACCEPTABLE;
+            return response()->json(['error' => 'Form errors', 'code' => $code], $code);
+        }
     }
 }
