@@ -8,7 +8,7 @@ const ListReservesGuest = ({reservesGuest, refreshList}) => {
     return(
         <div className={styles.__contenedor}>
             {reservesGuest.length === 0 ?
-                <span>No tienes ninguna reserva pendiente por el momento.</span>
+                <span>No tienes ninguna reserva por el momento.</span>
                 :
                 <div>
                     {reservesGuest && reservesGuest.map(reserve => {
