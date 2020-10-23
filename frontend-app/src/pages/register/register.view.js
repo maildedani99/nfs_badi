@@ -38,7 +38,7 @@ const RegisterForm = () => {
 
 
     const SubmitForm = () => {
-        const url = 'http://localhost/api/users';
+        const url = 'https://roomi-nuclio.herokuapp.com/api/users';
         const body = {
             first_name: data.first_name,
             last_name: data.last_name,

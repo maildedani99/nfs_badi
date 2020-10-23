@@ -38,7 +38,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/closed/' + state.user.id;
+        const url = 'https://roomi-nuclio.herokuapp.com/api/reserves/closed/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -60,7 +60,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/solicitudes/guest/' + state.user.id;
+        const url = 'https://roomi-nuclio.herokuapp.com/api/reserves/solicitudes/guest/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -82,7 +82,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/closed/guest/' + state.user.id;
+        const url = 'https://roomi-nuclio.herokuapp.com/api/reserves/closed/guest/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
