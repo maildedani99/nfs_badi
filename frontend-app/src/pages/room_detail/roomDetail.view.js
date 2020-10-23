@@ -4,21 +4,25 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication/authentication.context";
 import styles from './roomDetail.module.css';
 import 'antd/dist/antd.css';
-import { DatePicker, Space } from 'antd';
+import {DatePicker, Space, Spin} from 'antd';
 import { AiOutlineCheck } from "react-icons/ai";
 import swal from "sweetalert";
-import { REGISTERPAGE } from "../../routes/routes";
+import {LOGINPAGE} from "../../routes/routes";
 import Footer from "../../components/footer/footer.view";
 import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
 import companionsImg from './assets/companionsImg.png';
+import { SRLWrapper, useLightbox } from "simple-react-lightbox";
 
 const RoomDetail = () => {
 
     const {id} = useParams();
     const [room, setRoom] = useState(null);
     const { state } = React.useContext(AuthContext);
+
     const { RangePicker } = DatePicker;
+    const { openLightbox } = useLightbox();
+
     const [arrival, setArrival] = useState('');
     const [departure, setDeparture] = useState('');
 
@@ -94,17 +98,69 @@ const RoomDetail = () => {
                 .catch(error => console.log(error));
                 }
 
+        const optionsSRLWrapper = {
+            buttons: {
+                showAutoplayButton: false,
+                showDownloadButton: false,
+                iconPadding: '5px'
+            },
+            translations: {
+                closeText: 'Cerrar',
+                nextText: 'Siguiente',
+                previousText: 'Anterior',
+            }
+        }
 
     return (
         <div>
             <div className={styles.__container}>
-                <div className={styles.__galeria}>
-                    {room === null ?
-                        <img className={styles.__foto} src={'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6'} alt="Room's images"/>
+
+                {room === null ?
+                    <div className={styles.__spinner}>
+                        <Spin size={'large'}/>
+                    </div>
                     :
-                        <img className={styles.__foto} src={room.images[0].image_url} alt="Room's images"/>
-                    }
-                </div>
+                    <div></div>
+                }
+
+                {room && <SRLWrapper options={optionsSRLWrapper}>
+
+                    <div className={styles.__galeria}>
+                        <div className={styles.__imageGallery}>
+                            <div className={styles.__leftPanel}>
+                                {room.images && room.images.map((image,i) => {
+                                        if(i==0){
+                                            return (
+                                                <img key={image.id} className={styles.__galeria} src={image.image_url}/>
+                                            );
+                                        }
+                                    }
+                                )}
+                            </div>
+                            <div className={styles.__rightPanel}>
+
+                                <div className={styles.__containerImages}>
+                                    {room.images && room.images.map((image,i) => {
+                                            if(i!=0){
+                                                return (
+                                                    <div className={((i<=4) ? styles.__child_item : styles.__child_hidden)}>
+                                                        <img key={image.id} className={styles.__fotoCover} src={image.image_url}/>
+                                                    </div>
+                                                );
+                                            }
+                                        }
+                                    )}
+                                </div>
+                            </div>
+                            <div className={((room.images.length) !== 0 ? styles.__overlay : styles.__child_hidden)}>
+                                <a onClick={() => openLightbox()}>
+                                    Ver todas las fotos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </SRLWrapper>
+                }
 
                 {room &&
 
@@ -167,20 +223,20 @@ const RoomDetail = () => {
                             {state.isAuthenticated ?
                                 <div className={styles.__botonReservar} onClick={confirmarReserva}>Reservar</div>
                             :
-                                <Link to={REGISTERPAGE}>
+                                <Link to={LOGINPAGE}>
                                     <div className={styles.__botonReservar}>Reservar</div>
                                 </Link>
                             }
 
                         </div>
                     }
-
                 </div>
                 }
 
                 <div>
                     <MapContainerDetalle data={room}/>
                 </div>
+
             </div>
             <Footer/>
         </div>

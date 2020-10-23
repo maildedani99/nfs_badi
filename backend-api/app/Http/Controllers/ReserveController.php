@@ -33,19 +33,19 @@ class ReserveController extends Controller
         return response()->json("Created", 201);
     }
 
-    public function getSolicitudesId($id)
+    public function getSolicitudesHostId($host_id)
     {
-        Log::info('Retrieving reserve with id: '.$id);
-        return response()->json(Reserve::where('host_id', $id)
+        Log::info('Retrieving reserve with id: '.$host_id);
+        return response()->json(Reserve::where('host_id', $host_id)
             ->where('status', 'PENDIENTE')
             ->with('room', 'guest', 'host')
             ->get());
     }
 
-    public function getReservesClosedById($id)
+    public function getReservesClosedHostById($host_id)
     {
-        Log::info('Retrieving reserve with id: '.$id);
-        return response()->json(Reserve::where('host_id', $id)
+        Log::info('Retrieving reserve with id: '.$host_id);
+        return response()->json(Reserve::where('host_id', $host_id)
             ->where('status', '!=' ,'PENDIENTE')
             ->with('room', 'guest', 'host')
             ->get());
@@ -59,6 +59,7 @@ class ReserveController extends Controller
             ->with('room', 'host', 'guest')
             ->get());
     }
+
 
     public function getReservesClosedByGuestId($guest_id)
     {
