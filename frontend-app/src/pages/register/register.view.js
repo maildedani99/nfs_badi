@@ -15,6 +15,7 @@ const RegisterForm = () => {
         email: '',
         password: '',
         role: 'HOST',
+        gender: 'M',
     });
 
 
@@ -87,6 +88,13 @@ const RegisterForm = () => {
                        <input className={styles.__login_input} name="username" type={'text'}placeholder="Username "onChange={handleInputChange}></input>
                        <input className={styles.__login_input} name="email" type={'text'}placeholder="E-mail "onChange={handleInputChange}></input>
                        <input className={styles.__login_input} name="password" type={'password'}placeholder="Contraseña "onChange={handleInputChange}></input>
+
+                       <div className={styles.__check_input}>
+                           <select className={styles.__check_input_option} onChange={(event) => setData({...data,role:event.target.value})}>
+                               <option value={'M'} className={styles.__check_input_select} >Male</option>
+                               <option value={'F'} className={styles.__check_input_select} >Female</option>
+                           </select>
+                       </div>
 
                        <div className={styles.__check_input}>
                            <select className={styles.__check_input_option} onChange={(event) => setData({...data,role:event.target.value})}>
