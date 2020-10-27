@@ -9,3 +9,7 @@ export const ROOMDETAIL = '/roomdetail/:id';
 export const ROOMDETAILBYID = '/roomdetail/';
 export const RESERVAS = '/reservas';
 export const PERFIL = '/perfil/';
+
+export const CONECTION_API = HEROKUAPI;
+export const HEROKUAPI = 'https://roomi-nuclio.herokuapp.com/api/';
+export const LOCALHOSTAPI = 'http://localhost/api/';

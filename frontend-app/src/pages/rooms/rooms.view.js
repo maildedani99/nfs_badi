@@ -3,13 +3,14 @@ import styles from './rooms.module.css';
 import ListRoom from "../../components/listRoom/listRoom.view";
 import MapContainer from "../../components/roomsMap/roomsMap.view";
 import {Spin} from "antd";
+import {CONECTION_API} from "../../routes/routes";
 
 const RoomsPage = () => {
 
     const [rooms, setRooms] = useState(null);
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms';
+        const url = CONECTION_API + 'rooms';
         const options = {
             method: 'GET',
             headers: new Headers(),

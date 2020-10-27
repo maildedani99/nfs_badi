@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styles from './register.module.css';
 import { Link, useHistory } from 'react-router-dom';
-import {LOGINPAGE} from "../../routes/routes";
+import {CONECTION_API, LOGINPAGE} from "../../routes/routes";
 import swal from "sweetalert";
-
 
 const RegisterForm = () => {
 
@@ -38,7 +37,7 @@ const RegisterForm = () => {
 
 
     const SubmitForm = () => {
-        const url = 'http://localhost/api/users';
+        const url = CONECTION_API + 'users';
         const body = {
             first_name: data.first_name,
             last_name: data.last_name,

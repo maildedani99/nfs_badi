@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import  { Link, useHistory } from 'react-router-dom';
 import styles from './login.module.css';
-import {LANDING, POLITICA, REGISTERPAGE, TERMINOS} from "../../routes/routes";
+import {CONECTION_API, LANDING, POLITICA, REGISTERPAGE, TERMINOS} from "../../routes/routes";
 import {AuthContext} from "../../contexts/authentication/authentication.context";
 
 const LoginPage = () => {
@@ -21,7 +21,7 @@ const LoginPage = () => {
     }
 
     const SubmitLogin = () => {
-        const url = 'http://localhost/api/auth/login';
+        const url = CONECTION_API + 'auth/login';
         const body = {
             email: data.email,
             password: data.password,

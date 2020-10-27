@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import styles from './recommendedRooms.module.css';
 import RoomCard from "../roomCard/roomCard.view";
+import {CONECTION_API} from "../../routes/routes";
 
 const RecommendedRooms = () => {
 
     const [rooms, setRooms] = useState('');
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/recommended';
+        const url = CONECTION_API + 'rooms/recommended';
         const options = {
             method: 'GET',
             headers: new Headers(),

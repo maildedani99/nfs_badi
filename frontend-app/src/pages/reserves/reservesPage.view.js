@@ -4,6 +4,7 @@ import {AuthContext} from "../../contexts/authentication/authentication.context"
 import { Spin } from 'antd';
 import ListSolicitudesDeReservas from "../../components/reserves/reservesHost/listSolicitudesDeReservas/listSolicitudesDeReservas.view";
 import ListReservesGuest from "../../components/reserves/reservesGuest/listSolicitudesGuest/listReservesGuest.view";
+import {CONECTION_API} from "../../routes/routes";
 
 const ReservesPage = () => {
 
@@ -16,7 +17,7 @@ const ReservesPage = () => {
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/solicitudes/' + state.user.id;
+        const url = CONECTION_API + 'reserves/solicitudes/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -38,7 +39,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/closed/' + state.user.id;
+        const url = CONECTION_API + 'reserves/closed/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -60,7 +61,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/solicitudes/guest/' + state.user.id;
+        const url = CONECTION_API + 'reserves/solicitudes/guest/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -82,7 +83,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = 'http://localhost/api/reserves/closed/guest/' + state.user.id;
+        const url = CONECTION_API + 'reserves/closed/guest/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),

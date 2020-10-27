@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 import {DatePicker, Space, Spin} from 'antd';
 import { AiOutlineCheck } from "react-icons/ai";
 import swal from "sweetalert";
-import {LOGINPAGE} from "../../routes/routes";
+import {CONECTION_API, LOGINPAGE} from "../../routes/routes";
 import Footer from "../../components/footer/footer.view";
 import Comentarios from "../../components/comentarios/comentarios.view";
 import MapContainerDetalle from "../../components/roomDetailMap/roomDetailMap.view";
@@ -34,7 +34,7 @@ const RoomDetail = () => {
 
 
     useEffect(() => {
-        const url = 'http://localhost/api/rooms/'+ id;
+        const url = CONECTION_API + 'rooms/'+ id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -67,7 +67,7 @@ const RoomDetail = () => {
 
     const confirmarReserva = () => {
 
-        const url = 'http://localhost/api/reserves/';
+        const url = CONECTION_API + 'reserves/';
         const body = {
             room_id: room.id,
             host_id: room.user.id,
