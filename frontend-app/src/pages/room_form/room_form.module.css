@@ -70,7 +70,7 @@
 }
 .__from_subtitle {
     margin-top: 1.5rem;
-    opacity: 70%;
+    opacity: 0.7;
 }
 
 .__div_inputs_foto {
@@ -108,5 +108,5 @@
 
 .__room_label {
     margin-left: 0.5rem;
-    opacity: 70%;
+    opacity: 0.7;
 }
