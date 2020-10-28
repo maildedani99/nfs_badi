@@ -46,6 +46,7 @@ const RegisterForm = () => {
             username: data.username,
             password: data.password,
             role: data.role,
+            gender: data.gender,
         };
 
         const options = {
