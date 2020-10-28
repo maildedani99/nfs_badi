@@ -8,7 +8,7 @@ const RecommendedRooms = () => {
     const [rooms, setRooms] = useState('');
 
     useEffect(() => {
-        const url = CONECTION_API + 'rooms/recommended';
+        const url = CONECTION_API + '/rooms/recommended';
         const options = {
             method: 'GET',
             headers: new Headers(),

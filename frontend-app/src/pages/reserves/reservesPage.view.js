@@ -17,7 +17,7 @@ const ReservesPage = () => {
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        const url = CONECTION_API + 'reserves/solicitudes/' + state.user.id;
+        const url = CONECTION_API + '/reserves/solicitudes/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -39,7 +39,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = CONECTION_API + 'reserves/closed/' + state.user.id;
+        const url = CONECTION_API + '/reserves/closed/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -61,7 +61,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = CONECTION_API + 'reserves/solicitudes/guest/' + state.user.id;
+        const url = CONECTION_API + '/reserves/solicitudes/guest/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -83,7 +83,7 @@ const ReservesPage = () => {
     }, [refresh]);
 
     useEffect(() => {
-        const url = CONECTION_API + 'reserves/closed/guest/' + state.user.id;
+        const url = CONECTION_API + '/reserves/closed/guest/' + state.user.id;
         const options = {
             method: 'GET',
             headers: new Headers(),

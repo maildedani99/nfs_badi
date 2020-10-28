@@ -27,7 +27,7 @@ const RoomForm = () => {
     }
 
     const checkboxFetch = () => {
-        const url = CONECTION_API + 'features';
+        const url = CONECTION_API + '/features';
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -80,7 +80,7 @@ const RoomForm = () => {
         setNext(false);
         selectTrue();
 
-        const url = CONECTION_API + 'rooms';
+        const url = CONECTION_API + '/rooms';
         const body = {
             name: data.name,
             email: user.email,

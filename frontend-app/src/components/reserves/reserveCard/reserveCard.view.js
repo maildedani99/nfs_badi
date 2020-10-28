@@ -19,7 +19,7 @@ const ReserveCard = ({room, guest, fechaLlegada, fechaSalida, precio, id, status
 
     const respuesta = (accion) => () => {
 
-        const url = CONECTION_API + 'reserves/' + id;
+        const url = CONECTION_API + '/reserves/' + id;
         const body = {
             status: accion,
         };

@@ -10,7 +10,7 @@ const RoomsPage = () => {
     const [rooms, setRooms] = useState(null);
 
     useEffect(() => {
-        const url = CONECTION_API + 'rooms';
+        const url = CONECTION_API + '/rooms';
         const options = {
             method: 'GET',
             headers: new Headers(),

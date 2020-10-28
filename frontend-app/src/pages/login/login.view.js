@@ -21,7 +21,7 @@ const LoginPage = () => {
     }
 
     const SubmitLogin = () => {
-        const url = CONECTION_API + 'auth/login';
+        const url = CONECTION_API + '/auth/login';
         const body = {
             email: data.email,
             password: data.password,

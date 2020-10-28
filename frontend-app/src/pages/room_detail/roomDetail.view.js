@@ -34,7 +34,7 @@ const RoomDetail = () => {
 
 
     useEffect(() => {
-        const url = CONECTION_API + 'rooms/'+ id;
+        const url = CONECTION_API + '/rooms/'+ id;
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -67,7 +67,7 @@ const RoomDetail = () => {
 
     const confirmarReserva = () => {
 
-        const url = CONECTION_API + 'reserves/';
+        const url = CONECTION_API + '/reserves/';
         const body = {
             room_id: room.id,
             host_id: room.user.id,
