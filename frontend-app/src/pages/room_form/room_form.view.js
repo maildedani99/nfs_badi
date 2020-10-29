@@ -128,8 +128,7 @@ const RoomForm = () => {
 
                 <div className={styles.__form_container}>
                     <h2>Comparte tu habitación en Roomi</h2>
-                    <h4 className={styles.__from_subtitle}>Información básica</h4>
-                    <div>
+                    <h4 className={styles.__form_subtitle}>Información básica</h4>
                         <div className={styles.__form_div}>
                             <input className={styles.__input_habitacion} type="text" name="name" onChange={handleInputChange} placeholder="Nombre de la habitación" />
                             <input className={styles.__input_compañeros} type="text" name="companions" onChange={handleInputChange} placeholder="Compañeros" />
@@ -140,7 +139,6 @@ const RoomForm = () => {
                             <input className={styles.__input_ubicacion} type="text" name="latitude" onChange={handleInputChange} placeholder="Latitud" />
                             <input className={styles.__input_ubicacion} type="text" name="longitude" onChange={handleInputChange} placeholder="Longitud" />
                         </div>
-                    </div>
 
                     <h4 className={styles.__from_subtitle}>Características</h4>
                     <div className={styles.__div_checkbox}>
@@ -161,7 +159,6 @@ const RoomForm = () => {
                 <div className={styles.__form_container}>
                     <h2>Comparte tu habitación en Roomi</h2>
                     <h4 className={styles.__from_subtitle}>Descripción</h4>
-                    <div>
                         <div className={styles.__form_div}>
                             <textarea className={styles.__textarea} name="description" placeholder="Describe tu habitación con mucho detalle!"  onInput={handleInputChange} />
 
@@ -175,7 +172,6 @@ const RoomForm = () => {
                             <UploadPhoto name="image5" />
                             <UploadPhoto name="image6"/>
                         </div>
-                    </div>
 
                     <div className={styles.__div_button}>
                         <input className={styles.__button_crear} type="button" onClick={nextClick} name="button" value="<<" />
