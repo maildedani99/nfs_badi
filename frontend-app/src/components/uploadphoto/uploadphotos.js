@@ -34,12 +34,14 @@ const UploadPhoto = (props) => {
                 });
         }
     };
+    console.log(photoUrl);
+    console.log(uploadPhotoArray);
 
     return (
         <div id="direct_upload">
-            {photoUrl ?
+            { props.num ?
                 <div className={styles.__div_foto}>
-                    <img src={photoUrl} />
+                    <img src={props.num} />
                 </div>
 
                 :

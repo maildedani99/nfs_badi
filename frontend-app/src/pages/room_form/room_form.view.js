@@ -22,6 +22,7 @@ const RoomForm = () => {
         setNext(!next)
     }
 
+    
     if(state.user.role === 'GUEST') {
         history.replace(LANDING);
     }
@@ -52,16 +53,19 @@ const RoomForm = () => {
             ...data,
             [event.target.name]: event.target.value
         })
+        console.log(data);
     }
 
-    const [checkedList, setCheckList] = useState({});
+    const [checkedList, setCheckedList] = useState({});
     var checkedListArray = []
 
     const handleCheckBoxChange = (event) => {
-        setCheckList({
+        setCheckedList({
             ...checkedList,
             [event.target.id]: event.target.checked,
         })
+        console.log(checkedList);
+
     }
 
     const selectTrue = () => {
@@ -74,9 +78,13 @@ const RoomForm = () => {
             ...data,
             features: checkedListArray,
         })
+        console.log(data);
+
     }
 
+
     const submitForm = () => {
+        console.log(uploadPhotoArray)
         setNext(false);
         selectTrue();
 
@@ -108,51 +116,58 @@ const RoomForm = () => {
                 if (response.status === 201) {
                     console.log(response.status);
                     swal(body.name, "Tu habitación ha sido creada con éxito", "success");
+                    setData('');
+                    setCheckedList('');
+                    returnView();
                     return response.json();
                 } else {
-                    swal("Error al crear habitación","Revisa tu formulario", "error");
+                    swal("Error al crear habitación","Cumplimenta todos los campos", "error");
                     return Promise.reject(response.status);
                 }
             })
             .catch(error =>console.log(error));
     };
 
+    const returnView = () => {
+        nextClick();
+    }
+    const nextView = () => {
+        nextClick();
+    }
+
     useEffect(() => {
         checkboxFetch()
     }, [])
     return (
-
         <div className={styles.__room_container}>
 
             { next ?
 
                 <div className={styles.__form_container}>
                     <h2>Comparte tu habitación en Roomi</h2>
-                    <h4 className={styles.__from_subtitle}>Información básica</h4>
-                    <div>
+                    <h4 className={styles.__form_subtitle}>Información básica</h4>
                         <div className={styles.__form_div}>
-                            <input className={styles.__input_habitacion} type="text" name="name" onChange={handleInputChange} placeholder="Nombre de la habitación" />
-                            <input className={styles.__input_compañeros} type="text" name="companions" onChange={handleInputChange} placeholder="Compañeros" />
-                            <input className={styles.__input_precio} type="text" name="price" onChange={handleInputChange} placeholder="Precio" />
+                            <input className={styles.__input_habitacion} type="text" name="name" defaultValue={data.name} onChange={handleInputChange} placeholder="Nombre de la habitación" />
+                            <input className={styles.__input_compañeros} type="number" name="companions" defaultValue={data.companions} onChange={handleInputChange} placeholder="Compañeros" />
+                            <input className={styles.__input_precio} type="number" name="price" defaultValue={data.price} onChange={handleInputChange} placeholder="Precio" />
                         </div>
                         <h4 className={styles.__from_subtitle}>Ubicación</h4>
                         <div className={styles.__ubicacion_div}>
-                            <input className={styles.__input_ubicacion} type="text" name="latitude" onChange={handleInputChange} placeholder="Latitud" />
-                            <input className={styles.__input_ubicacion} type="text" name="longitude" onChange={handleInputChange} placeholder="Longitud" />
+                            <input className={styles.__input_ubicacion} type="number" name="latitude" defaultValue={data.latitude} onChange={handleInputChange} placeholder="Latitud" />
+                            <input className={styles.__input_ubicacion} type="number" name="longitude"  defaultValue={data.longitude} onChange={handleInputChange} placeholder="Longitud" />
                         </div>
-                    </div>
 
                     <h4 className={styles.__from_subtitle}>Características</h4>
                     <div className={styles.__div_checkbox}>
                         {features.map((item) =>
                             <div className={styles.__checkbox_group}>
-                                <input id={item.id} type="checkbox" className="check" onChange={handleCheckBoxChange} name={item.name} />
+                                <input id={item.id} type="checkbox" className="check" onChange={handleCheckBoxChange} defaultChecked={checkedList[item.id]}  name={item.name} />
                                 <label className={styles.__room_label}> {item.name} </label>
                             </div>
                         )}
                     </div>
                     <div className={styles.__div_button}>
-                        <input className={styles.__button_crear} type="button" onClick={nextClick} name="button" value="Siguiente" />
+                        <input className={styles.__button_crear} type="button" onClick={nextView} name="button" value="Siguiente" />
                     </div>
                 </div>
 
@@ -161,24 +176,22 @@ const RoomForm = () => {
                 <div className={styles.__form_container}>
                     <h2>Comparte tu habitación en Roomi</h2>
                     <h4 className={styles.__from_subtitle}>Descripción</h4>
-                    <div>
                         <div className={styles.__form_div}>
-                            <textarea className={styles.__textarea} name="description" placeholder="Describe tu habitación con mucho detalle!"  onInput={handleInputChange} />
+                            <textarea className={styles.__textarea} name="description" defaultValue={data.description} placeholder="Describe tu habitación con mucho detalle!"  onInput={handleInputChange} />
 
                         </div>
                         <h4 className={styles.__from_subtitle}>Fotografías</h4>
                         <div className={styles.__div_inputs_foto}>
-                            <UploadPhoto name="image1" />
-                            <UploadPhoto name="image2" />
-                            <UploadPhoto name="image3" />
-                            <UploadPhoto name="image4" />
-                            <UploadPhoto name="image5" />
-                            <UploadPhoto name="image6"/>
+                            <UploadPhoto name="image1" num={uploadPhotoArray[0]} />
+                            <UploadPhoto name="image2" num={uploadPhotoArray[1]} />
+                            <UploadPhoto name="image3" num={uploadPhotoArray[2]} />
+                            <UploadPhoto name="image4" num={uploadPhotoArray[3]} />
+                            <UploadPhoto name="image5" num={uploadPhotoArray[4]} />
+                            <UploadPhoto name="image6" num={uploadPhotoArray[5]} />
                         </div>
-                    </div>
 
                     <div className={styles.__div_button}>
-                        <input className={styles.__button_crear} type="button" onClick={nextClick} name="button" value="<<" />
+                        <input className={styles.__button_crear} type="button" onClick={returnView} name="button" value="<<" />
                         <input className={styles.__button_crear} type="submit" onClick={submitForm} name="button" value="Crear anuncio" />
                     </div>
                 </div>
