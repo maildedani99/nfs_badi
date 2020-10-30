@@ -1,7 +1,8 @@
 .__contenedor {
-    width: 100%;
+    width: 90%;
     height: 250px;
     text-align: center;
+    margin: 0 auto;
 }
 
 .__logo {
@@ -19,5 +20,17 @@
 }
 
 .__redes {
-    margin: 10px;
+    margin: 7px;
+}
+
+
+@media (max-width: 650px) {
+    .__logo {
+        width: 14%;
+    }
+
+    .__parrafo {
+        font-size: 10px;
+    }
+
 }
