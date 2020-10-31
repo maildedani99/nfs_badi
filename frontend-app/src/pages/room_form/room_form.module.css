@@ -46,7 +46,7 @@
     .__ubicacion_div {
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: 100% !important;
        
     }
     
@@ -55,7 +55,7 @@
         border-radius: 5px;
         height: 2.2rem;
         margin: 1rem 0;
-        width: 100%;
+        width: 90% !important;
     }
     
     .__input_compañeros {
@@ -63,20 +63,20 @@
         border-radius: 5px;
         height: 2.2rem;
         margin: 1rem 0;
-        width: 40%;
+        width: 60% !important;
     }
     .__input_precio {
         border: solid 2px #DDDDDD;
         border-radius: 5px;
         height: 2.2rem;
         margin: 1rem 0;
-        width: 40%;
+        width: 60% !important;
     }
     .__input_ubicacion {
         border: solid 2px #DDDDDD;
         border-radius: 5px;
         height: 2.2rem;
-        width: 50%;
+        width: 60% !important;
         margin-top: 1rem;
     }
     .__form_subtitle {
