@@ -1,5 +1,133 @@
+@media only screen and (max-width: 991px) {
 
-.__room_container {
+    #root {
+        all: initial;
+    }
+
+    .__room_container {
+        all: initial;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .__form_container {
+        all: initial;
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+    }
+    
+    .__form_div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+    }
+    
+    .__textarea {
+        width: 100%;
+        margin-top: 1.5rem;
+        height: 150px;
+        padding: 5px;
+    }
+    
+    .__div_img {
+        visibility: hidden;
+    }
+    
+    
+    .__ubicacion_div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+       
+    }
+    
+    .__input_habitacion {
+        border: solid 2px #DDDDDD;
+        border-radius: 5px;
+        height: 2.2rem;
+        margin: 1rem 0;
+        width: 100%;
+    }
+    
+    .__input_compañeros {
+        border: solid 2px #DDDDDD;
+        border-radius: 5px;
+        height: 2.2rem;
+        margin: 1rem 0;
+        width: 40%;
+    }
+    .__input_precio {
+        border: solid 2px #DDDDDD;
+        border-radius: 5px;
+        height: 2.2rem;
+        margin: 1rem 0;
+        width: 40%;
+    }
+    .__input_ubicacion {
+        border: solid 2px #DDDDDD;
+        border-radius: 5px;
+        height: 2.2rem;
+        width: 50%;
+        margin-top: 1rem;
+    }
+    .__form_subtitle {
+        margin-top: 1.5rem;
+        opacity: 70%;
+    }
+    
+    .__div_inputs_foto {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .__div_button {
+        align-self: center;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+    .__button_crear {
+        height: 2.2rem;
+        width: 30%;
+        margin: 1rem;
+    }
+    
+    
+    .__div_checkbox {
+        width: 100%;
+        height: 15rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .__checkbox_group {
+        margin: 0.5rem 1.5rem;
+        height: 2rem;
+    }
+    
+    .__room_label {
+        opacity: 70%;
+    }
+
+  }
+
+
+
+
+  .__room_container {
     display: flex;
     flex-direction: row;
     margin: 2rem 2rem;
@@ -70,7 +198,7 @@
 }
 .__from_subtitle {
     margin-top: 1.5rem;
-    opacity: 70%;
+    opacity: 0.7;
 }
 
 .__div_inputs_foto {
@@ -108,5 +236,5 @@
 
 .__room_label {
     margin-left: 0.5rem;
-    opacity: 70%;
+    opacity: 0.7;
 }
