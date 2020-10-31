@@ -9,6 +9,7 @@ import aceptadaImg from './assets/aceptada.png';
 import rechazadaImg from './assets/rechazada.png';
 import enCursoImg from './assets/en_curso.png';
 import completadaImg from './assets/completada.png';
+import {CONECTION_API} from "../../../routes/routes";
 
 const ReserveCard = ({room, guest, fechaLlegada, fechaSalida, precio, id, status, refreshList}) => {
 
@@ -18,7 +19,7 @@ const ReserveCard = ({room, guest, fechaLlegada, fechaSalida, precio, id, status
 
     const respuesta = (accion) => () => {
 
-        const url = 'http://localhost/api/reserves/' + id;
+        const url = CONECTION_API + '/reserves/' + id;
         const body = {
             status: accion,
         };

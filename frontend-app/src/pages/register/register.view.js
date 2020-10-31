@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styles from './register.module.css';
 import { Link, useHistory } from 'react-router-dom';
-import {LOGINPAGE} from "../../routes/routes";
+import {CONECTION_API, LOGINPAGE} from "../../routes/routes";
 import swal from "sweetalert";
-
 
 const RegisterForm = () => {
 
@@ -16,6 +15,7 @@ const RegisterForm = () => {
         email: '',
         password: '',
         role: 'HOST',
+        gender: 'M',
     });
 
 
@@ -38,7 +38,7 @@ const RegisterForm = () => {
 
 
     const SubmitForm = () => {
-        const url = 'http://localhost/api/users';
+        const url = CONECTION_API + '/users';
         const body = {
             first_name: data.first_name,
             last_name: data.last_name,
@@ -46,6 +46,7 @@ const RegisterForm = () => {
             username: data.username,
             password: data.password,
             role: data.role,
+            gender: data.gender,
         };
 
         const options = {
@@ -88,6 +89,13 @@ const RegisterForm = () => {
                        <input className={styles.__login_input} name="username" type={'text'}placeholder="Username "onChange={handleInputChange}></input>
                        <input className={styles.__login_input} name="email" type={'text'}placeholder="E-mail "onChange={handleInputChange}></input>
                        <input className={styles.__login_input} name="password" type={'password'}placeholder="Contraseña "onChange={handleInputChange}></input>
+
+                       <div className={styles.__check_input}>
+                           <select className={styles.__check_input_option} onChange={(event) => setData({...data,role:event.target.value})}>
+                               <option value={'M'} className={styles.__check_input_select} >Male</option>
+                               <option value={'F'} className={styles.__check_input_select} >Female</option>
+                           </select>
+                       </div>
 
                        <div className={styles.__check_input}>
                            <select className={styles.__check_input_option} onChange={(event) => setData({...data,role:event.target.value})}>

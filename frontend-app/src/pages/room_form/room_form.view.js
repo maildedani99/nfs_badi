@@ -5,7 +5,7 @@ import room_img from './assets/room_img.png';
 import UploadPhoto from '../../components/uploadphoto/uploadphotos';
 import { UploadPhotoContext } from '../../contexts/uploadphoto_context';
 import {AuthContext} from "../../contexts/authentication/authentication.context";
-import { LANDING } from "../../routes/routes";
+import {CONECTION_API, LANDING} from "../../routes/routes";
 import swal from 'sweetalert';
 
 
@@ -28,7 +28,7 @@ const RoomForm = () => {
     }
 
     const checkboxFetch = () => {
-        const url = 'http://localhost/api/features';
+        const url = CONECTION_API + '/features';
         const options = {
             method: 'GET',
             headers: new Headers(),
@@ -88,7 +88,7 @@ const RoomForm = () => {
         setNext(false);
         selectTrue();
 
-        const url = 'http://localhost/api/rooms';
+        const url = CONECTION_API + '/rooms';
         const body = {
             name: data.name,
             email: user.email,
