@@ -114,6 +114,7 @@
     }
     
     .__checkbox_group {
+        align-self: flex-start;
         margin: 0.5rem 1.5rem;
         height: 2rem;
     }

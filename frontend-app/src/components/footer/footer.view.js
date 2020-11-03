@@ -11,10 +11,11 @@ const Footer = () => {
         <div className={styles.__contenedor}>
             <img className={styles.__logo} src={groupLogo} alt="logotipo"/>
             <p className={styles.__parrafo}>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam <br/>
+                Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam 
+            </p>
+            <p className={styles.__parrafo}>
                 pellentesque aliquam curabitur cociis.
             </p>
-
             <div className={styles.__redesSociales}>
                 <img className={styles.__redes} src={twitter} alt="twitter"/>
                 <img className={styles.__redes} src={facebook} alt="facebook"/>

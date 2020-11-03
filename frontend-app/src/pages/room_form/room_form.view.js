@@ -16,7 +16,7 @@ const RoomForm = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const [features, setFeatures] = useState([]);
     const [next, setNext] = useState(true);
-    const { uploadPhotoArray } = useContext(UploadPhotoContext);
+    const { uploadPhotoArray, setUploadPhotoArray } = useContext(UploadPhotoContext);
 
     const nextClick = () => {
         setNext(!next)
@@ -82,6 +82,13 @@ const RoomForm = () => {
 
     }
 
+    const  resetForm = () =>
+    {
+        setData('');
+        setCheckedList('');
+        setUploadPhotoArray('');
+    }
+
 
     const submitForm = () => {
         console.log(uploadPhotoArray)
@@ -116,8 +123,7 @@ const RoomForm = () => {
                 if (response.status === 201) {
                     console.log(response.status);
                     swal(body.name, "Tu habitación ha sido creada con éxito", "success");
-                    setData('');
-                    setCheckedList('');
+                    resetForm();
                     returnView();
                     return response.json();
                 } else {

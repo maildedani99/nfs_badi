@@ -36,8 +36,9 @@ function App() {
         <SimpleReactLightbox>
         <AuthContextProvider>
           <Router>
-            <Navbar search="present" register="present" login="present" publicRoom="present"/>
+            <Navbar search="present" register="present" login="present" publicRoom="present" />
             <Switch>
+            <main className="main">
               <Route exact path={LANDING}>
                 <LandingPage />
               </Route>
@@ -70,7 +71,8 @@ function App() {
               <Route exact path={PERFIL}>
                 <PerfilUser />
               </Route>
-            </Switch>
+            </main> 
+              </Switch>
           </Router>
         </AuthContextProvider>
 

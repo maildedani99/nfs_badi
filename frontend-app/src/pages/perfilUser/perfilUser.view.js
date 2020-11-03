@@ -5,7 +5,7 @@ import {AuthContext} from "../../contexts/authentication/authentication.context"
 const PerfilUser = () => {
 
     const { state } = React.useContext(AuthContext);
-
+    
     return (
         <div className={styles.__contenedor}>
             <div className={styles.__resumen}>

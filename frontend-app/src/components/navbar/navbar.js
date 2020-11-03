@@ -121,7 +121,7 @@ const Navbar = (props) => {
 
             {isMobile && (
                 <>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav className="navbar navbar-expand-lg navbar-light  bg-light fixed-top ">
                         <a className="navbar-brand" href="#">
                             <Link to={LANDING}>
                                 <img
