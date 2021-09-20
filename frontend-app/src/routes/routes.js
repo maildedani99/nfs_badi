@@ -10,6 +10,6 @@ export const ROOMDETAILBYID = '/roomdetail/';
 export const RESERVAS = '/reservas';
 export const PERFIL = '/perfil/';
 
-export const CONECTION_API = 'https://roomi-nuclio.herokuapp.com/api/';
+export const CONECTION_API = 'http://localhost:8000/api/';
 export const HEROKUAPI = 'https://roomi-nuclio.herokuapp.com/api/';
-export const LOCALHOSTAPI = 'http://localhost/api/';
+export const LOCALHOSTAPI = 'http://localhost:8000/api/';

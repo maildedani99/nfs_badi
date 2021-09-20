@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styles from './register.module.css';
 import { Link, useHistory } from 'react-router-dom';
-import {CONECTION_API, LOGINPAGE} from "../../routes/routes";
+
+import {CONECTION_API, LOGINPAGE, POLITICA, TERMINOS} from "../../routes/routes";
 import swal from "sweetalert";
 
 const RegisterForm = () => {
@@ -110,9 +111,9 @@ const RegisterForm = () => {
                    </div>
 
                    <p>
-                       Al entrar, acepto los <b>Términos y condiciones de uso</b> y la <b>Política de
-                       privacidad</b> de Room
-                   </p>
+                        Al entrar, acepto los <Link to={TERMINOS}><b>Términos y condiciones de uso</b></Link> y la
+                        <Link to={POLITICA}><b> Política de privacidad</b></Link> de Room.
+                    </p>
                </div>
            </div>
        </>
